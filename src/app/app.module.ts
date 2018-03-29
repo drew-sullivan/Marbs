@@ -6,19 +6,24 @@ import { AppComponent } from './app.component';
 import { TeamMembersComponent } from './team-members/team-members.component';
 import { TeamMemberDetailComponent } from './team-member-detail/team-member-detail.component';
 import { TeamMemberService } from './services/team-member.service';
+import { MessagesComponent } from './messages/messages.component';
+import { MessageService } from './services/message.service';
+import { AppRoutingModule } from './/app-routing.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     TeamMembersComponent,
-    TeamMemberDetailComponent
+    TeamMemberDetailComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
-  providers: [TeamMemberService],
+  providers: [TeamMemberService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

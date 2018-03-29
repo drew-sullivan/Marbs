@@ -1,17 +1,20 @@
 import { Injectable } from '@angular/core';
 
+import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
+
 import { TEAM_MEMBERS } from './../mock-team-members';
 import { TeamMember } from './../teamMember';
 
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
+import { MessageService } from './message.service';
 
 @Injectable()
 export class TeamMemberService {
 
-  constructor() { }
+  constructor(private messageService: MessageService) { }
 
   getTeamMembers(): Observable<TeamMember[]> {
+    this.messageService.add('MessageService: fetched team members');
     return of(TEAM_MEMBERS);
   }
 
