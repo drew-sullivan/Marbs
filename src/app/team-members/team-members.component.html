@@ -7,3 +7,10 @@
     </a>
   </li>
 </ul>
+
+<div>
+  <label>Team Member Name:
+    <input #teamMemberName />
+  </label>
+  <button (click)="add(teamMemberName.value); teamMemberName.value=''">Add</button>
+</div>
