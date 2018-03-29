@@ -33,4 +33,9 @@ export class TeamMemberDetailComponent implements OnInit {
     this.location.back();
   }
 
+  save(): void {
+    this.teamMemberService.updateTeamMember(this.teamMember)
+      .subscribe(() => this.goBack());
+  }
+
 }

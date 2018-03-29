@@ -9,6 +9,10 @@ import { TeamMember } from './../teamMember';
 
 import { MessageService } from './message.service';
 
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
 @Injectable()
 export class TeamMemberService {
 
@@ -31,6 +35,13 @@ export class TeamMemberService {
     return this.http.get<TeamMember>(url).pipe(
       tap(_ => this.log(`fetched team member with id = ${id}`)),
       catchError(this.handleError<TeamMember>(`getTeamMember with id = ${id}`))
+    );
+  }
+
+  updateTeamMember(teamMember: TeamMember): Observable<any> {
+    return this.http.put(this.teamMembersUrl, teamMember, httpOptions).pipe(
+      tap(_ => this.log(`updated team member with id = ${teamMember.id}`)),
+      catchError(this.handleError<any>('updateTeamMember'))
     );
   }
 
