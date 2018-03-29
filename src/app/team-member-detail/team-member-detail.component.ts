@@ -1,6 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 import { TeamMember } from '../teamMember';
+import { TeamMemberService } from './../services/team-member.service';
 
 @Component({
   selector: 'app-team-member-detail',
@@ -11,10 +14,23 @@ export class TeamMemberDetailComponent implements OnInit {
 
   @Input() teamMember: TeamMember;
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private teamMemberService: TeamMemberService,
+    private location: Location) { }
 
   ngOnInit() {
-    console.log(this.teamMember);
+    this.getTeamMember();
+  }
+
+  getTeamMember(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.teamMemberService.getTeamMember(id)
+      .subscribe(tm => this.teamMember = tm);
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 
 }

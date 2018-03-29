@@ -1,11 +1,9 @@
 <h2>Team Members</h2>
 
 <ul class="team-members">
-  <li *ngFor="let teamMember of teamMembers"
-    [class.selected]="teamMember === selectedTeamMember"
-    (click)="onSelect(teamMember)">
-    <span class="badge">{{ teamMember.marblesEarned }}</span> {{ teamMember.name}}
+  <li *ngFor="let tm of teamMembers">
+    <a routerLink="/detail/{{tm.id}}">
+      <span class="badge">{{ tm.marblesEarned }}</span> {{ tm.name }}
+    </a>
   </li>
 </ul>
-
-<app-team-member-detail [teamMember]="selectedTeamMember"></app-team-member-detail>
