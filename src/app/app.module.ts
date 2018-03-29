@@ -9,6 +9,7 @@ import { TeamMemberService } from './services/team-member.service';
 import { MessagesComponent } from './messages/messages.component';
 import { MessageService } from './services/message.service';
 import { AppRoutingModule } from './/app-routing.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { AppRoutingModule } from './/app-routing.module';
     AppComponent,
     TeamMembersComponent,
     TeamMemberDetailComponent,
-    MessagesComponent
+    MessagesComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
