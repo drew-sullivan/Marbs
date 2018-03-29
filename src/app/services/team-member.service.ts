@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
+import { catchError, map, tap } from 'rxjs/operators';
 
-import { TEAM_MEMBERS } from './../mock-team-members';
 import { TeamMember } from './../teamMember';
 
 import { MessageService } from './message.service';
@@ -11,16 +12,38 @@ import { MessageService } from './message.service';
 @Injectable()
 export class TeamMemberService {
 
-  constructor(private messageService: MessageService) { }
+  private teamMembersUrl = 'api/teamMembers';  // URL to web api
+
+  constructor(
+    private http: HttpClient,
+    private messageService: MessageService) { }
 
   getTeamMembers(): Observable<TeamMember[]> {
-    this.messageService.add('MessageService: fetched team members');
-    return of(TEAM_MEMBERS);
+    return this.http.get<TeamMember[]>(this.teamMembersUrl)
+      .pipe(
+        tap(teamMembers => this.log('fetched team members')),
+        catchError(this.handleError('getTeamMembers', []))
+      );
   }
 
   getTeamMember(id: number): Observable<TeamMember> {
-    this.messageService.add(`TeamMemberService: fetched team member with id = ${id}`);
-    return of(TEAM_MEMBERS.find(tm => tm.id === id));
+    const url = `${this.teamMembersUrl}/${id}`;
+    return this.http.get<TeamMember>(url).pipe(
+      tap(_ => this.log(`fetched team member with id = ${id}`)),
+      catchError(this.handleError<TeamMember>(`getTeamMember with id = ${id}`))
+    );
+  }
+
+  private log(message: string) {
+    this.messageService.add('HeroService: ' + message);
+  }
+
+  private handleError<T> (operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(error);
+      this.log(`${operation} failed: ${error.message}`);
+      return of(result as T);
+    };
   }
 
 }
