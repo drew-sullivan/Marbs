@@ -1,16 +1,17 @@
 <h2>Team Members</h2>
 
-<ul class="team-members">
-  <li *ngFor="let tm of teamMembers">
-    <a routerLink="/detail/{{tm.id}}">
-      <span class="badge">{{ tm.marblesEarned }}</span> {{ tm.name }}
-    </a>
-  </li>
-</ul>
-
 <div>
   <label>Team Member Name:
     <input #teamMemberName />
   </label>
   <button (click)="add(teamMemberName.value); teamMemberName.value=''">Add</button>
 </div>
+
+<ul class="team-members">
+  <li *ngFor="let tm of teamMembers">
+    <a routerLink="/detail/{{tm.id}}">
+      <span class="badge">{{ tm.marblesEarned }}</span> {{ tm.name }}
+    </a>
+    <button class="delete" title="delete team member" (click)="delete(tm)">x</button>
+  </li>
+</ul>

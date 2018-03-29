@@ -53,6 +53,16 @@ export class TeamMemberService {
     );
   }
 
+  deleteTeamMember(tm: TeamMember | number): Observable<TeamMember> {
+    const id = typeof tm === 'number' ? tm : tm.id;
+    const url = `${this.teamMembersUrl}/${id}`;
+
+    return this.http.delete<TeamMember>(url, httpOptions).pipe(
+      tap(_ => this.log('deleted team member with id = ${id}')),
+      catchError(this.handleError<TeamMember>('deleteTeamMember'))
+    );
+  }
+
   private log(message: string) {
     this.messageService.add('HeroService: ' + message);
   }
