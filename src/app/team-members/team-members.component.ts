@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 import { TeamMember } from './../teamMember';
-
 import { TeamMemberService } from './../services/team-member.service';
 
 @Component({
