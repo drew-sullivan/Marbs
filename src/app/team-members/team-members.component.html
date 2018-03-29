@@ -1,0 +1,11 @@
+<h2>{{ teamMember.name | uppercase }} Details</h2>
+<div><span>ID: {{ teamMember.id }}</span></div>
+<div><span>Marbles Earned: {{ teamMember.marblesEarned }}</span></div>
+<div>
+  <label>Name:
+    <input [(ngModel)]="teamMember.name" placeholder="Name">
+  </label>
+  <label>Marbles Earned:
+    <input [(ngModel)]="teamMember.marblesEarned" placeholder="Marbles Earned">
+  </label>
+</div>
