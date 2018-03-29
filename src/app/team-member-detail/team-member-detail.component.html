@@ -1,0 +1,14 @@
+<div *ngIf="teamMember">
+
+  <h2>{{ teamMember.name | uppercase }} Details</h2>
+  <div><span>Marbles Earned: {{ teamMember.marblesEarned }}</span></div>
+  <div>
+    <label>Name:
+      <input [(ngModel)]="teamMember.name" placeholder="name">
+    </label>
+    <label>Marbles Earned:
+      <input [(ngModel)]="teamMember.marblesEarned" placeholder="marbles earned">
+    </label>
+  </div>
+
+</div>
