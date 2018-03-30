@@ -1,20 +1,27 @@
 <div *ngIf="teamMember">
 
-  <h2>{{ teamMember.name | uppercase }} Details</h2>
-  <div>
-    <label>Name:
-      <input [(ngModel)]="teamMember.name" placeholder="name" />
-    </label>
-    <label>Half Days Taken Off: {{ teamMember.datesTakenOff.length }}
-      <ul>
-        <li *ngFor="let date of teamMember.datesTakenOff">
-          <span>{{ date | amDateFormat:'LL' }} -- {{ date | amTimeAgo }}</span>
-        </li>
-      </ul>
-    </label>
-  </div>
+  <div class="container">
 
-  <button (click)="goBack()">Go Back</button>
-  <button (click)="save()">Save</button>
+    <h1>{{ teamMember.name }}</h1>
+    <label>Half Days Taken Off: <strong>{{ teamMember.datesTakenOff.length }}</strong></label>
+    <table class="table col-md-6">
+      <thead>
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">Timeframe</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let date of teamMember.datesTakenOff">
+          <td>{{ date | amDateFormat:'LL' }}</td>
+          <td>{{ date | amTimeAgo }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <button class="btn btn-outline-primary" (click)="goBack()">Go Back</button>
+    <button class="btn btn-primary" (click)="save()">Save</button>
+
+  </div>
 
 </div>
