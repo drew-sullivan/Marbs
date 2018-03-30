@@ -72,7 +72,7 @@ export class TeamMemberService {
   }
 
   private log(message: string) {
-    this.messageService.add('HeroService: ' + message);
+    this.messageService.add(`team-member service: ${message}`);
   }
 
   private handleError<T> (operation = 'operation', result?: T) {

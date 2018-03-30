@@ -2,5 +2,5 @@ export class TeamMember {
   id: number;
   name: string;
   marblesEarned: number;
-  datesOfHalfDaysTakenOff: string[];
+  datesTakenOff: string[];
 }
