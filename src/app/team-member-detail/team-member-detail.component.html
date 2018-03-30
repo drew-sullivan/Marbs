@@ -1,18 +1,14 @@
 <div *ngIf="teamMember">
 
   <h2>{{ teamMember.name | uppercase }} Details</h2>
-  <div><span>Marbles Earned: {{ teamMember.marblesEarned }}</span></div>
   <div>
     <label>Name:
       <input [(ngModel)]="teamMember.name" placeholder="name" />
     </label>
-    <label>Marbles Earned:
-      <input [(ngModel)]="teamMember.marblesEarned" placeholder="marbles earned" />
-    </label>
-    <label>Half Days Taken Off:
+    <label>Half Days Taken Off: {{ teamMember.datesTakenOff.length }}
       <ul>
-        <li *ngFor="let date of teamMember.datesOfHalfDaysTakenOff">
-          <span>{{ date | amDateFormat:'LL'}}</span>
+        <li *ngFor="let date of teamMember.datesTakenOff">
+          <span>{{ date | amDateFormat:'LL' }} -- {{ date | amTimeAgo }}</span>
         </li>
       </ul>
     </label>

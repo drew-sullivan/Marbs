@@ -1,7 +1,6 @@
-/* HeroDetailComponent's private CSS styles */
 label {
   display: block;
-  width: 3em;
+  width: 50%;
   margin: .5em 0;
   color: #607D8B;
   font-weight: bold;
@@ -27,4 +26,7 @@ button:disabled {
   background-color: #eee;
   color: #ccc;
   cursor: auto;
+}
+ul {
+  width: 50%;
 }
