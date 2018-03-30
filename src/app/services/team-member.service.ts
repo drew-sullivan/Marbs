@@ -63,6 +63,17 @@ export class TeamMemberService {
     );
   }
 
+  searchTeamMembers(term: string): Observable<TeamMember[]> {
+    if (!term.trim()) {
+      return of([]);
+    }
+
+    return this.http.get<TeamMember[]>(`api/team-members/?name=${term}`).pipe(
+      tap(_ => this.log(`found team members matching "${term}"`)),
+      catchError(this.handleError<TeamMember[]>('searchTeamMembers', []))
+    );
+  }
+
   private log(message: string) {
     this.messageService.add('HeroService: ' + message);
   }
