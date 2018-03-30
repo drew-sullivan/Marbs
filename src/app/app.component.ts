@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewContainerRef } from '@angular/core';
+import { ToastService } from './services/toast.service';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Marbs';
+
+  constructor(toastService: ToastService, toastManager: ToastsManager, vcr: ViewContainerRef) {
+    toastService.setUpVCR(vcr);
+    toastManager.setRootViewContainerRef(vcr);
+    toastManager.info('Hello World!');
+}
 }

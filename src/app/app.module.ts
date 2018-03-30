@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
+import { ToastModule } from 'ng2-toastr/ng2-toastr';
 
 import { AppComponent } from './app.component';
 import { TeamMembersComponent } from './team-members/team-members.component';
@@ -16,6 +17,7 @@ import { MessageService } from './services/message.service';
 import { AppRoutingModule } from './/app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TeamMemberSearchComponent } from './team-member-search/team-member-search.component';
+import { ToastService } from './services/toast.service';
 
 import { MaterialModule } from './material.module';
 import { MomentModule } from 'angular2-moment';
@@ -39,9 +41,10 @@ import { MomentModule } from 'angular2-moment';
     MaterialModule,
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
-    )
+    ),
+    ToastModule.forRoot()
   ],
-  providers: [TeamMemberService, MessageService],
+  providers: [TeamMemberService, MessageService, ToastService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
