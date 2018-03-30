@@ -12,7 +12,5 @@ export class AppComponent {
 
   constructor(toastService: ToastService, toastManager: ToastsManager, vcr: ViewContainerRef) {
     toastService.setUpVCR(vcr);
-    toastManager.setRootViewContainerRef(vcr);
-    toastManager.info('Hello World!');
-}
+  }
 }

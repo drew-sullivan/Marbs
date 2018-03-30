@@ -3,13 +3,13 @@ import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 @Injectable()
 export class ToastService {
-  constructor(private toastsManager: ToastsManager) { }
+  constructor(private toastsManager: ToastsManager) {}
 
   setUpVCR(vcr: ViewContainerRef) {
     this.toastsManager.setRootViewContainerRef(vcr);
   }
 
-  showInfo() {
-    this.toastsManager.success('Title', 'Message toast');
+  showInfo(message: string, title?: string) {
+    this.toastsManager.info(message, title);
   }
 }
