@@ -19,7 +19,8 @@ export class TeamMemberSearchComponent implements OnInit {
   teamMembers$: Observable<TeamMember[]>;
   private searchTerms = new Subject<string>();
 
-  constructor(private teamMemberService: TeamMemberService) { }
+  constructor(private teamMemberService: TeamMemberService) {
+  }
 
   search(term: string): void {
     this.searchTerms.next(term);

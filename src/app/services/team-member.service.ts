@@ -7,7 +7,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 
 import { TeamMember } from './../teamMember';
 
-import { MessageService } from './message.service';
+import { ToastService } from './toast.service';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -20,7 +20,7 @@ export class TeamMemberService {
 
   constructor(
     private http: HttpClient,
-    private messageService: MessageService) { }
+    private toast: ToastService) { }
 
   getTeamMembers(): Observable<TeamMember[]> {
     return this.http.get<TeamMember[]>(this.teamMembersUrl)
@@ -72,7 +72,7 @@ export class TeamMemberService {
   }
 
   private log(message: string) {
-    this.messageService.add(`team-member service: ${message}`);
+    this.toast.showInfo(`team-member service: ${message}`);
   }
 
   private handleError<T> (operation = 'operation', result?: T) {
