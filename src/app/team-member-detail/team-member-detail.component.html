@@ -9,6 +9,13 @@
     <label>Marbles Earned:
       <input [(ngModel)]="teamMember.marblesEarned" placeholder="marbles earned" />
     </label>
+    <label>Half Days Taken Off:
+      <ul>
+        <li *ngFor="let date of teamMember.datesOfHalfDaysTakenOff">
+          <span>{{ date | amDateFormat:'LL'}}</span>
+        </li>
+      </ul>
+    </label>
   </div>
 
   <button (click)="goBack()">Go Back</button>

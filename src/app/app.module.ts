@@ -17,6 +17,8 @@ import { AppRoutingModule } from './/app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TeamMemberSearchComponent } from './team-member-search/team-member-search.component';
 
+import { MomentModule } from 'angular2-moment';
+
 
 @NgModule({
   declarations: [
@@ -33,6 +35,7 @@ import { TeamMemberSearchComponent } from './team-member-search/team-member-sear
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    MomentModule,
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
     )
