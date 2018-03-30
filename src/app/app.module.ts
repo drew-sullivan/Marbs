@@ -17,7 +17,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { TeamMemberSearchComponent } from './team-member-search/team-member-search.component';
 import { ToastService } from './services/toast.service';
 
-import { MaterialModule } from './material.module';
 import { MomentModule } from 'angular2-moment';
 
 @NgModule({
@@ -35,7 +34,6 @@ import { MomentModule } from 'angular2-moment';
     BrowserAnimationsModule,
     HttpClientModule,
     MomentModule,
-    MaterialModule,
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
     ),
