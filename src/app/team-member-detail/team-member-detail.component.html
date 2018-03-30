@@ -2,8 +2,17 @@
 
   <div class="container">
 
-    <h1>{{ teamMember.name }}</h1>
+    <h2>{{ teamMember.name }}</h2>
+    
     <label>Half Days Taken Off: <strong>{{ teamMember.datesTakenOff.length }}</strong></label>
+
+    <div class="input-group mb-3">
+      <input type="date" class="form-control">
+      <div class="input-group-append">
+        <span class="input-group-text" id="basic-addon2">Add</span>
+      </div>
+    </div>
+    
     <table class="table col-md-6">
       <thead>
         <tr>
