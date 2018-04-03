@@ -1,5 +1,15 @@
 <h2>Team Members</h2>
 
+<label>Add New Team Member:</label>
+<div class="input-group mb-3 new-team-member">
+  <div class="input-group mb-3">
+    <input #teamMemberName type="text" class="form-control" placeholder="Name">
+    <div class="input-group-append">
+      <button (click)="add(teamMemberName.value); teamMemberName.value=''" class="btn btn-outline-primary">Add</button>
+    </div>
+  </div>
+</div>
+
 <table class="table table-hover">
   <thead>
     <tr>
@@ -25,13 +35,3 @@
     </tr>
   </tbody>
 </table>
-
-<label>Add Team Member:</label>
-<div class="input-group mb-3 new-team-member">
-  <div class="input-group mb-3">
-    <input #teamMemberName type="text" class="form-control" placeholder="Name">
-    <div class="input-group-append">
-      <button (click)="add(teamMemberName.value); teamMemberName.value=''" class="btn btn-outline-primary">Add</button>
-    </div>
-  </div>
-</div>

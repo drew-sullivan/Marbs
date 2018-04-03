@@ -4,6 +4,7 @@
 
 .new-team-member {
   width: 50%;
+  margin-bottom: 30px;
 }
 
 .long-button {
@@ -22,4 +23,9 @@ td {
 
 .sort-link:hover {
   color: red;
+}
+
+label {
+  margin-top: 20px;
+  margin-bottom: 5px;
 }
