@@ -4,9 +4,15 @@
   <thead>
     <tr>
       <th scope="col"></th>
-      <th scope="col" class="sort-link" (click)="sortByNameColumn()">Name</th>
-      <th scope="col" class="sort-link" (click)="sortByNumDaysTaken()">Half Days Taken Off</th>
-      <th scope="col" class="sort-link" (click)="sortByMostRecentDate()">Most Recent</th>
+      <th scope="col" (click)="sortByNameColumn()">
+        <span class="sort-link">Name</span>
+      </th>
+      <th scope="col" (click)="sortByNumDaysTaken()">
+       <span class="sort-link center">Half Days Taken Off</span>
+      </th>
+      <th scope="col" (click)="sortByMostRecentDate()">
+        <span class="sort-link">Most Recent</span>
+      </th>
     </tr>
   </thead>
   <tbody>

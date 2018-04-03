@@ -17,4 +17,9 @@ td {
 
 .sort-link {
   cursor: pointer;
+  transition: .15s ease-in-out;
+}
+
+.sort-link:hover {
+  color: red;
 }
