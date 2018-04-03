@@ -4,9 +4,9 @@
   <thead>
     <tr>
       <th scope="col"></th>
-      <th scope="col">Name</th>
-      <th scope="col">Half Days Taken Off</th>
-      <th scope="col">Most Recent</th>
+      <th scope="col" class="sort-link" (click)="sortByNameColumn()">Name</th>
+      <th scope="col" class="sort-link" (click)="sortByNumDaysTaken()">Half Days Taken Off</th>
+      <th scope="col" class="sort-link" (click)="sortByMostRecentDate()">Most Recent</th>
     </tr>
   </thead>
   <tbody>

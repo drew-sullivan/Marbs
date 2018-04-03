@@ -22,7 +22,6 @@ export class TeamMemberDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private teamMemberService: TeamMemberService,
-    private location: Location,
     private toastService: ToastService) { }
 
   ngOnInit() {
@@ -50,16 +49,15 @@ export class TeamMemberDetailComponent implements OnInit {
       }
     }
     this.teamMemberService.updateTeamMember(this.teamMember);
-    this.toastService.showSuccess(`Added ${date} to ${this.teamMember.name}'s list of half days taken off`);
+    this.toastService.showSuccess(`Added ${moment(date).format('LL')} to ${this.teamMember.name}'s list of half days taken off`);
   }
 
   deleteDate(date: string): void {
-    const index = this.teamMember.datesTakenOff.findIndex(item => item === date);
-    this.teamMember.datesTakenOff.splice(index, 1);
-  }
-
-  goBack(): void {
-    this.location.back();
+    const dates = this.teamMember.datesTakenOff;
+    const index = dates.findIndex(item => item === date);
+    dates.splice(index, 1);
+    this.teamMemberService.updateTeamMember(this.teamMember);
+    this.toastService.showSuccess(`Removed ${moment(date).format('LL')} from ${this.teamMember.name}'s list of half days taken off`);
   }
 
 }
