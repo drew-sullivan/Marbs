@@ -53,6 +53,11 @@ export class TeamMemberDetailComponent implements OnInit {
     this.toastService.showSuccess(`Added ${date} to ${this.teamMember.name}'s list of half days taken off`);
   }
 
+  deleteDate(date: string): void {
+    const index = this.teamMember.datesTakenOff.findIndex(item => item === date);
+    this.teamMember.datesTakenOff.splice(index, 1);
+  }
+
   goBack(): void {
     this.location.back();
   }

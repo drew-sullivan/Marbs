@@ -1,3 +1,7 @@
 .mb-3 {
   width: 40%;
 }
+
+td {
+  vertical-align: middle;
+}
