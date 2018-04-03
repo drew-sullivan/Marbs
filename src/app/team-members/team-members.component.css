@@ -10,3 +10,7 @@
   width: 340px;
   border-left-color: transparent !important;
 }
+
+td {
+  vertical-align: middle;
+}

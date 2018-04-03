@@ -46,7 +46,6 @@ export class TeamMemberService {
   }
 
   addTeamMember(teamMember: TeamMember): Observable<TeamMember> {
-    teamMember.marblesEarned = 0;
     return this.http.post<TeamMember>(this.teamMembersUrl, teamMember, httpOptions).pipe(
       tap((tm: TeamMember) => this.log(`added team member with id = ${tm.id}`)),
       catchError(this.handleError<TeamMember>('addTeamMember'))

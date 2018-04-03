@@ -1,6 +1,10 @@
-<h1>{{ title }}</h1>
-<nav>
-  <button class="btn btn-primary" routerLink="/dashboard">Dashboard</button>
-  <button class="btn btn-primary" routerLink="/team-members">Team Members</button>
-</nav>
-<router-outlet></router-outlet>
+<h1><a routerLink="/team-members">{{ title }}</a></h1>
+<hr>
+
+<main role="main" class="container">
+  <router-outlet></router-outlet>
+</main>
+
+<footer class="footer">
+  <a class="nav-link" routerLink="/team-members">All Team Members</a>
+</footer>
