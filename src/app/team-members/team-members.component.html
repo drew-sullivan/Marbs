@@ -1,12 +1,5 @@
 <h2>Team Members</h2>
 
-<div *ngFor="let tm of teamMembers" class="btn-box">
-  <div class="btn-group" role="group">
-    <button type="button" class="btn btn-danger" title="delete team member" (click)="delete(tm)">x</button>
-    <button type="button" class="btn btn-outline-primary long-button" routerLink="/detail/{{tm.id}}">{{ tm.name }}</button>
-  </div>
-</div>
-
 <label>Add Team Member:</label>
 <div class="input-group mb-3 new-team-member">
   <div class="input-group mb-3">
@@ -16,3 +9,22 @@
     </div>
   </div>
 </div>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Name</th>
+      <th scope="col">Half Days Taken Off</th>
+      <th scope="col">Most Recent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let tm of teamMembers" class="btn-box">
+      <th scope="row"><button type="button" class="btn btn-danger" title="delete team member" (click)="delete(tm)">x</button></th>
+      <td><a routerLink="/detail/{{ tm.id }}">{{ tm.name }}</a></td>
+      <td>{{ tm.datesTakenOff.length }}</td>
+      <td>{{ tm.datesTakenOff[0] }}</td>
+    </tr>
+  </tbody>
+</table>

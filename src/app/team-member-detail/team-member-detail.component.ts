@@ -43,18 +43,14 @@ export class TeamMemberDetailComponent implements OnInit {
   addDate(date: string): void {
     if (date === '') { return; }
     const dates = this.teamMember.datesTakenOff;
-    console.log(dates);
     for (let i = 0; i < dates.length; i++) {
-      // console.log(moment(date).diff(moment(dates[i])) > 0);
       if (moment(date).diff(moment(dates[i])) > 0 || i === dates.length - 1) {
         dates.splice(i, 0, date);
         break;
       }
     }
-    // dates.push(date);
-    console.log(dates);
     this.teamMemberService.updateTeamMember(this.teamMember);
-    this.toastService.showSuccess(`Added ${date} to ${this.teamMember.name}`);
+    this.toastService.showSuccess(`Added ${date} to ${this.teamMember.name}'s list of half days taken off`);
   }
 
   goBack(): void {
