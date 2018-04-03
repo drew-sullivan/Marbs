@@ -4,7 +4,8 @@
 
     <h2>{{ teamMember.name }} - Half Days Taken Off: <strong>{{ teamMember.datesTakenOff.length }}</strong></h2>
 
-    <div class="input-group mb-3">
+    <label>Add a new date:</label>
+    <div class="input-group date-picker">
       <input #dateInput type="date" class="form-control">
       <div class="input-group-append">
         <button class="btn btn-primary" id="basic-addon2" (click)="addDate(dateInput.value)">Add</button>
