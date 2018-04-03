@@ -37,13 +37,16 @@ export class TeamMemberDetailComponent implements OnInit {
       });
   }
 
-  goBack(): void {
-    this.location.back();
-  }
-
-  save(): void {
+  addDate(date: string): void {
+    console.log(date);
+    if (date === '') { return; }
+    this.teamMember.datesTakenOff.push(date);
     this.teamMemberService.updateTeamMember(this.teamMember)
       .subscribe(() => this.goBack());
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 
 }
