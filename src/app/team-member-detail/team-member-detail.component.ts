@@ -33,22 +33,25 @@ export class TeamMemberDetailComponent implements OnInit {
     this.teamMemberService.getTeamMember(id)
       .subscribe(tm => {
         this.teamMember = tm;
-        this.teamMember.datesTakenOff = this.teamMember.datesTakenOff.sort(
-          (a: string, b: string) => moment(b).diff(moment(a))
-        );
+        this.teamMember.datesTakenOff = this.teamMember.datesTakenOff.sort(byDate);
       });
   }
 
   addDate(date: string): void {
     if (date === '') { return; }
     const dates = this.teamMember.datesTakenOff;
-    for (let i = 0; i < dates.length; i++) {
-      if (moment(date).diff(moment(dates[i])) > 0 || i === dates.length - 1) {
-        dates.splice(i, 0, date);
-        break;
+    if (dates.length) {
+      for (let i = 0; i < dates.length; i++) {
+        if (moment(date).diff(moment(dates[i])) > 0 || i === dates.length - 1) {
+          dates.splice(i, 0, date);
+          break;
+        }
       }
+    } else {
+      dates.push(date);
     }
     this.teamMemberService.updateTeamMember(this.teamMember);
+    this.teamMember.datesTakenOff.sort(byDate);
     this.toastService.showSuccess(`Added ${moment(date).format('LL')} to ${this.teamMember.name}'s list of half days taken off`);
   }
 
@@ -61,3 +64,5 @@ export class TeamMemberDetailComponent implements OnInit {
   }
 
 }
+
+const byDate = (date1: string, date2: string) => moment(date2).diff(date1);

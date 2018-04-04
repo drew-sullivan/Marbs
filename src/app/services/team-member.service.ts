@@ -37,14 +37,14 @@ export class TeamMemberService {
 
   updateTeamMember(teamMember: TeamMember): Observable<any> {
     return this.http.put(this.teamMembersUrl, teamMember, httpOptions).pipe(
-      tap(_ => this.log(`Updated ${teamMember.name}'s information`)),
+      tap(_ => this.toast.showSuccess(`Updated ${teamMember.name}'s information`)),
       catchError(this.handleError<any>('updateTeamMember'))
     );
   }
 
   addTeamMember(teamMember: TeamMember): Observable<TeamMember> {
     return this.http.post<TeamMember>(this.teamMembersUrl, teamMember, httpOptions).pipe(
-      tap((tm: TeamMember) => this.log(`Added team member ${tm.name}`)),
+      tap((tm: TeamMember) => this.toast.showSuccess(`Added team member ${tm.name}`)),
       catchError(this.handleError<TeamMember>('addTeamMember'))
     );
   }
@@ -52,28 +52,16 @@ export class TeamMemberService {
   deleteTeamMember(tm: TeamMember | number): Observable<TeamMember> {
     const id = typeof tm === 'number' ? tm : tm.id;
     const url = `${this.teamMembersUrl}/${id}`;
-
     return this.http.delete<TeamMember>(url, httpOptions).pipe(
-      tap(_ => this.log(`Deleted team member with id = ${id}`)),
+      tap(_ => this.toast.showSuccess(`Deleted team member with id = ${id}`)),
       catchError(this.handleError<TeamMember>('deleteTeamMember'))
     );
-  }
-
-  searchTeamMembers(term: string): Observable<TeamMember[]> {
-    if (!term.trim()) { return of([]); }
-    return this.http.get<TeamMember[]>(`api/teamMembers/?name=${term}`).pipe(
-      catchError(this.handleError<TeamMember[]>('searchTeamMembers', []))
-    );
-  }
-
-  private log(message: string) {
-    this.toast.showSuccess(`${message}`);
   }
 
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
-      this.log(`${operation} failed: ${error.message}`);
+      this.toast.showError(`${operation} failed: ${error.message}`);
       return of(result as T);
     };
   }
