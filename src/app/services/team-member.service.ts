@@ -16,15 +16,16 @@ const httpOptions = {
 @Injectable()
 export class TeamMemberService {
 
-  private teamMembersUrl = 'api/teamMembers';  // URL to web api
+  private teamMembersUrl = 'http://dev-024402.onbase.net:9876/api/teamMembers';  // URL to web api
 
   constructor(
     private http: HttpClient,
     private toast: ToastService) { }
 
   getTeamMembers(): Observable<TeamMember[]> {
-    return this.http.get<TeamMember[]>(this.teamMembersUrl)
+    return this.http.get<ServerResponse>(this.teamMembersUrl)
       .pipe(
+        map(response => response.data),
         tap(teamMembers => this.log('fetched team members')),
         catchError(this.handleError('getTeamMembers', []))
       );
@@ -32,22 +33,25 @@ export class TeamMemberService {
 
   getTeamMember(id: number): Observable<TeamMember> {
     const url = `${this.teamMembersUrl}/${id}`;
-    return this.http.get<TeamMember>(url).pipe(
+    return this.http.get<ServerResponse>(url).pipe(
+      map(response => response.data),
       tap(_ => this.log(`fetched team member with id = ${id}`)),
       catchError(this.handleError<TeamMember>(`getTeamMember with id = ${id}`))
     );
   }
 
-  updateTeamMember(teamMember: TeamMember): Observable<any> {
-    return this.http.put(this.teamMembersUrl, teamMember, httpOptions).pipe(
+  updateTeamMember(teamMember: TeamMember): Observable<TeamMember> {
+    return this.http.put<ServerResponse>(this.teamMembersUrl, teamMember, httpOptions).pipe(
+      map(response => response.data),
       tap(_ => this.log(`updated team member with id = ${teamMember.id}`)),
-      catchError(this.handleError<any>('updateTeamMember'))
+      catchError(this.handleError<TeamMember>('updateTeamMember'))
     );
   }
 
   addTeamMember(teamMember: TeamMember): Observable<TeamMember> {
     teamMember.marblesEarned = 0;
-    return this.http.post<TeamMember>(this.teamMembersUrl, teamMember, httpOptions).pipe(
+    return this.http.post<ServerResponse>(this.teamMembersUrl, teamMember, httpOptions).pipe(
+      map(response => response.data),
       tap((tm: TeamMember) => this.log(`added team member with id = ${tm.id}`)),
       catchError(this.handleError<TeamMember>('addTeamMember'))
     );
@@ -57,7 +61,8 @@ export class TeamMemberService {
     const id = typeof tm === 'number' ? tm : tm.id;
     const url = `${this.teamMembersUrl}/${id}`;
 
-    return this.http.delete<TeamMember>(url, httpOptions).pipe(
+    return this.http.delete<ServerResponse>(url, httpOptions).pipe(
+      map(response => response.data ),
       tap(_ => this.log('deleted team member with id = ${id}')),
       catchError(this.handleError<TeamMember>('deleteTeamMember'))
     );
@@ -65,7 +70,8 @@ export class TeamMemberService {
 
   searchTeamMembers(term: string): Observable<TeamMember[]> {
     if (!term.trim()) { return of([]); }
-    return this.http.get<TeamMember[]>(`api/teamMembers/?name=${term}`).pipe(
+    return this.http.get<ServerResponse>(`${this.teamMembersUrl}/search/${term}`).pipe(
+      map(response => response.data),
       tap(_ => this.log(`found team members matching "${term}"`)),
       catchError(this.handleError<TeamMember[]>('searchTeamMembers', []))
     );
@@ -82,5 +88,10 @@ export class TeamMemberService {
       return of(result as T);
     };
   }
-
 }
+
+class ServerResponse {
+  public data; // This variable holds what you want
+}
+
+

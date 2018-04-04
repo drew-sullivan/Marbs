@@ -34,9 +34,10 @@ import { MomentModule } from 'angular2-moment';
     BrowserAnimationsModule,
     HttpClientModule,
     MomentModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    ),
+  //  HttpClientInMemoryWebApiModule.forRoot(
+  //    InMemoryDataService, { dataEncapsulation: false }
+  //  ),
+
     ToastModule.forRoot()
   ],
   providers: [TeamMemberService, ToastService],
