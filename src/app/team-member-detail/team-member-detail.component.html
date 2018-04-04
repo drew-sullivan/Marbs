@@ -5,7 +5,7 @@
     <h2 >{{ teamMember.name }}</h2>  
 
     <h2>
-      <input [(ngModel)]="teamMember.name" type="text" placeholder="{{ teamMember.name }}" />
+      <input [(ngModel)]="teamMember.name" type="text" placeholder="{{ teamMember.name }}" class="form-control"/>
     </h2>
     <h3>Half Days Taken Off: <strong>{{ teamMember.datesTakenOff.length }}</strong></h3>
 
@@ -27,7 +27,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let date of teamMember.datesTakenOff">
+        <tr *ngFor="let date of teamMember.datesTakenOff; let i = index" [attr.date-index]="i">
           <td>
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirm" [class.disabled]="editing">x</button>          
@@ -52,12 +52,12 @@
           </td>
           <td *ngIf="!editing" (click)="editing = true">{{ date | amDateFormat:'LL' }}</td>
           <td *ngIf="editing">
-            <div class="input-group date-picker">
-              <input #dateInput type="date" class="form-control" [(ngModel)]="teamMember.datesTakenOff.date" placeholder="{{ date | amDateFormat:'LL' }}">
-              <div class="input-group-append">
-                <button class="btn btn-primary" id="basic-addon2" (click)="addDate(dateInput.value); dateInput.value=''">Done</button>
-              </div>
-            </div>
+            <input [ngModel]="teamMember.datesTakenOff[i]"
+                   (ngModelChange)="updateDate($event, i)"
+                   type="date"
+                   placeholder="{{ date }}"
+                   class="form-control"
+                   required />
           </td>
           <td>{{ date | amTimeAgo }}</td>
         </tr>

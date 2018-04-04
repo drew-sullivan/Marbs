@@ -68,6 +68,17 @@ export class TeamMemberDetailComponent implements OnInit {
     this.toastService.showSuccess(`Removed ${moment(date).format('LL')} from ${this.teamMember.name}'s list of half days taken off`);
   }
 
+  updateDate(newDate: string, index: number): void {
+    if (!newDate) {
+      return;
+    }
+    this.teamMember.datesTakenOff[index] = newDate;
+    this.teamMember.datesTakenOff.sort(byDate);
+    this.teamMemberService.updateTeamMember(this.teamMember);
+    this.toastService.showSuccess('Updated date');
+    this.editing = !this.editing;
+  }
+
 }
 
 const byDate = (date1: string, date2: string) => moment(date2).diff(date1);

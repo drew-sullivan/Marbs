@@ -12,3 +12,8 @@ td {
   vertical-align: middle;
   cursor: pointer;
 }
+
+input[type=date]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  display: none;
+}
