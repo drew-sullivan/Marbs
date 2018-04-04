@@ -13,7 +13,6 @@ import { TeamMembersComponent } from './team-members/team-members.component';
 import { TeamMemberDetailComponent } from './team-member-detail/team-member-detail.component';
 import { TeamMemberService } from './services/team-member.service';
 import { AppRoutingModule } from './/app-routing.module';
-import { TeamMemberSearchComponent } from './team-member-search/team-member-search.component';
 import { ToastService } from './services/toast.service';
 
 import { MomentModule } from 'angular2-moment';
@@ -23,7 +22,6 @@ import { MomentModule } from 'angular2-moment';
     AppComponent,
     TeamMembersComponent,
     TeamMemberDetailComponent,
-    TeamMemberSearchComponent
   ],
   imports: [
     BrowserModule,
