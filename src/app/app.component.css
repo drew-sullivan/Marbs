@@ -1,0 +1,26 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  margin-top: 75px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  line-height: 40px;
+  background-color: #d3d3d3;
+}
+
+body > .container {
+  padding: 60px 15px 0;
+}
+
+code {
+  font-size: 80%;
+}
+
+.top-buffer {
+  margin-top: 75px;
+}

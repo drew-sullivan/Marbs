@@ -12,4 +12,16 @@ export class ToastService {
   showInfo(message: string, title?: string) {
     this.toastsManager.info(message, title);
   }
+
+  showSuccess(message: string, title?: string) {
+    this.toastsManager.success(message, title);
+  }
+
+  showError(message: string, title?: string) {
+    this.toastsManager.error(message, title);
+  }
+
+  showWarning(message: string, title?: string) {
+    this.toastsManager.warning(message, title);
+  }
 }
