@@ -49,11 +49,10 @@ export class TeamMemberService {
     );
   }
 
-  deleteTeamMember(tm: TeamMember | number): Observable<TeamMember> {
-    const id = typeof tm === 'number' ? tm : tm.id;
-    const url = `${this.teamMembersUrl}/${id}`;
+  deleteTeamMember(tm: TeamMember): Observable<TeamMember> {
+    const url = `${this.teamMembersUrl}/${tm.id}`;
     return this.http.delete<TeamMember>(url, httpOptions).pipe(
-      tap(_ => this.toast.showSuccess(`Deleted team member with id = ${id}`)),
+      tap(_ => this.toast.showSuccess(`Deleted ${tm.name}`)),
       catchError(this.handleError<TeamMember>('deleteTeamMember'))
     );
   }

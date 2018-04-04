@@ -2,13 +2,19 @@
 
   <div class="container">
 
-    <h2>{{ teamMember.name }} - Half Days Taken Off: <strong>{{ teamMember.datesTakenOff.length }}</strong></h2>
+    <h2 >{{ teamMember.name }}</h2>  
 
+    <h2>
+      <input [(ngModel)]="teamMember.name" type="text" placeholder="{{ teamMember.name }}" />
+    </h2>
+    <h3>Half Days Taken Off: <strong>{{ teamMember.datesTakenOff.length }}</strong></h3>
+
+    
     <label>Add a new date:</label>
     <div class="input-group date-picker">
       <input #dateInput type="date" class="form-control">
       <div class="input-group-append">
-        <button class="btn btn-primary" id="basic-addon2" (click)="addDate(dateInput.value); dateInput.value=''">Add</button>
+        <button class="btn btn-primary" id="basic-addon2" (click)="addDate(dateInput.value); dateInput.value=''" [class.disabled]="editing">Add</button>
       </div>
     </div>
     
@@ -24,8 +30,8 @@
         <tr *ngFor="let date of teamMember.datesTakenOff">
           <td>
             <!-- Button trigger modal -->
-           <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirm">x</button>
-            
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirm" [class.disabled]="editing">x</button>          
+
             <!-- Modal -->
             <div class="modal fade" id="confirm" tabindex="-1" role="dialog">
               <div class="modal-dialog" role="document">
@@ -44,12 +50,20 @@
               </div>
             </div>
           </td>
-          <td>{{ date | amDateFormat:'LL' }}</td>
+          <td *ngIf="!editing" (click)="editing = true">{{ date | amDateFormat:'LL' }}</td>
+          <td *ngIf="editing">
+            <div class="input-group date-picker">
+              <input #dateInput type="date" class="form-control" [(ngModel)]="teamMember.datesTakenOff.date" placeholder="{{ date | amDateFormat:'LL' }}">
+              <div class="input-group-append">
+                <button class="btn btn-primary" id="basic-addon2" (click)="addDate(dateInput.value); dateInput.value=''">Done</button>
+              </div>
+            </div>
+          </td>
           <td>{{ date | amTimeAgo }}</td>
         </tr>
       </tbody>
     </table>
-
+  
   </div>
 
 </div>

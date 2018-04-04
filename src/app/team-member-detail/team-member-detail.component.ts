@@ -17,7 +17,7 @@ import * as moment from 'moment';
 export class TeamMemberDetailComponent implements OnInit {
 
   @Input() teamMember: TeamMember;
-  sortedDates: string[];
+  private editing: boolean;
 
   constructor(
     private route: ActivatedRoute,
@@ -35,6 +35,11 @@ export class TeamMemberDetailComponent implements OnInit {
         this.teamMember = tm;
         this.teamMember.datesTakenOff = this.teamMember.datesTakenOff.sort(byDate);
       });
+  }
+
+  updateTeamMember(id: number): void {
+    this.editing = !this.editing;
+    console.log('editing', id);
   }
 
   addDate(date: string): void {
