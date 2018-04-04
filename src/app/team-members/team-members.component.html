@@ -15,13 +15,25 @@
     <tr>
       <th scope="col"></th>
       <th scope="col" (click)="sortByNameColumn()">
-        <span class="sort-link">Name</span>
+        <span class="sort-link">Name 
+          <i class="fas fa-sort"></i>
+          <i class="fas fa-sort-alpha-up"></i>
+          <i class="fas fa-sort-alpha-down"></i>
+        </span>
       </th>
       <th scope="col" (click)="sortByNumDaysTaken()">
-       <span class="sort-link center">Half Days Taken Off</span>
+       <span class="sort-link center">Half Days Taken Off 
+          <i class="fas fa-sort"></i>
+          <i class="fas fa-sort-numeric-up"></i>
+          <i class="fas fa-sort-numeric-down"></i>
+       </span>
       </th>
       <th scope="col" (click)="sortByMostRecentDate()">
-        <span class="sort-link">Most Recent</span>
+        <span class="sort-link">Most Recent 
+          <i class="fas fa-sort"></i>
+          <i class="fas fa-sort-amount-up"></i>
+          <i class="fas fa-sort-amount-down"></i>
+        </span>
       </th>
     </tr>
   </thead>
