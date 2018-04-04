@@ -1,13 +1,6 @@
 <h2>Team Members</h2>
 
-<div *ngFor="let tm of teamMembers" class="btn-box">
-  <div class="btn-group" role="group">
-    <button type="button" class="btn btn-danger" title="delete team member" (click)="delete(tm)">x</button>
-    <button type="button" class="btn btn-outline-primary long-button" routerLink="/detail/{{tm.id}}">{{ tm.name }}</button>
-  </div>
-</div>
-
-<label>Add Team Member:</label>
+<label>Add New Team Member:</label>
 <div class="input-group mb-3 new-team-member">
   <div class="input-group mb-3">
     <input #teamMemberName type="text" class="form-control" placeholder="Name">
@@ -16,3 +9,29 @@
     </div>
   </div>
 </div>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col" (click)="sortByNameColumn()">
+        <span class="sort-link">Name</span>
+      </th>
+      <th scope="col" (click)="sortByNumDaysTaken()">
+       <span class="sort-link center">Half Days Taken Off</span>
+      </th>
+      <th scope="col" (click)="sortByMostRecentDate()">
+        <span class="sort-link">Most Recent</span>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let tm of teamMembers" class="btn-box">
+      <th scope="row"><button type="button" class="btn btn-danger" title="delete team member" (click)="delete(tm)">x</button></th>
+      <td><a routerLink="/detail/{{ tm.id }}">{{ tm.name }}</a></td>
+      <td>{{ tm.datesTakenOff.length }}</td>
+      <td *ngIf="tm.datesTakenOff[0]">{{ tm.datesTakenOff[0] }}</td>
+      <td *ngIf="!tm.datesTakenOff[0]">None!</td>
+    </tr>
+  </tbody>
+</table>

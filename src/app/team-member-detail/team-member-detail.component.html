@@ -2,34 +2,32 @@
 
   <div class="container">
 
-    <h2>{{ teamMember.name }}</h2>
-    
-    <label>Half Days Taken Off: <strong>{{ teamMember.datesTakenOff.length }}</strong></label>
+    <h2>{{ teamMember.name }} - Half Days Taken Off: <strong>{{ teamMember.datesTakenOff.length }}</strong></h2>
 
-    <div class="input-group mb-3">
-      <input type="date" class="form-control">
+    <label>Add a new date:</label>
+    <div class="input-group date-picker">
+      <input #dateInput type="date" class="form-control">
       <div class="input-group-append">
-        <button class="btn btn-primary" id="basic-addon2">Add</button>
+        <button class="btn btn-primary" id="basic-addon2" (click)="addDate(dateInput.value)">Add</button>
       </div>
     </div>
     
-    <table class="table col-md-6">
+    <table class="table table-hover">
       <thead>
         <tr>
+          <th scope="col"></th>
           <th scope="col">Date</th>
           <th scope="col">Timeframe</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let date of teamMember.datesTakenOff">
+          <td><button type="button" class="btn btn-danger" (click)="deleteDate(date)">x</button></td>
           <td>{{ date | amDateFormat:'LL' }}</td>
           <td>{{ date | amTimeAgo }}</td>
         </tr>
       </tbody>
     </table>
-
-    <button class="btn btn-outline-primary" (click)="goBack()">Go Back</button>
-    <button class="btn btn-primary" (click)="save()">Save</button>
 
   </div>
 

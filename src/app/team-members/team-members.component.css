@@ -3,10 +3,29 @@
 }
 
 .new-team-member {
-  width: 40%;
+  width: 50%;
+  margin-bottom: 30px;
 }
 
 .long-button {
   width: 340px;
   border-left-color: transparent !important;
+}
+
+td {
+  vertical-align: middle;
+}
+
+.sort-link {
+  cursor: pointer;
+  transition: .15s ease-in-out;
+}
+
+.sort-link:hover {
+  color: red;
+}
+
+label {
+  margin-top: 20px;
+  margin-bottom: 5px;
 }
