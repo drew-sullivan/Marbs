@@ -39,7 +39,6 @@ export class TeamMembersComponent implements OnInit {
   }
 
   delete(teamMember: TeamMember): void {
-    alert('Are you sure?');
     this.teamMembers = this.teamMembers.filter(tm => tm !== teamMember);
     this.teamMemberService.deleteTeamMember(teamMember).subscribe();
   }
