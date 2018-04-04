@@ -1,11 +1,15 @@
 <div *ngIf="teamMember">
 
-  <div class="container">
+  <div #container class="container">
 
-    <h2 >{{ teamMember.name }}</h2>  
+    <h2 #nameBox *ngIf="!editingName" (click)="editingName = true">{{ teamMember.name }}</h2>  
 
-    <h2>
-      <input [(ngModel)]="teamMember.name" type="text" placeholder="{{ teamMember.name }}" class="form-control"/>
+    <h2 *ngIf="editingName">
+      <input #nameBox
+             type="text"
+             placeholder="{{ teamMember.name }}"
+             class="form-control"
+             (keyup.enter)="updateName(teamMember.name, nameBox.value)" />
     </h2>
     <h3>Half Days Taken Off: <strong>{{ teamMember.datesTakenOff.length }}</strong></h3>
 

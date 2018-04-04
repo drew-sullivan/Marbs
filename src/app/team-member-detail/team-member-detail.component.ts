@@ -1,5 +1,5 @@
 import { MomentModule } from 'angular2-moment';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, HostListener, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -18,6 +18,7 @@ export class TeamMemberDetailComponent implements OnInit {
 
   @Input() teamMember: TeamMember;
   private editing: boolean;
+  private editingName: boolean;
 
   constructor(
     private route: ActivatedRoute,
@@ -35,11 +36,6 @@ export class TeamMemberDetailComponent implements OnInit {
         this.teamMember = tm;
         this.teamMember.datesTakenOff = this.teamMember.datesTakenOff.sort(byDate);
       });
-  }
-
-  updateTeamMember(id: number): void {
-    this.editing = !this.editing;
-    console.log('editing', id);
   }
 
   addDate(date: string): void {
@@ -77,6 +73,19 @@ export class TeamMemberDetailComponent implements OnInit {
     this.teamMemberService.updateTeamMember(this.teamMember);
     this.toastService.showSuccess('Updated date');
     this.editing = !this.editing;
+  }
+
+  updateName(oldName: string, newName: string): void {
+    let name;
+    if (newName) {
+      name = newName;
+      this.toastService.showSuccess('Updated name');
+    } else {
+      name = oldName;
+    }
+    this.teamMember.name = name;
+    this.teamMemberService.updateTeamMember(this.teamMember);
+    this.editingName = !this.editingName;
   }
 
 }
