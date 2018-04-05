@@ -13,6 +13,7 @@ body {
   width: 100%;
   line-height: 40px;
   background-color: #d3d3d3;
+  border-top: 2px solid #EF509D;
 }
 
 body > .container {
