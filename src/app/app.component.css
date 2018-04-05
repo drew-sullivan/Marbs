@@ -2,9 +2,11 @@ html {
   position: relative;
   min-height: 100%;
 }
+
 body {
   margin-top: 75px;
 }
+
 .footer {
   position: absolute;
   bottom: 0;
@@ -23,4 +25,12 @@ code {
 
 .top-buffer {
   margin-top: 75px;
+}
+
+.nav-link {
+  color: inherit;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
 }
