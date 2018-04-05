@@ -106,6 +106,22 @@ export class TeamMemberDetailComponent implements OnInit {
     this.outsideClickCount = 0;
   }
 
+  incrementHalfDaysBanked() {
+    this.teamMember.halfDaysBanked++;
+    this.teamMemberService.updateTeamMember(this.teamMember);
+    this.toastService.showSuccess('+ 1');
+  }
+
+  decrementHalfDaysBanked() {
+    if (this.teamMember.halfDaysBanked > 0) {
+      this.teamMember.halfDaysBanked--;
+    } else {
+      return;
+    }
+    this.teamMemberService.updateTeamMember(this.teamMember);
+    this.toastService.showError('- 1');
+  }
+
 }
 
 const byDate = (date1: string, date2: string) => moment(date2).diff(date1);
