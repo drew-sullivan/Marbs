@@ -7,22 +7,33 @@
       <input #nameBox
              type="text"
              placeholder="{{ teamMember.name }}"
-             class="form-control name-box"
+             class="form-control input-custom name-box width-40"
              (keyup.enter)="updateName(teamMember.name, nameBox.value)"
              (clickOutside)="outsideClickSubmitName($event, teamMember.name, nameBox.value)" />
     </h2>
 
-    <h4>Half Days Taken Off: <strong>{{ teamMember.datesTakenOff.length }}</strong></h4>
+    <div class="row member-info d-flex align-items-center">
+      <div class="col-md-3 member-info">Half Days Banked</div>
+      <div class="col-md-1"><strong>{{ teamMember.halfDaysBanked }}</strong></div>
+      <div class="col-md-8">
+        <div class="btn-group text-left" role="group">
+          <button type="button" class="btn btn-custom-hyland-green" (click)="incrementHalfDaysBanked()">&#43;</button>
+          <button type="button" class="btn btn-custom-hyland-red" [class.disabled]="teamMember.halfDaysBanked === 0" (click)="decrementHalfDaysBanked()">&#45;</button>
+        </div>
+      </div>
+      <div class="col-md-3 member-info">Half Days Taken Off</div>
+      <div class="col-md-9 text-left"><strong>{{ teamMember.datesTakenOff.length }}</strong></div>
+    </div>
 
     <label>Add a new date:</label>
-    <div class="input-group date-picker">
-      <input #dateInput type="date" class="form-control">
+    <div class="input-group width-40">
+      <input #dateInput type="date" class="form-control input-custom">
       <div class="input-group-append">
-        <button class="btn btn-primary" (click)="addDate(dateInput.value); dateInput.value=''">Add</button>
+        <button class="btn btn-custom-hyland-green" (click)="addDate(dateInput.value); dateInput.value=''">Add</button>
       </div>
     </div>
     
-    <table class="table table-hover">
+    <table class="table table-hover table-borderless">
       <thead>
         <tr>
           <th scope="col"></th>
@@ -35,7 +46,7 @@
           <td>
             <!-- Button trigger modal -->
             <button type="button"
-                    class="btn btn-danger"
+                    class="btn btn-custom-hyland-red"
                     data-toggle="modal"
                     data-target="#confirm"
                     [class.disabled]="editing">&times;
@@ -69,7 +80,7 @@
                    (ngModelChange)="updateDate($event, i)"
                    type="date"
                    placeholder="{{ date }}"
-                   class="form-control date-edit"
+                   class="form-control input-custom width-40"
                    (clickOutside)="outsideClickSubmitDate($event)"
                    required />
           </td>

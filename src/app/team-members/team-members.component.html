@@ -3,14 +3,14 @@
 <label>Add New Team Member:</label>
 <div class="input-group mb-3 new-team-member">
   <div class="input-group mb-3">
-    <input #teamMemberName type="text" class="form-control" placeholder="Name">
+    <input #teamMemberName type="text" class="form-control input-custom" placeholder="Name">
     <div class="input-group-append">
-      <button (click)="add(teamMemberName.value); teamMemberName.value=''" class="btn btn-primary">Add</button>
+      <button (click)="add(teamMemberName.value); teamMemberName.value=''" class="btn btn-custom-hyland-green">Add</button>
     </div>
   </div>
 </div>
 
-<table class="table table-hover">
+<table class="table table-hover table-borderless">
   <thead>
     <tr>
       <th scope="col"></th>
@@ -29,13 +29,18 @@
           <i class="fas fa-sort"></i>
         </span>
       </th>
+      <th scope="col" (click)="columnSorted='banked'; sortByCol('banked')">
+        <span class="sort-link">Half Days Banked 
+          <i class="fas fa-sort"></i>
+        </span>
+      </th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let tm of teamMembers" class="btn-box">
       <th scope="row">
         <!-- Button Trigger -->
-        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirm">&times;</button>
+        <button type="button" class="btn btn-custom-hyland-red" data-toggle="modal" data-target="#confirm">&times;</button>
         <!-- Modal -->
         <div class="modal fade" id="confirm" tabindex="-1" role="dialog">
           <div class="modal-dialog modal-dialog-centered" role="document">
@@ -48,7 +53,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                <button type="button" class="btn btn-primary" (click)="delete(tm)" data-dismiss="modal">Yes</button>
+                <button type="button" class="btn btn-custom-hyland-green" (click)="delete(tm)" data-dismiss="modal">Yes</button>
               </div>
             </div>
           </div>
@@ -58,6 +63,7 @@
       <td>{{ tm.datesTakenOff.length }}</td>
       <td *ngIf="tm.datesTakenOff[0]">{{ tm.datesTakenOff[0] }}</td>
       <td *ngIf="!tm.datesTakenOff[0]">None!</td>
+      <td>{{ tm.halfDaysBanked }}</td>
     </tr>
   </tbody>
 </table>

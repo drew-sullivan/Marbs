@@ -1,3 +1,12 @@
+.member-info {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.width-40 {
+  width: 40%;
+}
+
 .editable {
   cursor: pointer;
 }
@@ -6,30 +15,22 @@
   text-decoration: underline;
 }
 
-.date-edit {
-  width: 40%;
-}
-
-h4 {
+h2 {
   margin-top: 20px;
-  margin-bottom: 10px;
-}
-
-.date-picker {
-  width: 50%;
-  margin-bottom: 30px;
 }
 
 label {
-  margin-top: 10px;
-  margin-bottom: 5px;
+  margin-top: 20px;
 }
 
-td {
+td, th {
   vertical-align: middle;
 }
 
 .name-box {
-  width: 50%;
   font-size: 2rem;
+}
+
+table {
+  margin-top: 20px;
 }
