@@ -29,6 +29,11 @@
           <i class="fas fa-sort"></i>
         </span>
       </th>
+      <th scope="col" (click)="columnSorted='banked'; sortByCol('banked')">
+        <span class="sort-link">Half Days Banked 
+          <i class="fas fa-sort"></i>
+        </span>
+      </th>
     </tr>
   </thead>
   <tbody>
@@ -58,6 +63,7 @@
       <td>{{ tm.datesTakenOff.length }}</td>
       <td *ngIf="tm.datesTakenOff[0]">{{ tm.datesTakenOff[0] }}</td>
       <td *ngIf="!tm.datesTakenOff[0]">None!</td>
+      <td>{{ tm.halfDaysBanked }}</td>
     </tr>
   </tbody>
 </table>

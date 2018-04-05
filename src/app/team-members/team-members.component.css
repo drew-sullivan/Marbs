@@ -35,3 +35,7 @@ label {
   margin-top: 20px;
   margin-bottom: 5px;
 }
+
+td:nth-child(3), td:nth-child(5) {
+  padding-left: 85px;
+}

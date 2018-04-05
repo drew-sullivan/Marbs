@@ -16,6 +16,7 @@ export class TeamMembersComponent implements OnInit {
   columnSorted: string;
   private areSortedNums: boolean;
   private areSortedDates: boolean;
+  private areSortedBanked: boolean;
 
   constructor(private teamMemberService: TeamMemberService) { }
 
@@ -43,8 +44,8 @@ export class TeamMembersComponent implements OnInit {
     this.teamMemberService.deleteTeamMember(teamMember).subscribe();
   }
 
-  sortByCol(colName: string) {
-    switch (colName) {
+  sortByCol() {
+    switch (this.columnSorted) {
       case 'name':
         this.teamMembers = this.teamMembers.sort(byNameAsc);
         break;
@@ -66,12 +67,29 @@ export class TeamMembersComponent implements OnInit {
           this.areSortedDates = true;
         }
         break;
+      case 'banked':
+        if (this.areSortedBanked) {
+          this.teamMembers = this.teamMembers.sort(byNumBankedDaysAsc);
+          this.areSortedBanked = false;
+        } else {
+          this.teamMembers = this.teamMembers.sort(byNumBankedDaysDesc)
+          this.areSortedBanked = true;
+        }
+        break;
       default:
         console.log('Something went wrong!');
     }
   }
 
 }
+
+const byNumBankedDaysAsc = (tm1: TeamMember, tm2: TeamMember) => {
+  return tm1.halfDaysBanked - tm2.halfDaysBanked;
+};
+
+const byNumBankedDaysDesc = (tm1: TeamMember, tm2: TeamMember) => {
+  return tm2.halfDaysBanked - tm1.halfDaysBanked;
+};
 
 const byNameAsc = (tm1: TeamMember, tm2: TeamMember) => tm1.name.localeCompare(tm2.name);
 

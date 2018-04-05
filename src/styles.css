@@ -26,7 +26,6 @@ tbody tr:hover {
 .input-custom:focus,
 .input-custom:hover {
   box-shadow: 0 0 0 .1rem #96d17b;
-  border: .5px solid #6FC04A;
 }
 
 
