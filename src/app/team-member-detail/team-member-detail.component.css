@@ -3,7 +3,7 @@
 }
 
 .editable:hover {
-  font-style: italic;
+  text-decoration: underline;
 }
 
 .date-edit {
