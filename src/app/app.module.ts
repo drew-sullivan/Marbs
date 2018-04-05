@@ -16,6 +16,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { ToastService } from './services/toast.service';
 
 import { MomentModule } from 'angular2-moment';
+import { ClickOutsideModule } from 'ng4-click-outside';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { MomentModule } from 'angular2-moment';
     BrowserAnimationsModule,
     HttpClientModule,
     MomentModule,
+    ClickOutsideModule,
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
     ),

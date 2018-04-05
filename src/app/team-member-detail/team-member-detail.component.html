@@ -2,33 +2,23 @@
 
   <div #container class="container">
 
-    <h2 *ngIf="!editingName"
-        (click)="editingName = true"
-        class="editable"
-        data-toggle="tooltip"
-        data-placement="right"
-        title="Click to edit">{{ teamMember.name }}
-    </h2>  
-
+    <h2 *ngIf="!editingName" (click)="editingName = true" class="editable" >{{ teamMember.name }}</h2>
     <h2 *ngIf="editingName">
       <input #nameBox
              type="text"
              placeholder="{{ teamMember.name }}"
              class="form-control name-box"
-             (keyup.enter)="updateName(teamMember.name, nameBox.value)" />
+             (keyup.enter)="updateName(teamMember.name, nameBox.value)"
+             (clickOutside)="outsideClickSubmitName($event, teamMember.name, nameBox.value)" />
     </h2>
+
     <h4>Half Days Taken Off: <strong>{{ teamMember.datesTakenOff.length }}</strong></h4>
 
-    
     <label>Add a new date:</label>
     <div class="input-group date-picker">
       <input #dateInput type="date" class="form-control">
       <div class="input-group-append">
-        <button class="btn btn-primary"
-                id="basic-addon2"
-                (click)="addDate(dateInput.value); dateInput.value=''"
-                [class.disabled]="editing">Add
-        </button>
+        <button class="btn btn-primary" (click)="addDate(dateInput.value); dateInput.value=''">Add</button>
       </div>
     </div>
     
@@ -48,12 +38,11 @@
                     class="btn btn-danger"
                     data-toggle="modal"
                     data-target="#confirm"
-                    [class.disabled]="editing">x
+                    [class.disabled]="editing">&times;
             </button>          
-
             <!-- Modal -->
             <div class="modal fade" id="confirm" tabindex="-1" role="dialog">
-              <div class="modal-dialog" role="document">
+              <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
                     <h5 class="modal-title">Are you sure?</h5>
@@ -72,20 +61,16 @@
               </div>
             </div>
           </td>
-          <td *ngIf="!editing">
-            <span (click)="editing = true"
-                  class="editable"
-                  data-toggle="tooltip"
-                  data-placement="right"
-                  title="Click to edit">{{ date | amDateFormat:'LL' }}
-            </span>
+          <td *ngIf="editingDate === -1 || editingDate !== i">
+            <span (click)="editingDate = i" class="editable">{{ date | amDateFormat:'LL' }}</span>
           </td>
-          <td *ngIf="editing">
+          <td *ngIf="editingDate === i">
             <input [ngModel]="teamMember.datesTakenOff[i]"
                    (ngModelChange)="updateDate($event, i)"
                    type="date"
                    placeholder="{{ date }}"
-                   class="form-control"
+                   class="form-control date-edit"
+                   (clickOutside)="outsideClickSubmitDate($event)"
                    required />
           </td>
           <td>{{ date | amTimeAgo }}</td>

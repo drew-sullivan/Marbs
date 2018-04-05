@@ -17,8 +17,9 @@ import * as moment from 'moment';
 export class TeamMemberDetailComponent implements OnInit {
 
   @Input() teamMember: TeamMember;
-  private editing: boolean;
+  private editingDate = -1;
   private editingName: boolean;
+  outsideClickCount = 0;
 
   constructor(
     private route: ActivatedRoute,
@@ -64,15 +65,20 @@ export class TeamMemberDetailComponent implements OnInit {
     this.toastService.showSuccess(`Removed ${moment(date).format('LL')} from ${this.teamMember.name}'s list of half days taken off`);
   }
 
-  updateDate(newDate: string, index: number): void {
-    if (!newDate) {
-      return;
+  outsideClickSubmitDate(event: any) {
+    this.outsideClickCount++;
+    if (this.outsideClickCount > 1) {
+      this.editingDate = -1;
+      this.outsideClickCount = 0;
     }
-    this.teamMember.datesTakenOff[index] = newDate;
-    this.teamMember.datesTakenOff.sort(byDate);
-    this.teamMemberService.updateTeamMember(this.teamMember);
-    this.toastService.showSuccess('Updated date');
-    this.editing = !this.editing;
+  }
+
+  outsideClickSubmitName(event: any, oldName: string, newName: string) {
+    this.outsideClickCount++;
+    if (this.outsideClickCount > 1) {
+      this.updateName(oldName, newName);
+      this.outsideClickCount = 0;
+    }
   }
 
   updateName(oldName: string, newName: string): void {
@@ -85,7 +91,19 @@ export class TeamMemberDetailComponent implements OnInit {
     }
     this.teamMember.name = name;
     this.teamMemberService.updateTeamMember(this.teamMember);
-    this.editingName = !this.editingName;
+    this.editingName = false;
+  }
+
+  updateDate(newDate: string, index: number): void {
+    if (!newDate) {
+      return;
+    }
+    this.teamMember.datesTakenOff[index] = newDate;
+    this.teamMember.datesTakenOff.sort(byDate);
+    this.teamMemberService.updateTeamMember(this.teamMember);
+    this.toastService.showSuccess('Updated date');
+    this.editingDate = -1;
+    this.outsideClickCount = 0;
   }
 
 }
