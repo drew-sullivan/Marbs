@@ -36,7 +36,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let tm of teamMembers" class="btn-box">
+    <tr *ngFor="let tm of teamMembers">
       <td><a routerLink="/detail/{{ tm.id }}" class="tertiary-button">{{ tm.name }}</a></td>
       <td>{{ tm.datesTakenOff.length }}</td>
       <td *ngIf="tm.datesTakenOff[0]">{{ tm.datesTakenOff[0] }}</td>

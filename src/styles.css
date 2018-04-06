@@ -71,10 +71,6 @@ tbody tr:hover {
   transition: .2s ease-in-out;
 }
 
-.delete-button:hover {
-  border-bottom: 2px solid #a94467 !important;
-}
-
 .tertiary-button {
   cursor: pointer;
   text-decoration: none;
