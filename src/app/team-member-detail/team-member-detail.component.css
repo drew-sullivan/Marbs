@@ -1,13 +1,32 @@
-.date-picker {
-  width: 50%;
-  margin-bottom: 30px;
+.member-info {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.width-40 {
+  width: 40%;
+}
+
+.editable {
+  cursor: pointer;
+}
+
+h2 {
+  margin-top: 20px;
 }
 
 label {
-  margin-top: 30px;
-  margin-bottom: 5px;
+  margin-top: 20px;
 }
 
-td {
+td, th {
   vertical-align: middle;
+}
+
+.name-box {
+  font-size: 2rem;
+}
+
+table {
+  margin-top: 20px;
 }

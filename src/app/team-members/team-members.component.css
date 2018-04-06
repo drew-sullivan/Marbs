@@ -1,5 +1,11 @@
 .btn-box {
   margin: 10px 0;
+  border-left: 5px solid transparent;
+  transition: .15s ease-in-out;
+}
+
+.btn-box:hover {
+  border-left: 5px solid #FF7900;
 }
 
 .new-team-member {
@@ -18,14 +24,19 @@ td {
 
 .sort-link {
   cursor: pointer;
-  transition: .15s ease-in-out;
+  border-bottom: 2px solid transparent;
+  transition: .2s ease-in-out;
 }
 
 .sort-link:hover {
-  color: red;
+  border-bottom: 2px solid #6FC04A;
 }
 
 label {
   margin-top: 20px;
   margin-bottom: 5px;
+}
+
+td:nth-child(2), td:nth-child(4) {
+  padding-left: 85px;
 }

@@ -3,35 +3,45 @@
 <label>Add New Team Member:</label>
 <div class="input-group mb-3 new-team-member">
   <div class="input-group mb-3">
-    <input #teamMemberName type="text" class="form-control" placeholder="Name">
+    <input #teamMemberName type="text" class="form-control input-custom" placeholder="Name">
     <div class="input-group-append">
-      <button (click)="add(teamMemberName.value); teamMemberName.value=''" class="btn btn-outline-primary">Add</button>
+      <button (click)="add(teamMemberName.value); teamMemberName.value=''" class="btn btn-custom-hyland-green input-right-button">Add</button>
     </div>
   </div>
 </div>
 
-<table class="table table-hover">
+<table class="table table-hover table-borderless">
   <thead>
     <tr>
-      <th scope="col"></th>
-      <th scope="col" (click)="sortByNameColumn()">
-        <span class="sort-link">Name</span>
+      <th scope="col" (click)="columnSorted='name'; sortByCol('name')">
+        <span class="sort-link">Name 
+          <i class="fas fa-sort"></i>
+        </span>
       </th>
-      <th scope="col" (click)="sortByNumDaysTaken()">
-       <span class="sort-link center">Half Days Taken Off</span>
+      <th scope="col" (click)="columnSorted='numDays'; sortByCol('numDays')">
+       <span class="sort-link center">Half Days Taken Off 
+          <i class="fas fa-sort"></i>
+       </span>
       </th>
-      <th scope="col" (click)="sortByMostRecentDate()">
-        <span class="sort-link">Most Recent</span>
+      <th scope="col" (click)="columnSorted='dates'; sortByCol('dates')">
+        <span class="sort-link">Most Recent 
+          <i class="fas fa-sort"></i>
+        </span>
+      </th>
+      <th scope="col" (click)="columnSorted='banked'; sortByCol('banked')">
+        <span class="sort-link">Half Days Banked 
+          <i class="fas fa-sort"></i>
+        </span>
       </th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let tm of teamMembers" class="btn-box">
-      <th scope="row"><button type="button" class="btn btn-danger" title="delete team member" (click)="delete(tm)">x</button></th>
-      <td><a routerLink="/detail/{{ tm.id }}">{{ tm.name }}</a></td>
+      <td><a routerLink="/detail/{{ tm.id }}" class="tertiary-button">{{ tm.name }}</a></td>
       <td>{{ tm.datesTakenOff.length }}</td>
       <td *ngIf="tm.datesTakenOff[0]">{{ tm.datesTakenOff[0] }}</td>
       <td *ngIf="!tm.datesTakenOff[0]">None!</td>
+      <td>{{ tm.halfDaysBanked }}</td>
     </tr>
   </tbody>
 </table>
