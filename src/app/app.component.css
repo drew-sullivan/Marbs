@@ -8,12 +8,14 @@ body {
 }
 
 .navbar-brand {
-  border-bottom: 2px solid transparent;
+  border-left: 2px solid transparent;
+  padding-left: 10px;
   transition: .2s ease-in-out;
 }
 
 .navbar-brand:hover {
-  border-bottom: 2px solid #FF7900;
+  border-left: 2px solid #FF7900;
+  padding-left: 10px;
 }
 
 .footer {

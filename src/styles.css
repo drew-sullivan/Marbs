@@ -4,6 +4,18 @@
   font-family: 'Raleway', sans-serif !important;
 }
 
+.width-60 {
+  width: 60%;
+}
+
+.width-50 {
+  width: 50%;
+}
+
+.width-40 {
+  width: 40%;
+}
+
 .toast-custom {
   background: #6FC04A;
 }
