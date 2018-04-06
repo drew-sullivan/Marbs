@@ -34,14 +34,15 @@ export class TeamMemberService {
     const url = `${this.teamMembersUrl}/${id}`;
     return this.http.get<ServerResponse>(url).pipe(
       map(response => response.data),
-      
       catchError(this.handleError<TeamMember>(`getTeamMember with id = ${id}`))
     );
   }
 
   updateTeamMember(teamMember: TeamMember): Observable<TeamMember> {
+    console.log(teamMember);
     return this.http.put<ServerResponse>(this.teamMembersUrl, teamMember, httpOptions).pipe(
       map(response => response.data),
+      tap(r => console.log('hi ' + r)),
       tap(_ => this.toast.showSuccess(`Updated ${teamMember.name}'s information`)),
       catchError(this.handleError<TeamMember>('updateTeamMember'))
     );
