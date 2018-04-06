@@ -4,6 +4,10 @@
   font-family: 'Raleway', sans-serif !important;
 }
 
+.toast-custom {
+  background: #6FC04A;
+}
+
 tbody tr {
   border-left: 5px solid transparent;
   transition: .15s ease-in-out;
