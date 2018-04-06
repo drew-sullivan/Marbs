@@ -122,6 +122,11 @@ export class TeamMemberDetailComponent implements OnInit {
     this.toastService.showError('- 1');
   }
 
+  deleteTeamMember(tm: TeamMember): void {
+    console.log(tm);
+    this.teamMemberService.deleteTeamMember(tm).subscribe();
+  }
+
 }
 
 const byDate = (date1: string, date2: string) => moment(date2).diff(date1);

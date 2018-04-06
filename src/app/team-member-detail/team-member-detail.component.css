@@ -11,10 +11,6 @@
   cursor: pointer;
 }
 
-.editable:hover {
-  text-decoration: underline;
-}
-
 h2 {
   margin-top: 20px;
 }

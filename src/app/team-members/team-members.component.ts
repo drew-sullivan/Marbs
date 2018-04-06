@@ -39,11 +39,6 @@ export class TeamMembersComponent implements OnInit {
       .subscribe(tm => this.teamMembers.push(tm));
   }
 
-  delete(teamMember: TeamMember): void {
-    this.teamMembers = this.teamMembers.filter(tm => tm !== teamMember);
-    this.teamMemberService.deleteTeamMember(teamMember).subscribe();
-  }
-
   sortByCol() {
     switch (this.columnSorted) {
       case 'name':

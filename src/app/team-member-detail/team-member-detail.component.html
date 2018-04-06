@@ -16,10 +16,8 @@
       <div class="col-md-3 member-info">Half Days Banked</div>
       <div class="col-md-1"><strong>{{ teamMember.halfDaysBanked }}</strong></div>
       <div class="col-md-8">
-        <div class="btn-group text-left" role="group">
-          <button type="button" class="btn btn-custom-hyland-green" (click)="incrementHalfDaysBanked()">&#43;</button>
-          <button type="button" class="btn btn-custom-hyland-red" [class.disabled]="teamMember.halfDaysBanked === 0" (click)="decrementHalfDaysBanked()">&#45;</button>
-        </div>
+        <button type="button" class="btn btn-custom btn-custom-hyland-green btn-custom-md" (click)="incrementHalfDaysBanked()">&#43;</button>
+        <button type="button" class="btn btn-custom btn-custom-hyland-red btn-custom-md" [class.disabled]="teamMember.halfDaysBanked === 0" (click)="decrementHalfDaysBanked()">&#45;</button>
       </div>
       <div class="col-md-3 member-info">Half Days Taken Off</div>
       <div class="col-md-9 text-left"><strong>{{ teamMember.datesTakenOff.length }}</strong></div>
@@ -29,7 +27,7 @@
     <div class="input-group width-40">
       <input #dateInput type="date" class="form-control input-custom">
       <div class="input-group-append">
-        <button class="btn btn-custom-hyland-green" (click)="addDate(dateInput.value); dateInput.value=''">Add</button>
+        <button class="btn btn-custom-hyland-green input-right-button" (click)="addDate(dateInput.value); dateInput.value=''">Add</button>
       </div>
     </div>
     
@@ -45,11 +43,7 @@
         <tr *ngFor="let date of teamMember.datesTakenOff; let i = index" [attr.date-index]="i">
           <td>
             <!-- Button trigger modal -->
-            <a class="tertiary-button"
-                    data-toggle="modal"
-                    data-target="#confirm"
-                    [class.disabled]="editing">&times;
-          </a>          
+            <a class="tertiary-button" data-toggle="modal" data-target="#confirm">&times;</a>          
             <!-- Modal -->
             <div class="modal fade" id="confirm" tabindex="-1" role="dialog">
               <div class="modal-dialog modal-dialog-centered" role="document">
@@ -87,7 +81,25 @@
         </tr>
       </tbody>
     </table>
-  
+
+    <a class="delete-button" data-toggle="modal" data-target="#deleteMember">Delete Team Member</a>
+    <div class="modal fade" id="deleteMember" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Are you sure?</h5>
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-footer">
+            <a type="button" class="modal-no" data-dismiss="modal">No</a>
+            <button type="button" class="btn btn-custom btn-custom-hyland-red" (click)="deleteTeamMember(teamMember)" data-dismiss="modal" routerLink="/team-members">Yes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
 </div>
