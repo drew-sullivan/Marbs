@@ -72,7 +72,7 @@ export class TeamMembersComponent implements OnInit {
           this.teamMembers = this.teamMembers.sort(byNumBankedDaysAsc);
           this.areSortedBanked = false;
         } else {
-          this.teamMembers = this.teamMembers.sort(byNumBankedDaysDesc)
+          this.teamMembers = this.teamMembers.sort(byNumBankedDaysDesc);
           this.areSortedBanked = true;
         }
         break;
