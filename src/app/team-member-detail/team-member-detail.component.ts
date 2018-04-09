@@ -21,6 +21,7 @@ export class TeamMemberDetailComponent implements OnInit {
   private editingName: boolean;
   outsideClickCount = 0;
   isValidEntry = true;
+  isValidAmount = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -107,6 +108,15 @@ export class TeamMemberDetailComponent implements OnInit {
     this.outsideClickCount = 0;
   }
 
+  updateNumBankedDays(num: number): void {
+    if (!num) {
+      return;
+    }
+    this.teamMember.halfDaysBanked -= num;
+    this.teamMemberService.updateTeamMember(this.teamMember);
+    this.toastService.showSuccess(`${this.teamMember.name} now has ${this.teamMember.halfDaysBanked} half-day(s) banked`);
+  }
+
   incrementHalfDaysBanked() {
     this.teamMember.halfDaysBanked++;
     this.teamMemberService.updateTeamMember(this.teamMember);
@@ -129,13 +139,17 @@ export class TeamMemberDetailComponent implements OnInit {
   }
 
   validate(input: string): void {
-    if (isNaN(+input)) {
+    const num = +input;
+    if (isNaN(num)) {
       this.isValidEntry = false;
     } else {
       this.isValidEntry = true;
+      if (num > this.teamMember.halfDaysBanked) {
+        this.isValidAmount = false;
+      } else {
+        this.isValidAmount = true;
+      }
     }
-    // console.log(`Input: ${input}`);
-    // console.log(this.isInvalidIntegerEntry);
   }
 
 }

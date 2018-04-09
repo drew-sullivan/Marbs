@@ -50,3 +50,13 @@
   border: none;
   box-shadow: 0 0 0 .1rem #a94467 !important;
 }
+
+.modal-body {
+  padding-top: 0;
+}
+
+.modal-body label {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
