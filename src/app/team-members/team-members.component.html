@@ -2,26 +2,26 @@
   <h2>Team Members</h2>
 </div>
 
-<table class="table table-hover table-borderless">
+<table class="table table-borderless">
   <thead>
     <tr>
       <th scope="col" (click)="columnSorted='name'; sortByCol('name')">
-        <span class="sort-link hover-pad">Name 
+        <span class="sort-link hov-link">Name 
           <i class="fas fa-sort"></i>
         </span>
       </th>
       <th scope="col" (click)="columnSorted='numDays'; sortByCol('numDays')">
-       <span class="sort-link center hover-pad">Half Days Taken Off 
+       <span class="sort-link center hov-link">Half Days Taken Off 
           <i class="fas fa-sort"></i>
        </span>
       </th>
       <th (click)="columnSorted='dates'; sortByCol('dates')">
-        <span class="sort-link hover-pad">Most Recent 
+        <span class="sort-link hov-link">Most Recent 
           <i class="fas fa-sort"></i>
         </span>
       </th>
       <th scope="col" (click)="columnSorted='banked'; sortByCol('banked')">
-        <span class="sort-link hover-pad">Half Days Banked 
+        <span class="sort-link hov-link">Half Days Banked 
           <i class="fas fa-sort"></i>
         </span>
       </th>
@@ -29,7 +29,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let tm of teamMembers">
-      <td class="name"><a routerLink="/detail/{{ tm.id }}" class="tertiary-button name-link">{{ tm.name }}</a></td>
+      <td><a routerLink="/detail/{{ tm.id }}" class="name hov-link">{{ tm.name }}</a></td>
       <td>{{ tm.datesTakenOff.length }}</td>
       <td *ngIf="tm.datesTakenOff[0]">{{ tm.datesTakenOff[0] }}</td>
       <td *ngIf="!tm.datesTakenOff[0]">None!</td>
@@ -54,7 +54,7 @@
         <input #teamMemberName type="text" class="form-control input-custom" placeholder="Name">
       </div>
       <div class="modal-footer">
-        <a type="button" class="modal-no" data-dismiss="modal">Cancel</a>
+        <a type="button" class="modal-no hov-link" data-dismiss="modal">Cancel</a>
         <button (click)="add(teamMemberName.value); teamMemberName.value=''" class="btn btn-custom btn-custom-hyland-green input-right-button" data-dismiss="modal">Add</button>
       </div>
     </div>
