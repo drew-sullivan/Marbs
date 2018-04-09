@@ -1,9 +1,6 @@
-.tm-data {
-  margin-top: 30px;
-}
-
-.new-team-member {
-  width: 50%;
+.table {
+  margin-top: 12px;
+  margin-bottom: 36px;
 }
 
 .long-button {
@@ -19,9 +16,12 @@ td {
   cursor: pointer;
   border-bottom: 2px solid transparent;
   transition: .2s ease-in-out;
+  color: #606060;
+  font-weight: normal;
 }
 
 .sort-link:hover {
+  color: black;
   border-bottom: 2px solid #6FC04A;
 }
 
@@ -31,4 +31,15 @@ label {
 
 td:nth-child(2), td:nth-child(4) {
   padding-left: 85px;
+}
+
+.add-button {
+  color: #4D4F53 !important;
+  font-size: 14px;
+}
+
+.add-button:hover,
+.add-button:active,
+.add-button:focus {
+  color: #878787 !important;
 }

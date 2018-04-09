@@ -8,14 +8,14 @@ body {
 }
 
 .navbar-brand {
-  border-left: 2px solid transparent;
-  padding-left: 10px;
   transition: .2s ease-in-out;
+  color: inherit;
+  border-bottom: 2px solid transparent;
 }
 
 .navbar-brand:hover {
-  border-left: 2px solid #FF7900;
-  padding-left: 10px;
+  border-bottom: 2px solid #FF7900;
+  padding-bottom: 10px;
 }
 
 .footer {
@@ -48,4 +48,5 @@ code {
 
 .footer a:hover {
   border-bottom: 2px solid #EF509D;
+  padding-bottom: 10px;
 }
