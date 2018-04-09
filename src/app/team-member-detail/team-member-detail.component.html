@@ -20,7 +20,7 @@
       </div>
       
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#bankedDays">Cash in Banked Half-Days</button>
+      <button class="btn-custom btn-custom-hyland-green" data-toggle="modal" data-target="#bankedDays">Cash in Banked Half-Days</button>
       <!-- Modal -->
       <div class="modal fade" id="bankedDays" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -31,6 +31,8 @@
               </button>
             </div>
             <div class="modal-body">
+              <span class="error-message" [class.no-error]="isValidAmount">Sorry, {{ teamMember.name }} doesn't have that many half days banked!</span>
+              <span class="error-message" [class.no-error]="isValidEntry">Sorry, only integers, please!</span>
               <label>How Many?</label>
               <input #halfDays type="text" placeholder="Number of Half Days" (keyup)="validate(halfDays.value)" class="form-control input-custom" [class.error]="!isValidEntry || !isValidAmount" />
               <label>When?</label>
@@ -39,17 +41,15 @@
               </div>
             </div>
             <div class="modal-footer">
-              <span class="error-message" [class.no-error]="isValidAmount">Sorry, {{ teamMember.name }} doesn't have that many half days banked!</span>
-              <span class="error-message" [class.no-error]="isValidEntry">Sorry, only integers, please!</span>
               <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="halfDays.value=''">Close</button>
-              <button type="button" class="btn btn-primary" [disabled]="!isValidEntry || !isValidAmount || halfDays.value === '' || dateInput.value === ''" (click)="updateNumBankedDays(halfDays.value); halfDays.value=''; addDate(dateInput.value); dateInput.value=''" data-dismiss="modal">Save changes</button>
+              <button type="button" class="btn-crazy" [disabled]="!isValidEntry || !isValidAmount || halfDays.value === '' || dateInput.value === ''" (click)="updateNumBankedDays(halfDays.value); halfDays.value=''; addDate(dateInput.value); dateInput.value=''" data-dismiss="modal">Save changes</button>
             </div>
           </div>
         </div>
       </div>
 
-      <button type="button" class="btn btn-custom btn-custom-hyland-green btn-custom-md" (click)="incrementHalfDaysBanked()">&#43;</button>
-      <button type="button" class="btn btn-custom btn-custom-hyland-red btn-custom-md" [class.disabled]="teamMember.halfDaysBanked === 0" (click)="decrementHalfDaysBanked()">&#45;</button>
+      <!-- <button type="button" class="btn btn-custom btn-custom-hyland-green btn-custom-md" (click)="incrementHalfDaysBanked()">&#43;</button>
+      <button type="button" class="btn btn-custom btn-custom-hyland-red btn-custom-md" [class.disabled]="teamMember.halfDaysBanked === 0" (click)="decrementHalfDaysBanked()">&#45;</button> -->
     </div>
     
     <label>Half Days Taken Off:&nbsp;&nbsp;{{ teamMember.datesTakenOff.length }}</label>
