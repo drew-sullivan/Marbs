@@ -1,7 +1,8 @@
 <div *ngIf="teamMember">
 
     <div class="page-heading">
-      <h2 *ngIf="!editingName" (click)="editingName = true" class="editable" >{{ teamMember.name }}</h2>
+      <h2 *ngIf="!editingName" (click)="editingName = true">
+        <span class="hov-link hov-link-green">{{ teamMember.name }}</span></h2>
       <h2 *ngIf="editingName">
         <input #nameBox
               type="text"
@@ -13,20 +14,44 @@
     </div>
 
     <div class="container member-details">
-    <div class="row member-info d-flex align-items-center">
-      <div class="col-md-3 member-info">Half Days Banked</div>
-      <div class="col-md-1"><strong>{{ teamMember.halfDaysBanked }}</strong></div>
-      <div class="col-md-8">
-        <button type="button" class="btn btn-custom btn-custom-hyland-green btn-custom-md" (click)="incrementHalfDaysBanked()">&#43;</button>
-        <button type="button" class="btn btn-custom btn-custom-hyland-red btn-custom-md" [class.disabled]="teamMember.halfDaysBanked === 0" (click)="decrementHalfDaysBanked()">&#45;</button>
+    <div class="member-info">
+      <div class="member-info">Half Days Banked:
+        <span>&nbsp;&nbsp;{{ teamMember.halfDaysBanked }}</span>
       </div>
+      
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#bankedDays">Cash in Banked Half-Days</button>
+      <!-- Modal -->
+      <div class="modal fade" id="bankedDays" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">How Many Half-Days Would You Like to Cash in?</h5>
+              <button type="button" class="close" data-dismiss="modal">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="error-message" [class.no-error]="isValidEntry">Sorry, only integers, please!</div>
+              <input #halfDays type="text" placeholder="Number of Half Days" (keyup)="validate(halfDays.value)" class="form-control input-custom" [class.error]="!isValidEntry" />
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="btn btn-custom btn-custom-hyland-green btn-custom-md" (click)="incrementHalfDaysBanked()">&#43;</button>
+      <button type="button" class="btn btn-custom btn-custom-hyland-red btn-custom-md" [class.disabled]="teamMember.halfDaysBanked === 0" (click)="decrementHalfDaysBanked()">&#45;</button>
     </div>
     
     <label>Half Days Taken Off:&nbsp;&nbsp;{{ teamMember.datesTakenOff.length }}</label>
     <div class="history">
     <div *ngFor="let date of teamMember.datesTakenOff; let i = index" [attr.date-index]="i" class="row">
       <div *ngIf="editingDate === -1 || editingDate !== i" class="col-md-4">
-        <span (click)="editingDate = i" class="editable">{{ date | amDateFormat:'LL' }}</span>
+        <span (click)="editingDate = i" class="hov-link hov-link-pink">{{ date | amDateFormat:'LL' }}</span>
       </div>
       <div *ngIf="editingDate === i" class="col-md-4">
         <input [ngModel]="teamMember.datesTakenOff[i]"

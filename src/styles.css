@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 * {
-  font-family: 'Raleway', sans-serif !important;
+  font-family: 'Roboto', sans-serif !important;
 }
 
 .hover-pad {
@@ -76,6 +76,7 @@ tbody tr {
   text-decoration: none;
   border-bottom: 2px solid transparent;
   transition: .2s ease-in-out;
+  cursor: pointer;
 }
 
 .hov-link:hover {
@@ -84,6 +85,17 @@ tbody tr {
   color: inherit;
 }
 
+.hov-link-green:hover {
+  border-bottom: 2px solid #6FC04A;
+}
+
+.hov-link-pink:hover {
+  border-bottom: 2px solid #EF509D;
+}
+
+.hov-link-orange:hover {
+  border-bottom: 2px solid #FF7900;
+}
 
 /* CUSTOM BUTTONS */
 

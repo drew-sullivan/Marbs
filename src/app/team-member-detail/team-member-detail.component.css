@@ -11,10 +11,6 @@
   margin: 0 12px 12px 12px;
 }
 
-.editable {
-  cursor: pointer;
-}
-
 .row {
   margin-top: 24px;
   margin-bottom: 24px;
@@ -24,16 +20,8 @@
   margin-top: 12px;
 }
 
-td, th {
-  vertical-align: middle;
-}
-
 .name-box {
   font-size: 2rem;
-}
-
-table {
-  margin-top: 20px;
 }
 
 .delete-button {
@@ -45,4 +33,20 @@ table {
 .delete-button:active,
 .delete-button:focus {
   color: #c07790 !important;
+}
+
+.error-message {
+  color: #a94467;
+  font-size: 14px;
+  font-style: italic;
+  float: right;
+}
+
+.no-error {
+  visibility: hidden;
+}
+
+.error {
+  border: none;
+  box-shadow: 0 0 0 .1rem #a94467 !important;
 }

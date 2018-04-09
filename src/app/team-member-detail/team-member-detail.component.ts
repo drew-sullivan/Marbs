@@ -20,6 +20,7 @@ export class TeamMemberDetailComponent implements OnInit {
   private editingDate = -1;
   private editingName: boolean;
   outsideClickCount = 0;
+  isValidEntry = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -125,6 +126,16 @@ export class TeamMemberDetailComponent implements OnInit {
   deleteTeamMember(tm: TeamMember): void {
     console.log(tm);
     this.teamMemberService.deleteTeamMember(tm).subscribe();
+  }
+
+  validate(input: string): void {
+    if (isNaN(+input)) {
+      this.isValidEntry = false;
+    } else {
+      this.isValidEntry = true;
+    }
+    // console.log(`Input: ${input}`);
+    // console.log(this.isInvalidIntegerEntry);
   }
 
 }
