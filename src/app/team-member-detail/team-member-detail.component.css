@@ -1,14 +1,27 @@
+.member-details {
+  margin-top: 24px;
+}
+
 .member-info {
-  margin-top: 20px;
-  margin-bottom: 10px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.history {
+  margin: 0 12px 12px 12px;
 }
 
 .editable {
   cursor: pointer;
 }
 
-label {
-  margin-top: 20px;
+.row {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.row:first-child {
+  margin-top: 12px;
 }
 
 td, th {
@@ -32,8 +45,4 @@ table {
 .delete-button:active,
 .delete-button:focus {
   color: #c07790 !important;
-}
-
-.date {
-  font-weight: bold;
 }
