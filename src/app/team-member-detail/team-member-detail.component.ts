@@ -153,8 +153,8 @@ export class TeamMemberDetailComponent implements OnInit {
 
   transactionSubmitted(input: any): void {
     console.log(input);
+    $('#bankedDays').modal('hide');
   }
-
 }
 
 const byDate = (date1: string, date2: string) => moment(date2).diff(date1);
