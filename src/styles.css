@@ -131,11 +131,6 @@ tbody tr {
   padding-bottom: 12px;
 }
 
-.input-right-button {
-  border-bottom-right-radius: 2px;
-  border-top-right-radius: 2px;
-}
-
 .btn-custom {
   border: none;
   box-shadow: inset 0 -3px 0 rgba( 0, 0, 0, 0.25 ) !important;

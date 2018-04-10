@@ -134,7 +134,6 @@ export class TeamMemberDetailComponent implements OnInit {
   }
 
   deleteTeamMember(tm: TeamMember): void {
-    console.log(tm);
     this.teamMemberService.deleteTeamMember(tm).subscribe();
   }
 
@@ -150,6 +149,10 @@ export class TeamMemberDetailComponent implements OnInit {
         this.isValidAmount = true;
       }
     }
+  }
+
+  transactionSubmitted(input: any): void {
+    console.log(input);
   }
 
 }

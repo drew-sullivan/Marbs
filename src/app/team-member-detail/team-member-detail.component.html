@@ -27,18 +27,9 @@
             </button>
           </div>
           <div class="modal-body">
-            <span class="error-message" [class.no-error]="isValidAmount">Sorry, {{ teamMember.name }} doesn't have that many half days banked!</span>
-            <span class="error-message" [class.no-error]="isValidEntry">Sorry, only integers, please!</span>
-            <label>How Many?</label>
-            <input #halfDays type="text" placeholder="Number of Half Days" (keyup)="validate(halfDays.value)" class="form-control input-custom" [class.error]="!isValidEntry || !isValidAmount" />
-            <label>When?</label>
-            <div class="input-group">
-              <input #dateInput type="date" class="form-control input-custom" [disabled]="!isValidEntry || !isValidAmount">
-            </div>
+            <app-cash-in-form [tm]="teamMember" (transactionSubmitted)="transactionSubmitted($event)"></app-cash-in-form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="halfDays.value=''">Close</button>
-            <button type="button" class="btn-crazy" [disabled]="!isValidEntry || !isValidAmount || halfDays.value === '' || dateInput.value === ''" (click)="updateNumBankedDays(halfDays.value); halfDays.value=''; addDate(dateInput.value); dateInput.value=''" data-dismiss="modal">Save changes</button>
           </div>
         </div>
       </div>
