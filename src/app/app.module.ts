@@ -35,10 +35,6 @@ import { CashInFormComponent } from './cash-in-form/cash-in-form.component';
     HttpClientModule,
     MomentModule,
     ClickOutsideModule,
-  //  HttpClientInMemoryWebApiModule.forRoot(
-  //    InMemoryDataService, { dataEncapsulation: false }
-  //  ),
-
     ToastModule.forRoot()
   ],
   providers: [TeamMemberService, ToastService],
