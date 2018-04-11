@@ -44,6 +44,10 @@ tbody tr {
   border: none;
 }
 
+.disabled {
+  cursor: not-allowed;
+}
+
 .input-custom {
   display: inline-block;
 }
@@ -145,7 +149,7 @@ tbody tr {
   color: #fff;
 }
 
-.btn-custom:active {
+.btn-custom:active:enabled {
   box-shadow: inset 0 3px 0 rgba( 0, 0, 0, 0.25 ) !important;
 }
 
@@ -155,8 +159,8 @@ tbody tr {
   border: 1px solid #d3d3d3;
 }
 
-.btn-custom-hyland-green:active,
-.btn-custom-hyland-green:hover {
+.btn-custom-hyland-green:active:enabled,
+.btn-custom-hyland-green:hover:enabled {
   background: #96d17b;
   color: #fff;
 }

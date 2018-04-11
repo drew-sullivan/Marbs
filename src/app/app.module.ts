@@ -19,6 +19,8 @@ import { MomentModule } from 'angular2-moment';
 import { ClickOutsideModule } from 'ng4-click-outside';
 import { CashInFormComponent } from './cash-in-form/cash-in-form.component';
 
+import * as bootstrap from 'bootstrap';
+
 @NgModule({
   declarations: [
     AppComponent,
