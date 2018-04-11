@@ -146,6 +146,17 @@ tbody tr {
   color: #878787 !important;
 }
 
+.delete-button {
+  color: #a94467 !important;
+  font-size: 14px;
+}
+
+.delete-button:hover,
+.delete-button:active,
+.delete-button:focus {
+  color: #c07790 !important;
+}
+
 .btn-custom {
   border: none;
   box-shadow: inset 0 -3px 0 rgba( 0, 0, 0, 0.25 ) !important;
