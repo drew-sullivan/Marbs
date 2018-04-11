@@ -4,6 +4,10 @@
   font-family: 'Roboto', sans-serif !important;
 }
 
+body {
+  background-color: #d3dad8;
+}
+
 .hover-pad {
   padding-bottom: 10px;
 }
@@ -21,9 +25,7 @@
 }
 
 .page-heading {
-  padding-top: 8px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid #d3d3d3;
+  padding-top: 20px;
 }
 
 .page-heading > h2 {
@@ -33,15 +35,6 @@
 tbody tr {
   border-left: 5px solid transparent;
   transition: .15s ease-in-out;
-}
-
-.table-borderless > tbody > tr > td,
-.table-borderless > tbody > tr > th,
-.table-borderless > tfoot > tr > td,
-.table-borderless > tfoot > tr > th,
-.table-borderless > thead > tr > td,
-.table-borderless > thead > tr > th {
-  border: none;
 }
 
 .disabled {
@@ -79,7 +72,7 @@ tbody tr {
 }
 
 .hov-link:hover {
-  padding-bottom: 10px;
+  padding-bottom: 4px;
   text-decoration: none;
   color: inherit;
 }
@@ -93,10 +86,11 @@ tbody tr {
 }
 
 .hov-link-orange:hover {
-  border-bottom: 2px solid #FF7900;
+  border-bottom: 2px solid #f27e21;
 }
 
 /* CUSTOM BUTTONS */
+
 
 .modal-no {
   margin-right: 20px !important;

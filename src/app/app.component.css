@@ -24,8 +24,12 @@ code {
   font-size: 80%;
 }
 
-.top-buffer {
-  margin-top: 75px;
+.main-content {
+  margin-top: 15px;
+  padding-bottom: 30px;
+  box-shadow: 2px 2px 3px #7b8181;
+  border-radius: 2px;
+  background-color: white;
 }
 
 .brand-name {
@@ -35,11 +39,13 @@ code {
 .navbar {
   background-color: #60c4b0;
   color: white;
-  height: 65px;
-  border-top: 15px solid #6ea69b;
+  height: 69px;
+  border-top: 18px solid #6ea69b;
+  box-shadow: 2px 2px 3px #7b8181;
 }
 
 nav a {
   text-decoration: none;
   color: white;
+  font-size: 20px;
 }

@@ -1,3 +1,8 @@
+h2 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
 .table {
   margin-top: 12px;
   margin-bottom: 36px;
@@ -25,19 +30,100 @@ td {
   border-bottom: 2px solid #6FC04A;
 }
 
+.sort-btn {
+  background-color: #60c4b0;
+  color: white;
+  box-shadow: inset 0 -3px 0 #6ea69b !important;
+  border: none;
+  border-radius: 3px;
+  font-size: 12px;
+  padding: 6px 14px;
+  width: 120px;
+  cursor: pointer;
+  transition: .1s ease-in-out
+}
+
+.sort-btn:active {
+  box-shadow: inset 0 3px 0 #6ea69b !important;
+}
+
+.sort-btn:hover {
+  background-color: #8bd4c5;
+}
+
+.btn-text-left {
+  float: left;
+}
+
+.btn-text-right {
+  float: right;
+}
+
+.sort-btn-left {
+  margin-left: 30px;
+}
+
+.btn-custom:focus,
+.btn-custom:hover {
+  color: #fff;
+}
+
+.btn-custom:active:enabled {
+  box-shadow: inset 0 3px 0 rgba( 0, 0, 0, 0.25 ) !important;
+}
+
 label {
   margin-top: 30px;
 }
 
-td:nth-child(2), td:nth-child(4) {
-  padding-left: 85px;
+td:nth-child(2), td:nth-child(3) {
+  padding-left: 68px;
+}
+
+thead > tr > th:nth-child(1), thead > tr > th:nth-child(4) {
+  padding-left: 0;
+}
+
+.sort-btn-left {
+  margin-left: 30px;
 }
 
 .name {
-  font-size: 22px;
-  font-weight: bold
+  font-size: 14px;
+  margin-left: 30px;
 }
 
-.name:hover {
-  border-bottom: 2px solid #EF509D;
+.table-borderless > thead > tr > th {
+  border: none;
+}
+
+.table > thead {
+  border-bottom: 2px solid #d3dad8;
+}
+
+tr > td {
+  font-size: 14px;
+}
+
+/* .add-button {
+  margin-left: 30px;
+  font-size: 12px;
+} */
+
+.drew {
+    background:             radial-gradient( 5px -9px, circle, white 8%, red 26px );
+        background:    -moz-radial-gradient( 5px -9px, circle, white 8%, red 26px );
+        background:     -ms-radial-gradient( 5px -9px, circle, white 8%, red 26px );
+        background:      -o-radial-gradient( 5px -9px, circle, white 8%, red 26px );
+        background: -webkit-radial-gradient( 5px -9px, circle, white 8%, red 26px );
+    background-color: red;
+    border: 2px solid white;
+    border-radius: 12px; /* one half of ( (border * 2) + height + padding ) */
+    box-shadow: 1px 1px 1px black;
+    color: white;
+    font: bold 15px/13px Helvetica, Verdana, Tahoma;
+    height: 16px; 
+    padding: 4px 3px 0 3px;
+    text-align: center;
+    min-width: 14px;
 }
