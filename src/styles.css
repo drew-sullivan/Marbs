@@ -135,6 +135,17 @@ tbody tr {
   padding-bottom: 12px;
 }
 
+.add-button {
+  color: #4D4F53 !important;
+  font-size: 14px;
+}
+
+.add-button:hover,
+.add-button:active,
+.add-button:focus {
+  color: #878787 !important;
+}
+
 .btn-custom {
   border: none;
   box-shadow: inset 0 -3px 0 rgba( 0, 0, 0, 0.25 ) !important;

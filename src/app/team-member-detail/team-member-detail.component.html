@@ -66,6 +66,15 @@
       </div>
     </div>
 
+    <a *ngIf="!isAddingPreviousDate" class="action-button add-button"
+       (click)="isAddingPreviousDate = true">Add Previous Day Off
+    </a>
+    <div *ngIf="isAddingPreviousDate">
+      <input #prevDateForm type="date" class="form-control width-40" />
+      <button (click)="isAddingPreviousDate = false">Nevermind</button>
+      <button (click)="addPreviousDate(prevDateForm.value)">Add</button>
+    </div>
+    
     <!-- Button trigger modal -->
     <a class="action-button delete-button" data-toggle="modal" data-target="#deleteMember">Delete Team Member</a>
     <!-- Modal -->
