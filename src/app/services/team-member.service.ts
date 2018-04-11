@@ -38,21 +38,19 @@ export class TeamMemberService {
     );
   }
 
-  updateTeamMember(teamMember: TeamMember): Observable<TeamMember> {
-    console.log(teamMember);
-    return this.http.put<ServerResponse>(this.teamMembersUrl, teamMember, httpOptions).pipe(
-      map(response => response.data),
-      tap(r => console.log('hi ' + r)),
-      tap(_ => this.toast.showSuccess(`Updated ${teamMember.name}'s information`)),
-      catchError(this.handleError<TeamMember>('updateTeamMember'))
-    );
-  }
-
   addTeamMember(teamMember: TeamMember): Observable<TeamMember> {
     return this.http.post<ServerResponse>(this.teamMembersUrl, teamMember, httpOptions).pipe(
       map(response => response.data),
       tap((tm: TeamMember) => this.toast.showSuccess(`Added team member ${tm.name}`)),
       catchError(this.handleError<TeamMember>('addTeamMember'))
+    );
+  }
+
+  updateTeamMember(teamMember: TeamMember): Observable<TeamMember> {
+    return this.http.put<ServerResponse>(this.teamMembersUrl, teamMember).pipe(
+      map(response => response.data),
+      tap(_ => this.toast.showSuccess(`Updated ${teamMember.name}'s information`)),
+      catchError(this.handleError<TeamMember>('updateTeamMember'))
     );
   }
 

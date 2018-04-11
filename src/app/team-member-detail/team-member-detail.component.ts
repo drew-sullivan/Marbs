@@ -54,7 +54,7 @@ export class TeamMemberDetailComponent implements OnInit {
     } else {
       dates.push(date);
     }
-    this.teamMemberService.updateTeamMember(this.teamMember);
+    this.teamMemberService.updateTeamMember(this.teamMember).subscribe();
     this.teamMember.datesTakenOff.sort(byDate);
     this.toastService.showSuccess(`Added ${moment(date).format('LL')} to ${this.teamMember.name}'s list of half days taken off`);
   }
@@ -63,7 +63,7 @@ export class TeamMemberDetailComponent implements OnInit {
     const dates = this.teamMember.datesTakenOff;
     const index = dates.findIndex(item => item === date);
     dates.splice(index, 1);
-    this.teamMemberService.updateTeamMember(this.teamMember);
+    this.teamMemberService.updateTeamMember(this.teamMember).subscribe();
     this.toastService.showSuccess(`Removed ${moment(date).format('LL')} from ${this.teamMember.name}'s list of half days taken off`);
   }
 
@@ -92,7 +92,7 @@ export class TeamMemberDetailComponent implements OnInit {
       name = oldName;
     }
     this.teamMember.name = name;
-    this.teamMemberService.updateTeamMember(this.teamMember);
+    this.teamMemberService.updateTeamMember(this.teamMember).subscribe();
     this.editingName = false;
   }
 
@@ -102,7 +102,7 @@ export class TeamMemberDetailComponent implements OnInit {
     }
     this.teamMember.datesTakenOff[index] = newDate;
     this.teamMember.datesTakenOff.sort(byDate);
-    this.teamMemberService.updateTeamMember(this.teamMember);
+    this.teamMemberService.updateTeamMember(this.teamMember).subscribe();
     this.toastService.showSuccess('Updated date');
     this.editingDate = -1;
     this.outsideClickCount = 0;
@@ -113,13 +113,13 @@ export class TeamMemberDetailComponent implements OnInit {
       return;
     }
     this.teamMember.halfDaysBanked -= num;
-    this.teamMemberService.updateTeamMember(this.teamMember);
+    this.teamMemberService.updateTeamMember(this.teamMember).subscribe();
     this.toastService.showSuccess(`${this.teamMember.name} now has ${this.teamMember.halfDaysBanked} half-day(s) banked`);
   }
 
   incrementHalfDaysBanked() {
     this.teamMember.halfDaysBanked++;
-    this.teamMemberService.updateTeamMember(this.teamMember);
+    this.teamMemberService.updateTeamMember(this.teamMember).subscribe();
     this.toastService.showSuccess('+ 1');
   }
 
@@ -129,7 +129,7 @@ export class TeamMemberDetailComponent implements OnInit {
     } else {
       return;
     }
-    this.teamMemberService.updateTeamMember(this.teamMember);
+    this.teamMemberService.updateTeamMember(this.teamMember).subscribe();
     this.toastService.showError('- 1');
   }
 
