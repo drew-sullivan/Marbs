@@ -155,8 +155,9 @@ export class TeamMemberDetailComponent implements OnInit {
   transactionSubmitted(input: any): void {
     console.log(input);
     $('#bankedDays').modal('hide');
-    this.teamMember.halfDaysBanked = this.teamMember.halfDaysBanked - input.numHalfDays;
+    this.teamMember.halfDaysBanked = this.teamMember.halfDaysBanked - (input.isHalfDay ? 1 : 2);
     this.teamMember.datesTakenOff.push(input.selectedDate);
+    this.teamMember.datesTakenOff.sort(byDate);
     this.teamMemberService.updateTeamMember(this.teamMember);
     this.toastService.showSuccess(`Transaction successful!`);
   }
