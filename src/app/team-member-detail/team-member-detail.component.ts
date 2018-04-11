@@ -1,6 +1,6 @@
 import { MomentModule } from 'angular2-moment';
 import { Component, OnInit, Input, HostListener, ViewChild, ElementRef } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { TeamMember } from '../teamMember';
@@ -24,6 +24,7 @@ export class TeamMemberDetailComponent implements OnInit {
   isValidAmount = true;
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private teamMemberService: TeamMemberService,
     private toastService: ToastService) { }
@@ -134,7 +135,10 @@ export class TeamMemberDetailComponent implements OnInit {
   }
 
   deleteTeamMember(tm: TeamMember): void {
-    this.teamMemberService.deleteTeamMember(tm).subscribe();
+    this.teamMemberService.deleteTeamMember(tm).subscribe( () => {
+      // TODO: Test how this behaves with a really slow connection to the server
+      this.router.navigate(['/team-members']);
+    });
   }
 
   validate(input: string): void {
