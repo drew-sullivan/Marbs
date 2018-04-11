@@ -40,6 +40,10 @@
 
     <div class="member-info">Half Days Banked:
       <span>&nbsp;&nbsp;{{ teamMember.halfDaysBanked }}</span>
+      <button (click)="incrementHalfDaysBanked()">&#43;</button>
+      <button (click)="decrementHalfDaysBanked()"
+              [disabled]="teamMember.halfDaysBanked < 1"
+              [class.disabled]="teamMember.halfDaysBanked < 1">&#45;</button>
     </div>
     
     <div class="history-table">

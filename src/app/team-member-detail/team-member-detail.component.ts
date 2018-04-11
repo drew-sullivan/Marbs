@@ -121,6 +121,18 @@ export class TeamMemberDetailComponent implements OnInit {
     this.teamMemberService.deleteTeamMember(tm).subscribe();
   }
 
+  incrementHalfDaysBanked(): void {
+    this.teamMember.halfDaysBanked += 1;
+    this.teamMemberService.updateTeamMember(this.teamMember);
+    this.toastService.showSuccess('+ 1');
+  }
+
+  decrementHalfDaysBanked(): void {
+    this.teamMember.halfDaysBanked -= 1;
+    this.teamMemberService.updateTeamMember(this.teamMember);
+    this.toastService.showError('- 1');
+  }
+
   transactionSubmitted(input: any): void {
     console.log(input);
     $('#bankedDays').modal('hide');
