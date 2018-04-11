@@ -60,6 +60,7 @@ export class TeamMemberDetailComponent implements OnInit {
   }
 
   deleteDate(date: string): void {
+    console.log(date);
     const dates = this.teamMember.datesTakenOff;
     const index = dates.findIndex(item => item === date);
     dates.splice(index, 1);
