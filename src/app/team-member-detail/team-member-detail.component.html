@@ -16,7 +16,12 @@
   <div class="container member-details">
 
     <!-- Button trigger modal -->
-    <button class="btn-custom btn-custom-hyland-green btn-cash-in member-info" data-toggle="modal" data-target="#bankedDays">Cash in Banked Half-Days</button>
+    <button class="btn-custom btn-custom-hyland-green btn-cash-in member-info"
+            [disabled]="teamMember.halfDaysBanked < 1"
+            [class.disabled]="teamMember.halfDaysBanked < 1"
+            data-toggle="modal" data-target="#bankedDays">
+            Cash in Banked Half-Days
+    </button>
     <!-- Modal -->
     <div class="modal fade" id="bankedDays" tabindex="-1" role="dialog">
       <div class="modal-dialog modal-dialog-centered" role="document">
@@ -28,8 +33,6 @@
           </div>
           <div class="modal-body">
             <app-cash-in-form [tm]="teamMember" (transactionSubmitted)="transactionSubmitted($event)"></app-cash-in-form>
-          </div>
-          <div class="modal-footer">
           </div>
         </div>
       </div>
@@ -57,26 +60,7 @@
           </div>
           <span class="col-md-4">{{ date | amTimeAgo }}</span>
           <div class="col-md-4">
-            <a class="tertiary-button text-left" data-toggle="modal" data-target="#confirm">&times;</a>
-            <div class="modal fade" id="confirm" tabindex="-1" role="dialog">
-              <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title">Are you sure?</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-footer">
-                    <a type="button" class="modal-no" data-dismiss="modal">No</a>
-                    <button type="button"
-                            class="btn btn-custom btn-custom-hyland-red"
-                            (click)="deleteDate(date)"
-                            data-dismiss="modal">Yes</button>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <a class="tertiary-button" (click)="deleteDate(date)">&times;</a>
           </div>
         </div>
       </div>

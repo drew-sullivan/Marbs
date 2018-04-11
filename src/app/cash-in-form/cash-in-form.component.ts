@@ -24,10 +24,6 @@ export class CashInFormComponent implements OnInit {
   onSubmit() { this.submitted = true; }
 
   updateUser(input: any): void {
-    // console.log(input);
-    this.tm.halfDaysBanked = this.tm.halfDaysBanked - input.numHalfDays;
-    this.tm.datesTakenOff.push(input.selectedDate);
-    this.tmService.updateTeamMember(this.tm);
     this.transactionSubmitted.emit(input);
   }
 
