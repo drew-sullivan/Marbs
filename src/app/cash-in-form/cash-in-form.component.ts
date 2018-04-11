@@ -24,7 +24,9 @@ export class CashInFormComponent implements OnInit {
   onSubmit() { this.submitted = true; }
 
   updateUser(input: any): void {
+    console.log(input);
     this.transactionSubmitted.emit(input);
+    this.t = new Transaction(true, '');
   }
 
 }

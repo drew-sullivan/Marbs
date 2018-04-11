@@ -2,12 +2,12 @@
   
   <form (ngSubmit)="onSubmit()" #transactionForm="ngForm">
 
-    <fieldset class="form-group">
+    <fieldset *ngIf="tm.halfDaysBanked > 1" class="form-group">
       <label for="isHalfDay">How many half days would you like to cash in?</label>
       <div class="form-check">
         <label class="form-check-label">
           <input type="radio" class="form-check-input" name="isHalfDay"
-                 id="optionsRadios1" [value]="true" [(ngModel)]="t.isHalfDay" checked>1
+                 id="optionsRadios1" [value]="true" [(ngModel)]="t.isHalfDay">1
         </label>
       </div>
       <div class="form-check">
