@@ -1,32 +1,83 @@
+.member-details {
+  margin-top: 24px;
+}
+
+.btn-cash-in {
+  margin-left: -15px !important;
+}
+
 .member-info {
-  margin-top: 20px;
-  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 12px 0; 
 }
 
-.width-40 {
-  width: 40%;
+.history {
+  margin: 0 12px 12px 12px;
 }
 
-.editable {
-  cursor: pointer;
+.row {
+  margin-top: 24px;
+  margin-bottom: 24px;
 }
 
-h2 {
-  margin-top: 20px;
-}
-
-label {
-  margin-top: 20px;
-}
-
-td, th {
-  vertical-align: middle;
+.row:first-child {
+  margin-top: 12px;
 }
 
 .name-box {
-  font-size: 2rem;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
 }
 
-table {
-  margin-top: 20px;
+.delete-button {
+  color: #a94467 !important;
+  font-size: 14px;
+}
+
+.delete-button:hover,
+.delete-button:active,
+.delete-button:focus {
+  color: #c07790 !important;
+}
+
+.error-message {
+  color: #a94467;
+  font-size: 14px;
+  font-style: italic;
+  float: right;
+}
+
+.no-error {
+  visibility: hidden;
+}
+
+.error {
+  border: none;
+  box-shadow: 0 0 0 .1rem #a94467 !important;
+}
+
+.modal-body {
+  padding-top: 0;
+}
+
+.modal-body label {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.history-table {
+  margin: 36px 0;
+  color: grey;
+}
+
+.hov-link:hover {
+  color: black;
+}
+
+.date-box {
+  width: 50%;
+  padding: 0;
 }

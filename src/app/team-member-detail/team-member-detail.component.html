@@ -1,50 +1,63 @@
 <div *ngIf="teamMember">
 
-  <div #container class="container">
-
-    <h2 *ngIf="!editingName" (click)="editingName = true" class="editable" >{{ teamMember.name }}</h2>
+  <div class="page-heading">
+    <h2 *ngIf="!editingName" (click)="editingName = true">
+      <span class="hov-link hov-link-green">{{ teamMember.name }}</span></h2>
     <h2 *ngIf="editingName">
       <input #nameBox
-             type="text"
-             placeholder="{{ teamMember.name }}"
-             class="form-control input-custom name-box width-40"
-             (keyup.enter)="updateName(teamMember.name, nameBox.value)"
-             (clickOutside)="outsideClickSubmitName($event, teamMember.name, nameBox.value)" />
+            type="text"
+            placeholder="{{ teamMember.name }}"
+            class="form-control input-custom name-box width-40"
+            (keyup.enter)="updateName(teamMember.name, nameBox.value)"
+            (clickOutside)="outsideClickSubmitName($event, teamMember.name, nameBox.value)" />
     </h2>
+  </div>
 
-    <div class="row member-info d-flex align-items-center">
-      <div class="col-md-3 member-info">Half Days Banked</div>
-      <div class="col-md-1"><strong>{{ teamMember.halfDaysBanked }}</strong></div>
-      <div class="col-md-8">
-        <button type="button" class="btn btn-custom btn-custom-hyland-green btn-custom-md" (click)="incrementHalfDaysBanked()">&#43;</button>
-        <button type="button" class="btn btn-custom btn-custom-hyland-red btn-custom-md" [class.disabled]="teamMember.halfDaysBanked === 0" (click)="decrementHalfDaysBanked()">&#45;</button>
+  <div class="container member-details">
+
+    <!-- Button trigger modal -->
+    <button class="btn-custom btn-custom-hyland-green btn-cash-in member-info" data-toggle="modal" data-target="#bankedDays">Cash in Banked Half-Days</button>
+    <!-- Modal -->
+    <div class="modal fade" id="bankedDays" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <app-cash-in-form [tm]="teamMember" (transactionSubmitted)="transactionSubmitted($event)"></app-cash-in-form>
+          </div>
+          <div class="modal-footer">
+          </div>
+        </div>
       </div>
-      <div class="col-md-3 member-info">Half Days Taken Off</div>
-      <div class="col-md-9 text-left"><strong>{{ teamMember.datesTakenOff.length }}</strong></div>
     </div>
 
-    <label>Add a new date:</label>
-    <div class="input-group width-40">
-      <input #dateInput type="date" class="form-control input-custom">
-      <div class="input-group-append">
-        <button class="btn btn-custom-hyland-green input-right-button" (click)="addDate(dateInput.value); dateInput.value=''">Add</button>
-      </div>
+    <div class="member-info">Half Days Banked:
+      <span>&nbsp;&nbsp;{{ teamMember.halfDaysBanked }}</span>
     </div>
     
-    <table class="table table-hover table-borderless">
-      <thead>
-        <tr>
-          <th scope="col"></th>
-          <th scope="col">Date</th>
-          <th scope="col">Timeframe</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let date of teamMember.datesTakenOff; let i = index" [attr.date-index]="i">
-          <td>
-            <!-- Button trigger modal -->
-            <a class="tertiary-button" data-toggle="modal" data-target="#confirm">&times;</a>          
-            <!-- Modal -->
+    <div class="history-table">
+      <label>Half Days Taken Off:&nbsp;&nbsp;{{ teamMember.datesTakenOff.length }}</label>
+      <div class="history">
+        <div *ngFor="let date of teamMember.datesTakenOff; let i = index" [attr.date-index]="i" class="row">
+          <div *ngIf="editingDate === -1 || editingDate !== i" class="col-md-4">
+            <span (click)="editingDate = i" class="hov-link hov-link-pink">{{ date | amDateFormat:'LL' }}</span>
+          </div>
+          <div *ngIf="editingDate === i" class="col-md-4">
+            <input [ngModel]="teamMember.datesTakenOff[i]"
+                    (ngModelChange)="updateDate($event, i)"
+                    type="date"
+                    placeholder="{{ date }}"
+                    class="form-control input-custom date-box"
+                    (clickOutside)="outsideClickSubmitDate($event)"
+                    required />
+          </div>
+          <span class="col-md-4">{{ date | amTimeAgo }}</span>
+          <div class="col-md-4">
+            <a class="tertiary-button text-left" data-toggle="modal" data-target="#confirm">&times;</a>
             <div class="modal fade" id="confirm" tabindex="-1" role="dialog">
               <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -55,34 +68,23 @@
                     </button>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                    <a type="button" class="modal-no" data-dismiss="modal">No</a>
                     <button type="button"
-                            class="btn btn-primary"
+                            class="btn btn-custom btn-custom-hyland-red"
                             (click)="deleteDate(date)"
                             data-dismiss="modal">Yes</button>
                   </div>
                 </div>
               </div>
             </div>
-          </td>
-          <td *ngIf="editingDate === -1 || editingDate !== i">
-            <span (click)="editingDate = i" class="editable">{{ date | amDateFormat:'LL' }}</span>
-          </td>
-          <td *ngIf="editingDate === i">
-            <input [ngModel]="teamMember.datesTakenOff[i]"
-                   (ngModelChange)="updateDate($event, i)"
-                   type="date"
-                   placeholder="{{ date }}"
-                   class="form-control input-custom width-40"
-                   (clickOutside)="outsideClickSubmitDate($event)"
-                   required />
-          </td>
-          <td>{{ date | amTimeAgo }}</td>
-        </tr>
-      </tbody>
-    </table>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <a class="delete-button" data-toggle="modal" data-target="#deleteMember">Delete Team Member</a>
+    <!-- Button trigger modal -->
+    <a class="action-button delete-button" data-toggle="modal" data-target="#deleteMember">Delete Team Member</a>
+    <!-- Modal -->
     <div class="modal fade" id="deleteMember" tabindex="-1" role="dialog">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">

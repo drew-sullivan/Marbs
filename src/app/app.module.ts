@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
@@ -17,16 +17,19 @@ import { ToastService } from './services/toast.service';
 
 import { MomentModule } from 'angular2-moment';
 import { ClickOutsideModule } from 'ng4-click-outside';
+import { CashInFormComponent } from './cash-in-form/cash-in-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TeamMembersComponent,
     TeamMemberDetailComponent,
+    CashInFormComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,

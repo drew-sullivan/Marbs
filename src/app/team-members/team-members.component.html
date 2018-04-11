@@ -1,35 +1,27 @@
-<h2>Team Members</h2>
-
-<label>Add New Team Member:</label>
-<div class="input-group mb-3 new-team-member">
-  <div class="input-group mb-3">
-    <input #teamMemberName type="text" class="form-control input-custom" placeholder="Name">
-    <div class="input-group-append">
-      <button (click)="add(teamMemberName.value); teamMemberName.value=''" class="btn btn-custom-hyland-green input-right-button">Add</button>
-    </div>
-  </div>
+<div class="page-heading">
+  <h2>Team Members</h2>
 </div>
 
-<table class="table table-hover table-borderless">
+<table class="table table-borderless">
   <thead>
     <tr>
       <th scope="col" (click)="columnSorted='name'; sortByCol('name')">
-        <span class="sort-link">Name 
+        <span class="sort-link hov-link">Name 
           <i class="fas fa-sort"></i>
         </span>
       </th>
       <th scope="col" (click)="columnSorted='numDays'; sortByCol('numDays')">
-       <span class="sort-link center">Half Days Taken Off 
+       <span class="sort-link center hov-link">Half Days Taken Off 
           <i class="fas fa-sort"></i>
        </span>
       </th>
-      <th scope="col" (click)="columnSorted='dates'; sortByCol('dates')">
-        <span class="sort-link">Most Recent 
+      <th (click)="columnSorted='dates'; sortByCol('dates')">
+        <span class="sort-link hov-link">Most Recent 
           <i class="fas fa-sort"></i>
         </span>
       </th>
       <th scope="col" (click)="columnSorted='banked'; sortByCol('banked')">
-        <span class="sort-link">Half Days Banked 
+        <span class="sort-link hov-link">Half Days Banked 
           <i class="fas fa-sort"></i>
         </span>
       </th>
@@ -37,7 +29,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let tm of teamMembers">
-      <td><a routerLink="/detail/{{ tm.id }}" class="tertiary-button">{{ tm.name }}</a></td>
+      <td><a routerLink="/detail/{{ tm.id }}" class="name hov-link">{{ tm.name }}</a></td>
       <td>{{ tm.datesTakenOff.length }}</td>
       <td *ngIf="tm.datesTakenOff[0]">{{ tm.datesTakenOff[0] }}</td>
       <td *ngIf="!tm.datesTakenOff[0]">None!</td>
@@ -45,3 +37,26 @@
     </tr>
   </tbody>
 </table>
+
+<!-- Button trigger modal -->
+<a class="action-button add-button" data-toggle="modal" data-target="#addMember">Add New Team Member</a>
+<!-- Modal -->
+<div class="modal fade" id="addMember" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add New Team Member</h5>
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <input #teamMemberName type="text" class="form-control input-custom" placeholder="Name">
+      </div>
+      <div class="modal-footer">
+        <a type="button" class="modal-no hov-link" data-dismiss="modal">Cancel</a>
+        <button (click)="add(teamMemberName.value); teamMemberName.value=''" class="btn btn-custom btn-custom-hyland-green" data-dismiss="modal">Add</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,16 +1,38 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 * {
-  font-family: 'Raleway', sans-serif !important;
+  font-family: 'Roboto', sans-serif !important;
+}
+
+.hover-pad {
+  padding-bottom: 10px;
+}
+
+.width-40 {
+  width: 40%;
+}
+
+.width-50 {
+  width: 50%;
+}
+
+.width-60 {
+  width: 60%;
+}
+
+.page-heading {
+  padding-top: 8px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #d3d3d3;
+}
+
+.page-heading > h2 {
+  font-size: 16px;
 }
 
 tbody tr {
   border-left: 5px solid transparent;
   transition: .15s ease-in-out;
-}
-
-tbody tr:hover {
-  border-left: 5px solid #EF509D;
 }
 
 .table-borderless > tbody > tr > td,
@@ -20,6 +42,10 @@ tbody tr:hover {
 .table-borderless > thead > tr > td,
 .table-borderless > thead > tr > th {
   border: none;
+}
+
+.input-custom {
+  display: inline-block;
 }
 
 .input-custom:active,
@@ -34,18 +60,37 @@ tbody tr:hover {
 
 .modal-footer {
   border-top: none;
-  background: #f7f7f7
 }
 
 .modal-content {
   border-radius: 2px;
 }
 
-.input-custom {
-  border-bottom-left-radius: 2px;
-  border-top-left-radius: 2px;
+.hov-link {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: .2s ease-in-out;
+  cursor: pointer;
 }
 
+.hov-link:hover {
+  padding-bottom: 10px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.hov-link-green:hover {
+  border-bottom: 2px solid #6FC04A;
+}
+
+.hov-link-pink:hover {
+  border-bottom: 2px solid #EF509D;
+}
+
+.hov-link-orange:hover {
+  border-bottom: 2px solid #FF7900;
+}
 
 /* CUSTOM BUTTONS */
 
@@ -63,10 +108,9 @@ tbody tr:hover {
   border-bottom: 2px solid #212529;
 }
 
-.delete-button {
+.action-button {
   cursor: pointer;
   text-decoration: none;
-  color: #a94467 !important;
   border-bottom: 2px solid transparent;
   transition: .2s ease-in-out;
 }
@@ -75,40 +119,43 @@ tbody tr:hover {
   cursor: pointer;
   text-decoration: none;
   color: inherit;
+  font-weight: bold;
+  transition: .2s ease-in-out;
+  padding-bottom: 12px;
+  border-bottom: 2px solid transparent;
 }
 
 .tertiary-button:hover {
   text-decoration: none;
   color: inherit;
-}
-
-.input-right-button {
-  border-bottom-right-radius: 2px;
-  border-top-right-radius: 2px;
+  padding-bottom: 12px;
 }
 
 .btn-custom {
-  border: 0;
-  box-shadow: inset 0 -2px 0 rgba( 0, 0, 0, 0.25 ) !important;
+  border: none;
+  box-shadow: inset 0 -3px 0 rgba( 0, 0, 0, 0.25 ) !important;
   color: #fff;
   padding: 6px 14px;
-  transition: 0.2s ease-in-out;
-  border-radius: 2px;
+  transition: .05s ease-in-out;
+  border-radius: 5px;
 }
 
-.btn-custom:active,
 .btn-custom:focus,
 .btn-custom:hover {
   color: #fff;
 }
 
+.btn-custom:active {
+  box-shadow: inset 0 3px 0 rgba( 0, 0, 0, 0.25 ) !important;
+}
+
 .btn-custom-hyland-green {
   background: #6FC04A;
-  color: #fff;
+  color: white;
+  border: 1px solid #d3d3d3;
 }
 
 .btn-custom-hyland-green:active,
-.btn-custom-hyland-green:focus,
 .btn-custom-hyland-green:hover {
   background: #96d17b;
   color: #fff;
