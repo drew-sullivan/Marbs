@@ -13,7 +13,7 @@ export class CashInFormComponent implements OnInit {
 
   @Input() tm: TeamMember;
   @Output() transactionSubmitted = new EventEmitter<Transaction>();
-  t = new Transaction(null, '');
+  t = new Transaction(1, '');
   submitted = false;
 
   constructor(private tmService: TeamMemberService) { }
