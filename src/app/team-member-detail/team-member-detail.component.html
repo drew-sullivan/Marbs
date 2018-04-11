@@ -16,7 +16,12 @@
   <div class="container member-details">
 
     <!-- Button trigger modal -->
-    <button class="btn-custom btn-custom-hyland-green btn-cash-in member-info" data-toggle="modal" data-target="#bankedDays">Cash in Banked Half-Days</button>
+    <button class="btn-custom btn-custom-hyland-green btn-cash-in member-info"
+            [disabled]="teamMember.halfDaysBanked < 1"
+            [class.disabled]="teamMember.halfDaysBanked < 1"
+            data-toggle="modal" data-target="#bankedDays">
+            Cash in Banked Half-Days
+    </button>
     <!-- Modal -->
     <div class="modal fade" id="bankedDays" tabindex="-1" role="dialog">
       <div class="modal-dialog modal-dialog-centered" role="document">

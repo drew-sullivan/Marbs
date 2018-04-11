@@ -31,3 +31,8 @@ code {
 .brand-name {
   height: 44px;
 }
+
+.navbar {
+  margin-top: 10px;
+  margin-left: 20px;
+}

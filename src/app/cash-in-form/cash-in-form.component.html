@@ -1,18 +1,22 @@
 <div class="container">
-
-  <h1>Transaction</h1>
   
   <form (ngSubmit)="onSubmit()" #transactionForm="ngForm">
-    
-    <div class="form-group">
+
+    <fieldset class="form-group">
       <label for="numHalfDays">How many half days would you like to cash in?</label>
-      <input type="number" class="form-control" id="numHalfDays"
-             required
-             [(ngModel)]="t.numHalfDays" name="numHalfDays"
-             #numHalfDays="ngModel">
-    </div>
-    <div [hidden]="numHalfDays.valid || numHalfDays.pristine"
-         class="alert alert-danger">Please enter a number</div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="numHalfDays"
+                 id="optionsRadios1" [value]="1" checked [(ngModel)]="t.numHalfDays">1
+        </label>
+      </div>
+      <div class="form-check">
+      <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="numHalfDays"
+                 id="optionsRadios2" [value]="2" [(ngModel)]="t.numHalfDays">2
+        </label>
+      </div>
+    </fieldset>
 
     <div class="form-group">
       <label for="selectedDate">When?</label>
