@@ -20,8 +20,7 @@ export class TeamMemberDetailComponent implements OnInit {
   private editingDate = -1;
   private editingName: boolean;
   outsideClickCount = 0;
-  isValidEntry = true;
-  isValidAmount = true;
+  isAddingPreviousDate = false;
 
   constructor(
     private router: Router,
@@ -119,18 +118,14 @@ export class TeamMemberDetailComponent implements OnInit {
     this.toastService.showSuccess(`${this.teamMember.name} now has ${this.teamMember.halfDaysBanked} half-day(s) banked`);
   }
 
-  incrementHalfDaysBanked() {
-    this.teamMember.halfDaysBanked++;
+  incrementHalfDaysBanked(): void {
+    this.teamMember.halfDaysBanked += 1;
     this.teamMemberService.updateTeamMember(this.teamMember).subscribe();
     this.toastService.showSuccess('+ 1');
   }
 
-  decrementHalfDaysBanked() {
-    if (this.teamMember.halfDaysBanked > 0) {
-      this.teamMember.halfDaysBanked--;
-    } else {
-      return;
-    }
+  decrementHalfDaysBanked(): void {
+    this.teamMember.halfDaysBanked -= 1;
     this.teamMemberService.updateTeamMember(this.teamMember).subscribe();
     this.toastService.showError('- 1');
   }
@@ -142,27 +137,25 @@ export class TeamMemberDetailComponent implements OnInit {
     });
   }
 
-  validate(input: string): void {
-    const num = +input;
-    if (isNaN(num)) {
-      this.isValidEntry = false;
-    } else {
-      this.isValidEntry = true;
-      if (num > this.teamMember.halfDaysBanked) {
-        this.isValidAmount = false;
-      } else {
-        this.isValidAmount = true;
-      }
-    }
-  }
 
   transactionSubmitted(input: any): void {
     console.log(input);
     $('#bankedDays').modal('hide');
-    this.teamMember.halfDaysBanked = this.teamMember.halfDaysBanked - input.numHalfDays;
+    const numCashedInDays = input.isHalfDay || this.teamMember.halfDaysBanked < 2 ? 1 : 2;
+    this.teamMember.halfDaysBanked = this.teamMember.halfDaysBanked - numCashedInDays;
     this.teamMember.datesTakenOff.push(input.selectedDate);
+    this.teamMember.datesTakenOff.sort(byDate);
     this.teamMemberService.updateTeamMember(this.teamMember);
     this.toastService.showSuccess(`Transaction successful!`);
+  }
+
+  addPreviousDate(date: string): void {
+    console.log(date);
+    this.teamMember.datesTakenOff.push(date);
+    this.teamMember.datesTakenOff.sort(byDate);
+    this.teamMemberService.updateTeamMember(this.teamMember);
+    this.toastService.showSuccess('Date added!');
+    this.isAddingPreviousDate = false;
   }
 }
 

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { TeamMember } from './../teamMember';
-import { Transaction } from './Transaction';
+import { Transaction } from './../Transaction';
 import { TeamMemberService } from './../services/team-member.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class CashInFormComponent implements OnInit {
 
   @Input() tm: TeamMember;
   @Output() transactionSubmitted = new EventEmitter<Transaction>();
-  t = new Transaction(null, '');
+  t = new Transaction(true, '');
   submitted = false;
 
   constructor(private tmService: TeamMemberService) { }
@@ -24,8 +24,9 @@ export class CashInFormComponent implements OnInit {
   onSubmit() { this.submitted = true; }
 
   updateUser(input: any): void {
-    this.tmService.updateTeamMember(this.tm).subscribe();
+    console.log(input);
     this.transactionSubmitted.emit(input);
+    this.t = new Transaction(true, '');
   }
 
 }
