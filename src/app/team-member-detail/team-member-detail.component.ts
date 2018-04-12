@@ -145,7 +145,7 @@ export class TeamMemberDetailComponent implements OnInit {
     this.teamMember.halfDaysBanked = this.teamMember.halfDaysBanked - numCashedInDays;
     this.teamMember.datesTakenOff.push(input.selectedDate);
     this.teamMember.datesTakenOff.sort(byDate);
-    this.teamMemberService.updateTeamMember(this.teamMember);
+    this.teamMemberService.updateTeamMember(this.teamMember).subscribe();
     this.toastService.showSuccess(`Transaction successful!`);
   }
 
