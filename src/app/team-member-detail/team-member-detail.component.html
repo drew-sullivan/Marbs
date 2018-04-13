@@ -45,7 +45,7 @@
               [disabled]="teamMember.halfDaysBanked < 1"
               [class.disabled]="teamMember.halfDaysBanked < 1">&#45;</button>
     </div>
-    
+
     <div class="history-table">
       <label>Half Days Taken Off:&nbsp;&nbsp;{{ teamMember.datesTakenOff.length }}</label>
       <div class="history">
@@ -93,7 +93,7 @@
           </div>
           <div class="modal-footer">
             <a type="button" class="modal-no" data-dismiss="modal">No</a>
-            <button type="button" class="btn btn-custom btn-custom-hyland-red" (click)="deleteTeamMember(teamMember)" data-dismiss="modal" routerLink="/team-members">Yes</button>
+            <button type="button" class="btn btn-custom btn-custom-hyland-red" (click)="deleteTeamMember(teamMember)" data-dismiss="modal">Yes</button>
           </div>
         </div>
       </div>

@@ -18,7 +18,9 @@ export class TeamMembersComponent implements OnInit {
   private areSortedDates: boolean;
   private areSortedBanked: boolean;
 
-  constructor(private teamMemberService: TeamMemberService) { }
+  constructor(private teamMemberService: TeamMemberService) {
+
+  }
 
   ngOnInit() {
     this.getTeamMembers();

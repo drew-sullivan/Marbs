@@ -4,8 +4,6 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './in-memory-data.service';
 import { ToastModule } from 'ng2-toastr/ng2-toastr';
 
 import { AppComponent } from './app.component';
@@ -37,9 +35,6 @@ import * as bootstrap from 'bootstrap';
     HttpClientModule,
     MomentModule,
     ClickOutsideModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    ),
     ToastModule.forRoot()
   ],
   providers: [TeamMemberService, ToastService],
