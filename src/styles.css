@@ -50,6 +50,7 @@ tbody tr {
 }
 
 .input-custom {
+  font-size: 14px;
   display: inline-block;
 }
 
@@ -57,18 +58,6 @@ tbody tr {
 .input-custom:focus,
 .input-custom:hover {
   box-shadow: 0 0 0 .1rem #60c4b0;
-}
-
-.modal-header {
-  border-bottom: none;
-}
-
-.modal-footer {
-  border-top: none;
-}
-
-.modal-content {
-  border-radius: 2px;
 }
 
 .hov-link {
@@ -85,28 +74,26 @@ tbody tr {
   color: inherit;
 }
 
-.hov-link-green:hover {
-  border-bottom: 2px solid #60c4b0;
-}
-
-.hov-link-pink:hover {
-  border-bottom: 2px solid #EF509D;
-}
-
 .hov-link-orange:hover {
   border-bottom: 2px solid #f27e21;
 }
 
 .modal-header {
-  border-top: 5px solid #60c4b0 !important;
-  border-radius: 0 !important;
+  border-top: 5px solid #60c4b0;
+  border-radius: 0;
+  border-bottom: none;
 }
 
 .modal-title {
-  margin: 0 auto !important;
+  margin: 0 auto;
+}
+
+.modal-body {
+  margin: 0 auto;
 }
 
 .modal-footer {
+  border-top: none;
   margin: 0 auto !important;
 }
 
