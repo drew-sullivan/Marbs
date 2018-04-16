@@ -42,11 +42,10 @@ thead > tr > th:nth-child(1), thead > tr > th:nth-child(4) {
 }
 
 .name {
-  font-size: 14px;
   margin-left: 30px;
 }
 
-.table-borderless > thead > tr > th {
+.table > thead > tr > th {
   border: none;
 }
 
@@ -60,7 +59,6 @@ tr > td {
 
 .add-button {
   margin-left: 30px;
-  font-size: 12px;
 }
 
 .drew {
