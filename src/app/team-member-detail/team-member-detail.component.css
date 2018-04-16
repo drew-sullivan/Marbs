@@ -1,7 +1,7 @@
 .member-info {
   font-size: 16px;
   font-weight: bold;
-  margin: 12px 0; 
+  margin: 12px 0;
 }
 
 .team-member-name {
@@ -60,4 +60,8 @@ tr > td {
   width: 35%;
   padding: 0;
   font-size: 12px;
+}
+
+.page-header {
+  margin: 12px 0;
 }
