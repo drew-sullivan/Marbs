@@ -60,7 +60,7 @@
                    (ngModelChange)="updateDate($event, i)"
                    type="date"
                    placeholder="{{ date }}"
-                   class="form-control input-custom date-box"
+                   class="form-control input-custom date-box width-30"
                    (clickOutside)="outsideClickSubmitDate($event)"
                    required />
           </td>
@@ -74,7 +74,7 @@
        (click)="isAddingPreviousDate = true">Add Previous Day Off
     </a>
     <div *ngIf="isAddingPreviousDate">
-      <input #prevDateForm type="date" class="form-control input-custom date-box" />
+      <input #prevDateForm type="date" class="form-control input-custom date-box old-date" />
       <button (click)="isAddingPreviousDate = false" class="qa-btn danger-btn">Nevermind</button>
       <button (click)="addPreviousDate(prevDateForm.value)" class="qa-btn primary-btn">Add</button>
     </div>
