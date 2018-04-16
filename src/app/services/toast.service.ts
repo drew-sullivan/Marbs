@@ -13,17 +13,17 @@ export class ToastService {
 
   showInfo(message: string, title?: string) {
     this.toastsManager.info(message, title)
-    .then(() => $('.toast-info').css('background-color', '#00C7E9'));
+    .then(() => $('.toast-info').css('background-color', '#60c4b0'));
   }
 
   showSuccess(message: string, title?: string) {
     this.toastsManager.success(message, title)
-      .then(() => $('.toast-success').css('background-color', '#6FC04A'));
+      .then(() => $('.toast-success').css('background-color', '#60c4b0'));
   }
 
   showError(message: string, title?: string) {
     this.toastsManager.error(message, title)
-      .then(() => $('.toast-error').css('background-color', '#A94467'));
+      .then(() => $('.toast-error').css('background-color', '#92374d'));
   }
 
   showWarning(message: string, title?: string) {

@@ -1,54 +1,49 @@
-.member-details {
-  margin-top: 24px;
-}
-
-.btn-cash-in {
-  margin-left: -15px !important;
-}
-
 .member-info {
   font-size: 16px;
   font-weight: bold;
   margin: 12px 0; 
 }
 
-.history {
-  margin: 0 12px 12px 12px;
-}
-
-.row {
-  margin-top: 24px;
-  margin-bottom: 24px;
-}
-
-.row:first-child {
-  margin-top: 12px;
+.team-member-name {
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .name-box {
-  font-size: 16px;
+  font-size: 13px;
   margin: 0;
   padding: 0;
+  border-radius: 2px;
+  width: 30%;
+  height: 21px;
+}
+
+.container {
+  padding-left: 30px;
+}
+
+.member-details button {
+  margin-bottom: 12px;
+}
+
+.cash-in-btn {
+  margin-left: -14px;
+}
+
+table {
+  margin: 12px 0;
+}
+
+table p {
+  font-size: 14px;
+}
+
+tr > td {
+  font-size: 14px;
 }
 
 .delete-button {
   margin-left: 10px;
-}
-
-.error-message {
-  color: #a94467;
-  font-size: 14px;
-  font-style: italic;
-  float: right;
-}
-
-.no-error {
-  visibility: hidden;
-}
-
-.error {
-  border: none;
-  box-shadow: 0 0 0 .1rem #a94467 !important;
 }
 
 .modal-body {
@@ -61,16 +56,8 @@
   font-size: 14px;
 }
 
-.history-table {
-  margin: 36px 0;
-  color: grey;
-}
-
-.hov-link:hover {
-  color: black;
-}
-
 .date-box {
-  width: 50%;
+  width: 35%;
   padding: 0;
+  font-size: 12px;
 }
