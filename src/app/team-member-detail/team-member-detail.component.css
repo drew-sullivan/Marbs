@@ -10,9 +10,12 @@
 }
 
 .name-box {
-  font-size: 16px;
+  font-size: 13px;
   margin: 0;
   padding: 0;
+  border-radius: 2px;
+  width: 30%;
+  height: 21px;
 }
 
 .container {
@@ -24,7 +27,7 @@
 }
 
 .cash-in-btn {
-  margin-left: -15px;
+  margin-left: -14px;
 }
 
 table {
@@ -54,6 +57,7 @@ tr > td {
 }
 
 .date-box {
-  width: 50%;
+  width: 35%;
   padding: 0;
+  font-size: 12px;
 }

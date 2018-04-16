@@ -3,11 +3,11 @@
   <div class="page-heading">
     <h2 *ngIf="!editingName" (click)="editingName = true" class="text-center">
       <span class="hov-link hov-link-green team-member-name">{{ teamMember.name }}</span></h2>
-    <h2 *ngIf="editingName">
+    <h2 *ngIf="editingName" class="text-center">
       <input #nameBox
             type="text"
             placeholder="{{ teamMember.name }}"
-            class="form-control input-custom name-box width-40 text-center"
+            class="width-40 text-center name-box"
             (keyup.enter)="updateName(teamMember.name, nameBox.value)"
             (clickOutside)="outsideClickSubmitName($event, teamMember.name, nameBox.value)" />
     </h2>
