@@ -50,8 +50,11 @@ nav a {
   color: white;
   font-size: 20px;
 }
-
 .spacer {
   height: 115px;
   visibility: hidden;
 }
+
+.logo {
+  height: 40px;
+} 
