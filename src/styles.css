@@ -97,6 +97,19 @@ tbody tr {
   border-bottom: 2px solid #f27e21;
 }
 
+.modal-header {
+  border-top: 5px solid #60c4b0 !important;
+  border-radius: 0 !important;
+}
+
+.modal-title {
+  margin: 0 auto !important;
+}
+
+.modal-footer {
+  margin: 0 auto !important;
+}
+
 /* CUSTOM BUTTONS */
 
 .qa-btn {

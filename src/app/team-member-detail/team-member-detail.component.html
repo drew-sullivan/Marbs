@@ -86,14 +86,11 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Are you sure?</h5>
-            <button type="button" class="close" data-dismiss="modal">
-              <span aria-hidden="true">&times;</span>
-            </button>
+            <p class="modal-title">Are you sure?</p>
           </div>
           <div class="modal-footer">
-            <a type="button" class="modal-no" data-dismiss="modal">No</a>
-            <button type="button" class="btn btn-custom btn-custom-hyland-red" (click)="deleteTeamMember(teamMember)" data-dismiss="modal">Yes</button>
+            <a type="button" class="action-button add-button" data-dismiss="modal">No</a>
+            <a type="button" class="action-button delete-button" (click)="deleteTeamMember(teamMember)" data-dismiss="modal">Yes, delete this team member</a>
           </div>
         </div>
       </div>
