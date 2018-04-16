@@ -1,13 +1,13 @@
 <div *ngIf="teamMember">
 
   <div class="page-heading">
-    <h2 *ngIf="!editingName" (click)="editingName = true">
-      <span class="hov-link hov-link-green">{{ teamMember.name }}</span></h2>
+    <h2 *ngIf="!editingName" (click)="editingName = true" class="text-center">
+      <span class="hov-link hov-link-green team-member-name">{{ teamMember.name }}</span></h2>
     <h2 *ngIf="editingName">
       <input #nameBox
             type="text"
             placeholder="{{ teamMember.name }}"
-            class="form-control input-custom name-box width-40"
+            class="form-control input-custom name-box width-40 text-center"
             (keyup.enter)="updateName(teamMember.name, nameBox.value)"
             (clickOutside)="outsideClickSubmitName($event, teamMember.name, nameBox.value)" />
     </h2>
@@ -16,7 +16,7 @@
   <div class="container member-details">
 
     <!-- Button trigger modal -->
-    <button class="btn-custom btn-custom-hyland-green btn-cash-in member-info"
+    <button class="qa-btn primary-btn"
             [disabled]="teamMember.halfDaysBanked < 1"
             [class.disabled]="teamMember.halfDaysBanked < 1"
             data-toggle="modal" data-target="#bankedDays">
@@ -39,11 +39,12 @@
     </div>
 
     <div class="member-info">Half Days Banked:
-      <span>&nbsp;&nbsp;{{ teamMember.halfDaysBanked }}</span>
-      <button (click)="incrementHalfDaysBanked()">&#43;</button>
+      <span>&nbsp;&nbsp;{{ teamMember.halfDaysBanked }}&nbsp;&nbsp;</span>
+      <button (click)="incrementHalfDaysBanked()" class="qa-btn qa-btn-sm primary-btn">&#43;</button>
       <button (click)="decrementHalfDaysBanked()"
               [disabled]="teamMember.halfDaysBanked < 1"
-              [class.disabled]="teamMember.halfDaysBanked < 1">&#45;</button>
+              [class.disabled]="teamMember.halfDaysBanked < 1"
+              class="qa-btn qa-btn-sm danger-btn">&#45;</button>
     </div>
     
     <div class="history-table">

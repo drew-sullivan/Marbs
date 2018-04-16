@@ -6,25 +6,25 @@
   <thead>
     <tr>
       <th scope="col" (click)="columnSorted='name'; sortByCol('name')">
-        <button class="sort-btn sort-btn-left">
+        <button class="qa-btn qa-btn-md primary-btn primary-btn-left">
           <span class="btn-text-left">Name</span>
           <span class="btn-text-right"><i class="fas fa-sort"></i></span>
         </button>
       </th>
       <th scope="col" (click)="columnSorted='numDays'; sortByCol('numDays')">
-        <button class="sort-btn">
+        <button class="qa-btn qa-btn-md primary-btn">
           <span class="btn-text-left">Days Used</span>
           <span class="btn-text-right"><i class="fas fa-sort"></i></span>
         </button>
       </th>
       <th scope="col" (click)="columnSorted='banked'; sortByCol('banked')">
-        <button class="sort-btn">
+        <button class="qa-btn qa-btn-md primary-btn">
           <span class="btn-text-left">Days Banked </span>
           <span class="btn-text-right"><i class="fas fa-sort"></i></span>
         </button>
       </th>
       <th (click)="columnSorted='dates'; sortByCol('dates')">
-        <button class="sort-btn">
+        <button class="qa-btn qa-btn-md primary-btn">
           <span class="btn-text-left">Most Recent</span>
           <span class="btn-text-right"><i class="fas fa-sort"></i></span>
         </button>
@@ -43,7 +43,7 @@
 </table>
 
 <!-- Button trigger modal -->
-<!-- <a class="action-button add-button" data-toggle="modal" data-target="#addMember">Add New Team Member</a> -->
+<a class="action-button add-button" data-toggle="modal" data-target="#addMember">Add New Team Member</a>
 <!-- <div class="drew" data-toggle="modal" data-target="#addMember"><i class="fas fa-plus"></i></div> -->
 <!-- Modal -->
 <div class="modal fade" id="addMember" tabindex="-1" role="dialog">
@@ -60,7 +60,7 @@
       </div>
       <div class="modal-footer">
         <a type="button" class="modal-no hov-link" data-dismiss="modal">Cancel</a>
-        <button (click)="add(teamMemberName.value); teamMemberName.value=''" class="btn btn-custom btn-custom-hyland-green" data-dismiss="modal">Add</button>
+        <button (click)="add(teamMemberName.value); teamMemberName.value=''" class="primary-btn" data-dismiss="modal">Add</button>
       </div>
     </div>
   </div>
