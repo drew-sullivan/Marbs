@@ -18,6 +18,7 @@ import { ClickOutsideModule } from 'ng4-click-outside';
 import { CashInFormComponent } from './cash-in-form/cash-in-form.component';
 
 import * as bootstrap from 'bootstrap';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import * as bootstrap from 'bootstrap';
     TeamMembersComponent,
     TeamMemberDetailComponent,
     CashInFormComponent,
+    LoginPageComponent,
   ],
   imports: [
     BrowserModule,
