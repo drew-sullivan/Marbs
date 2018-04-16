@@ -159,7 +159,7 @@ tbody tr {
 
 .add-button {
   color: #4D4F53 !important;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .add-button:hover,
@@ -170,7 +170,7 @@ tbody tr {
 
 .delete-button {
   color: #a94467 !important;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .delete-button:hover,
@@ -185,155 +185,3 @@ tbody tr {
   border-bottom: 2px solid transparent;
   transition: .2s ease-in-out;
 }
-
-/* 
-.modal-no {
-  margin-right: 20px !important;
-  cursor: pointer;
-  color: inherit;
-  border-bottom: 2px solid transparent;
-  transition: .2s ease-in-out;
-}
-
-.modal-no:hover,
-.modal-no:active,
-.modal-no:focus {
-  border-bottom: 2px solid #212529;
-}
-
-
-
-.tertiary-button {
-  cursor: pointer;
-  text-decoration: none;
-  color: inherit;
-  font-weight: bold;
-  transition: .2s ease-in-out;
-  padding-bottom: 12px;
-  border-bottom: 2px solid transparent;
-}
-
-.tertiary-button:hover {
-  text-decoration: none;
-  color: inherit;
-  padding-bottom: 12px;
-}
-
-
-
-.btn-custom {
-  border: none;
-  box-shadow: inset 0 -3px 0 rgba( 0, 0, 0, 0.25 ) !important;
-  color: #fff;
-  padding: 6px 14px;
-  transition: .05s ease-in-out;
-  border-radius: 5px;
-}
-
-.btn-custom:focus,
-.btn-custom:hover {
-  color: #fff;
-}
-
-.btn-custom:active:enabled {
-  box-shadow: inset 0 3px 0 rgba( 0, 0, 0, 0.25 ) !important;
-}
-
-.btn-custom-hyland-green {
-  background: #6FC04A;
-  color: white;
-  border: 1px solid #d3d3d3;
-}
-
-.btn-custom-hyland-green:active:enabled,
-.btn-custom-hyland-green:hover:enabled {
-  background: #96d17b;
-  color: #fff;
-}
-
-.btn-custom-hyland-pink {
-  background: #EF509D;
-  color: #fff;
-}
-
-.btn-custom-hyland-pink:active,
-.btn-custom-hyland-pink:focus,
-.btn-custom-hyland-pink:hover {
-  background: #f37fb7;
-  color: #fff;
-}
-
-.btn-custom-hyland-light-blue {
-  background: #00C7E9;
-  color: #fff;
-}
-
-.btn-custom-hyland-light-blue:active,
-.btn-custom-hyland-light-blue:focus,
-.btn-custom-hyland-light-blue:hover {
-  background: #45d6ef;
-  color: #fff;
-}
-
-.btn-custom-hyland-orange {
-  background: #FF7900;
-  color: #fff;
-}
-
-.btn-custom-hyland-orange:active,
-.btn-custom-hyland-orange:focus,
-.btn-custom-hyland-orange:hover {
-  background: #ff9d45;
-  color: #fff;
-}
-
-.btn-custom-hyland-dark-blue {
-  background: #002D38;
-  color: #fff;
-}
-
-.btn-custom-hyland-dark-blue:active,
-.btn-custom-hyland-dark-blue:focus,
-.btn-custom-hyland-dark-blue:hover {
-  background: #668188;
-  color: #fff;
-}
-
-.btn-custom-hyland-med-grey {
-  background: #4D4F53;
-  color: #fff;
-}
-
-.btn-custom-hyland-med-grey:active,
-.btn-custom-hyland-med-grey:focus,
-.btn-custom-hyland-med-grey:hover {
-  background: #7d7f81;
-  color: #fff;
-}
-
-.btn-custom-hyland-red {
-  background: #a94467;
-  color: #fff;
-}
-
-.btn-custom-hyland-red:active,
-.btn-custom-hyland-red:focus,
-.btn-custom-hyland-red:hover {
-  background: #c07790;
-  color: #fff;
-}
-
-.btn-custom-lg {
-  font-size: 16px;
-  padding: 10px 18px;
-}
-
-.btn-custom-sm {
-  font-size: 12px;
-  padding: 6px 13px;
-}
-
-.btn-custom-xs {
-  font-size: 12px;
-  padding: 5px 10px;
-} */

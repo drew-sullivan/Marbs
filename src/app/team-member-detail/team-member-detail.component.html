@@ -15,8 +15,17 @@
 
   <div class="container member-details">
 
+    <div class="member-info">Half Days Banked:
+      <span>&nbsp;&nbsp;{{ teamMember.halfDaysBanked }}&nbsp;&nbsp;</span>
+      <button (click)="incrementHalfDaysBanked()" class="qa-btn qa-btn-sm primary-btn">&#43;</button>
+      <button (click)="decrementHalfDaysBanked()"
+              [disabled]="teamMember.halfDaysBanked < 1"
+              [class.disabled]="teamMember.halfDaysBanked < 1"
+              class="qa-btn qa-btn-sm danger-btn">&#45;</button>
+    </div>
+
     <!-- Button trigger modal -->
-    <button class="qa-btn primary-btn"
+    <button class="qa-btn primary-btn cash-in-btn"
             [disabled]="teamMember.halfDaysBanked < 1"
             [class.disabled]="teamMember.halfDaysBanked < 1"
             data-toggle="modal" data-target="#bankedDays">
@@ -38,38 +47,27 @@
       </div>
     </div>
 
-    <div class="member-info">Half Days Banked:
-      <span>&nbsp;&nbsp;{{ teamMember.halfDaysBanked }}&nbsp;&nbsp;</span>
-      <button (click)="incrementHalfDaysBanked()" class="qa-btn qa-btn-sm primary-btn">&#43;</button>
-      <button (click)="decrementHalfDaysBanked()"
-              [disabled]="teamMember.halfDaysBanked < 1"
-              [class.disabled]="teamMember.halfDaysBanked < 1"
-              class="qa-btn qa-btn-sm danger-btn">&#45;</button>
-    </div>
-    
-    <div class="history-table">
-      <label>Half Days Taken Off:&nbsp;&nbsp;{{ teamMember.datesTakenOff.length }}</label>
-      <div class="history">
-        <div *ngFor="let date of teamMember.datesTakenOff; let i = index" [attr.date-index]="i" class="row">
-          <div *ngIf="editingDate === -1 || editingDate !== i" class="col-md-4">
-            <span (click)="editingDate = i" class="hov-link hov-link-pink">{{ date | amDateFormat:'LL' }}</span>
-          </div>
-          <div *ngIf="editingDate === i" class="col-md-4">
+    <table class="table table-hover">
+      <p>Half Days Taken Off:&nbsp;&nbsp;{{ teamMember.datesTakenOff.length }}</p>
+      <tbody>
+        <tr *ngFor="let date of teamMember.datesTakenOff; let i = index" [attr.date-index]="i">
+          <td *ngIf="editingDate === -1 || editingDate !== i">
+            <span (click)="editingDate = i" class="hov-link hov-link-orange">{{ date | amDateFormat:'LL' }}</span>
+          </td>
+          <td *ngIf="editingDate === i">
             <input [ngModel]="teamMember.datesTakenOff[i]"
-                    (ngModelChange)="updateDate($event, i)"
-                    type="date"
-                    placeholder="{{ date }}"
-                    class="form-control input-custom date-box"
-                    (clickOutside)="outsideClickSubmitDate($event)"
-                    required />
-          </div>
-          <span class="col-md-4">{{ date | amTimeAgo }}</span>
-          <div class="col-md-4">
-            <a class="tertiary-button" (click)="deleteDate(date)">&times;</a>
-          </div>
-        </div>
-      </div>
-    </div>
+                   (ngModelChange)="updateDate($event, i)"
+                   type="date"
+                   placeholder="{{ date }}"
+                   class="form-control input-custom date-box"
+                   (clickOutside)="outsideClickSubmitDate($event)"
+                   required />
+          </td>
+          <td>{{ date | amTimeAgo }}</td>
+          <td><a class="action-button delete-button" (click)="deleteDate(date)">&times;</a></td>
+        </tr>
+      </tbody>
+    </table>
 
     <a *ngIf="!isAddingPreviousDate" class="action-button add-button"
        (click)="isAddingPreviousDate = true">Add Previous Day Off
