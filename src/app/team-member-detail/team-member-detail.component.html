@@ -73,9 +73,9 @@
        (click)="isAddingPreviousDate = true">Add Previous Day Off
     </a>
     <div *ngIf="isAddingPreviousDate">
-      <input #prevDateForm type="date" class="form-control width-40" />
-      <button (click)="isAddingPreviousDate = false">Nevermind</button>
-      <button (click)="addPreviousDate(prevDateForm.value)">Add</button>
+      <input #prevDateForm type="date" class="form-control input-custom date-box" />
+      <button (click)="isAddingPreviousDate = false" class="qa-btn danger-btn">Nevermind</button>
+      <button (click)="addPreviousDate(prevDateForm.value)" class="qa-btn primary-btn">Add</button>
     </div>
     
     <!-- Button trigger modal -->
