@@ -16,7 +16,8 @@ const httpOptions = {
 @Injectable()
 export class TeamMemberService {
 
-  private teamMembersUrl = 'http://dev-024402.onbase.net:9876/api/teamMembers';  // URL to web api
+  // private teamMembersUrl = 'http://dev-024402.onbase.net:9876/api/teamMembers';  // URL to web api
+  private teamMembersUrl = 'api/teamMembers';
 
   constructor(
     private http: HttpClient,
