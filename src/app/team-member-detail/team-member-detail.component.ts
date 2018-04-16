@@ -1,6 +1,6 @@
 import { MomentModule } from 'angular2-moment';
 import { Component, OnInit, Input, HostListener, ViewChild, ElementRef } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { TeamMember } from '../teamMember';
@@ -23,6 +23,7 @@ export class TeamMemberDetailComponent implements OnInit {
   isAddingPreviousDate = false;
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private teamMemberService: TeamMemberService,
     private toastService: ToastService) { }
@@ -53,7 +54,7 @@ export class TeamMemberDetailComponent implements OnInit {
     } else {
       dates.push(date);
     }
-    this.teamMemberService.updateTeamMember(this.teamMember);
+    this.teamMemberService.updateTeamMember(this.teamMember).subscribe();
     this.teamMember.datesTakenOff.sort(byDate);
     this.toastService.showSuccess(`Added ${moment(date).format('LL')} to ${this.teamMember.name}'s list of half days taken off`);
   }
@@ -63,7 +64,7 @@ export class TeamMemberDetailComponent implements OnInit {
     const dates = this.teamMember.datesTakenOff;
     const index = dates.findIndex(item => item === date);
     dates.splice(index, 1);
-    this.teamMemberService.updateTeamMember(this.teamMember);
+    this.teamMemberService.updateTeamMember(this.teamMember).subscribe();
     this.toastService.showSuccess(`Removed ${moment(date).format('LL')} from ${this.teamMember.name}'s list of half days taken off`);
   }
 
@@ -92,7 +93,7 @@ export class TeamMemberDetailComponent implements OnInit {
       name = oldName;
     }
     this.teamMember.name = name;
-    this.teamMemberService.updateTeamMember(this.teamMember);
+    this.teamMemberService.updateTeamMember(this.teamMember).subscribe();
     this.editingName = false;
   }
 
@@ -102,7 +103,7 @@ export class TeamMemberDetailComponent implements OnInit {
     }
     this.teamMember.datesTakenOff[index] = newDate;
     this.teamMember.datesTakenOff.sort(byDate);
-    this.teamMemberService.updateTeamMember(this.teamMember);
+    this.teamMemberService.updateTeamMember(this.teamMember).subscribe();
     this.toastService.showSuccess('Updated date');
     this.editingDate = -1;
     this.outsideClickCount = 0;
@@ -113,25 +114,29 @@ export class TeamMemberDetailComponent implements OnInit {
       return;
     }
     this.teamMember.halfDaysBanked -= num;
-    this.teamMemberService.updateTeamMember(this.teamMember);
+    this.teamMemberService.updateTeamMember(this.teamMember).subscribe();
     this.toastService.showSuccess(`${this.teamMember.name} now has ${this.teamMember.halfDaysBanked} half-day(s) banked`);
-  }
-
-  deleteTeamMember(tm: TeamMember): void {
-    this.teamMemberService.deleteTeamMember(tm).subscribe();
   }
 
   incrementHalfDaysBanked(): void {
     this.teamMember.halfDaysBanked += 1;
-    this.teamMemberService.updateTeamMember(this.teamMember);
+    this.teamMemberService.updateTeamMember(this.teamMember).subscribe();
     this.toastService.showSuccess('+ 1');
   }
 
   decrementHalfDaysBanked(): void {
     this.teamMember.halfDaysBanked -= 1;
-    this.teamMemberService.updateTeamMember(this.teamMember);
+    this.teamMemberService.updateTeamMember(this.teamMember).subscribe();
     this.toastService.showError('- 1');
   }
+
+  deleteTeamMember(tm: TeamMember): void {
+    this.teamMemberService.deleteTeamMember(tm).subscribe( () => {
+      // TODO: Test how this behaves with a really slow connection to the server
+      this.router.navigate(['/team-members']);
+    });
+  }
+
 
   transactionSubmitted(input: any): void {
     console.log(input);
@@ -140,7 +145,7 @@ export class TeamMemberDetailComponent implements OnInit {
     this.teamMember.halfDaysBanked = this.teamMember.halfDaysBanked - numCashedInDays;
     this.teamMember.datesTakenOff.push(input.selectedDate);
     this.teamMember.datesTakenOff.sort(byDate);
-    this.teamMemberService.updateTeamMember(this.teamMember);
+    this.teamMemberService.updateTeamMember(this.teamMember).subscribe();
     this.toastService.showSuccess(`Transaction successful!`);
   }
 
