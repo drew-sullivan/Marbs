@@ -32,8 +32,8 @@
   
 </div>
 <div class="modal-footer">
-  <a type="button" class="modal-no hov-link" data-dismiss="modal">Cancel</a>
-  <button type="submit" class="btn btn-custom btn-custom-hyland-green"
+  <a type="button" class="action-button add-button" data-dismiss="modal">Cancel</a>
+  <button type="submit" class="qa-btn primary-btn"
           (click)="updateUser(transactionForm.value); transactionForm.reset()"
           [disabled]="!transactionForm.form.valid"
           [class.disabled]="!transactionForm.form.valid">Submit</button>

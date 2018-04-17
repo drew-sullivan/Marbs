@@ -51,7 +51,6 @@ export class TeamMemberService {
   updateTeamMember(teamMember: TeamMember): Observable<TeamMember> {
     return this.http.put<ServerResponse>(this.teamMembersUrl, teamMember).pipe(
       map(response => response.data),
-      tap(_ => this.toast.showSuccess(`Updated ${teamMember.name}'s information`)),
       catchError(this.handleError<TeamMember>('updateTeamMember'))
     );
   }
