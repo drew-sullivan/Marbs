@@ -23,11 +23,13 @@ export class TeamMemberService {
     private toast: ToastService) { }
 
   getTeamMembers(): Observable<TeamMember[]> {
-    return this.http.get<ServerResponse>(this.teamMembersUrl)
+    const thing = this.http.get<ServerResponse>(this.teamMembersUrl)
       .pipe(
         map(response => response.data),
         catchError(this.handleError('getTeamMembers', []))
       );
+    thing.subscribe((value) => console.log(value));
+    return thing;
   }
 
   getTeamMember(id: number): Observable<TeamMember> {

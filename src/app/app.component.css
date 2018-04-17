@@ -13,7 +13,8 @@ body {
   width: 100%;
   height: 100px;
   line-height: 100px;
-  background-color: #d3d3d3;
+  background-color: #7b8181;
+  color: black;
 }
 
 body > .container {
@@ -55,6 +56,10 @@ nav a {
   visibility: hidden;
 }
 
-.logo {
+.header-logo {
   height: 40px;
-} 
+}
+
+.footer-logo {
+  height: 25px;
+}
