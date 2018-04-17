@@ -122,11 +122,11 @@ tbody tr {
   box-shadow: inset 0 -3px 0 #6ea69b !important;
 }
 
-.primary-btn:active {
+.primary-btn:active:enabled {
   box-shadow: inset 0 3px 0 #6ea69b !important;
 }
 
-.primary-btn:hover {
+.primary-btn:hover:enabled {
   background-color: #8bd4c5;
 }
 
@@ -136,11 +136,11 @@ tbody tr {
   box-shadow: inset 0 -3px 0 #4e1e2a !important;
 }
 
-.danger-btn:active {
+.danger-btn:active:enabled {
   box-shadow: inset 0 3px 0 #4e1e2a !important;
 }
 
-.danger-btn:hover {
+.danger-btn:hover:enabled {
   background-color: #af6d7d;
 }
 

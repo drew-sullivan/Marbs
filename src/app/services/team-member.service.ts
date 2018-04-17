@@ -16,7 +16,7 @@ const httpOptions = {
 @Injectable()
 export class TeamMemberService {
 
-  private teamMembersUrl = 'http://dev-029666.onbase.net:9874/api/teamMembers';  // URL to web api
+  private teamMembersUrl = 'http://dev-029666.onbase.net:9872/api/teamMembers';  // URL to web api
 
   constructor(
     private http: HttpClient,
@@ -51,7 +51,6 @@ export class TeamMemberService {
   updateTeamMember(teamMember: TeamMember): Observable<TeamMember> {
     return this.http.put<ServerResponse>(this.teamMembersUrl, teamMember).pipe(
       map(response => response.data),
-      tap(_ => this.toast.showSuccess(`Updated ${teamMember.name}'s information`)),
       catchError(this.handleError<TeamMember>('updateTeamMember'))
     );
   }

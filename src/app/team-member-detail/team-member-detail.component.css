@@ -65,3 +65,7 @@ tr > td {
   width: 15%;
   height: 30px;
 }
+
+.disabled {
+  cursor: not-allowed;
+}

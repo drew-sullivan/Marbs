@@ -153,7 +153,7 @@ export class TeamMemberDetailComponent implements OnInit {
     console.log(date);
     this.teamMember.datesTakenOff.push(date);
     this.teamMember.datesTakenOff.sort(byDate);
-    this.teamMemberService.updateTeamMember(this.teamMember);
+    this.teamMemberService.updateTeamMember(this.teamMember).subscribe();
     this.toastService.showSuccess('Date added!');
     this.isAddingPreviousDate = false;
   }
