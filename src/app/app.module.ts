@@ -15,7 +15,6 @@ import { AppRoutingModule } from './/app-routing.module';
 
 import { ToastService } from './services/toast.service';
 import { TeamMemberService } from './services/team-member.service';
-import { InMemoryDataService } from './in-memory-data.service';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
@@ -38,14 +37,11 @@ import * as bootstrap from 'bootstrap';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    ),
     MomentModule,
     ClickOutsideModule,
     ToastModule.forRoot()
   ],
-  providers: [TeamMemberService, ToastService, InMemoryDataService],
+  providers: [TeamMemberService, ToastService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
