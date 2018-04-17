@@ -16,19 +16,21 @@ const httpOptions = {
 @Injectable()
 export class TeamMemberService {
 
-  // private teamMembersUrl = 'http://dev-024402.onbase.net:9876/api/teamMembers';  // URL to web api
-  private teamMembersUrl = 'api/teamMembers';
+  private teamMembersUrl = 'http://dev-029666.onbase.net:9874/api/teamMembers';  // URL to web api
+  // private teamMembersUrl = 'api/teamMembers';
 
   constructor(
     private http: HttpClient,
     private toast: ToastService) { }
 
   getTeamMembers(): Observable<TeamMember[]> {
-    return this.http.get<ServerResponse>(this.teamMembersUrl)
+    const thing = this.http.get<ServerResponse>(this.teamMembersUrl)
       .pipe(
         map(response => response.data),
         catchError(this.handleError('getTeamMembers', []))
       );
+    thing.subscribe((value) => console.log(value));
+    return thing;
   }
 
   getTeamMember(id: number): Observable<TeamMember> {
