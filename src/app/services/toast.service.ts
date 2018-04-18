@@ -18,7 +18,7 @@ export class ToastService {
 
   showSuccess(message: string, title?: string) {
     this.toastsManager.success(message, title)
-      .then(() => $('.toast-success').css('background-color', '#60c4b0'));
+      .then(() => $('.toast-success').css('background-color', '#f27e21'));
   }
 
   showError(message: string, title?: string) {
