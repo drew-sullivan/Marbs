@@ -16,8 +16,6 @@ import { AppRoutingModule } from './/app-routing.module';
 import { ToastService } from './services/toast.service';
 import { TeamMemberService } from './services/team-member.service';
 
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-
 import { MomentModule } from 'angular2-moment';
 import { ClickOutsideModule } from 'ng4-click-outside';
 
