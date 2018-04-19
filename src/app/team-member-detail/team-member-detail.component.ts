@@ -60,7 +60,6 @@ export class TeamMemberDetailComponent implements OnInit {
   }
 
   deleteDate(date: string): void {
-    console.log(date);
     const dates = this.teamMember.datesTakenOff;
     const index = dates.findIndex(item => item === date);
     dates.splice(index, 1);
@@ -139,7 +138,6 @@ export class TeamMemberDetailComponent implements OnInit {
 
 
   transactionSubmitted(input: any): void {
-    console.log(input);
     $('#bankedDays').modal('hide');
     const numCashedInDays = input.isHalfDay || this.teamMember.halfDaysBanked < 2 ? 1 : 2;
     this.teamMember.halfDaysBanked = this.teamMember.halfDaysBanked - numCashedInDays;
@@ -150,7 +148,6 @@ export class TeamMemberDetailComponent implements OnInit {
   }
 
   addPreviousDate(date: string): void {
-    console.log(date);
     this.teamMember.datesTakenOff.push(date);
     this.teamMember.datesTakenOff.sort(byDate);
     this.teamMemberService.updateTeamMember(this.teamMember).subscribe();
