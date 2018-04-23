@@ -16,7 +16,7 @@ const httpOptions = {
 @Injectable()
 export class TeamMemberService {
 
-  private teamMembersUrl = 'http://dev-029666.onbase.net:9872/api/teamMembers';  // URL to web api
+  public teamMembersUrl = 'http://dev-029666.onbase.net:9872/api/teamMembers';  // URL to web api
 
   constructor(
     private http: HttpClient,
@@ -62,7 +62,7 @@ export class TeamMemberService {
     );
   }
 
-  private handleError<T> (operation = 'operation', result?: T) {
+  public handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
       this.toast.showError(`${operation} failed: ${error.message}`);
@@ -71,8 +71,6 @@ export class TeamMemberService {
   }
 }
 
-class ServerResponse {
-  public data; // This variable holds what you want
+export class ServerResponse {
+  public data;
 }
-
-
