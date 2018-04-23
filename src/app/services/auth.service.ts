@@ -14,10 +14,19 @@ export class AuthService {
 
   constructor(private teamMemberService: TeamMemberService, private http: HttpClient) { }
 
-  login(userName: string, password: string): void {
+  login(formEmail: string, formPassword: string): void {
+    // WIP:
+    // let email = this.http.get<ServerResponse>(this.teamMemberService.teamMembersUrl).subscribe();
+    // const pw = this.http.get<ServerResponse>(this.teamMemberService.teamMembersUrl).subscribe();
+    // if (formEmail === email) {
+    //   this.currentUser = {
+    //     email,
+    //     pw
+    //   };
+    // }
     this.currentUser = {
-      userName,
-      password
+      email: formEmail,
+      password: formPassword
     };
   }
 
