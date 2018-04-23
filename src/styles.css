@@ -54,7 +54,7 @@ tbody tr {
 }
 
 .disabled {
-  cursor: not-allowed;
+  cursor: not-allowed !important;
 }
 
 .error {

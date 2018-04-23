@@ -1,7 +1,6 @@
 <div class="main-content mx-auto">
   
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value); loginForm.reset()"
-        [class.error]="!loginForm.valid && loginForm.touched">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value); loginForm.reset()">
     <h2>Log in</h2>
 
     <div *ngIf="!email.valid && email.touched"
@@ -14,10 +13,11 @@
     <input type="password" id="inputPassword"
            class="form-control input-custom" placeholder="Password"
            required [formControl]="loginForm.controls['password']">
-    <div *ngIf="!loginForm.valid && loginForm.touched" class="error">Form is not valid</div>
 
     <div class="text-right">
-      <button class="qa-btn qa-btn-md accent-btn" type="submit" [class.disabled]="!loginForm.valid">Sign in</button>
+      <button class="qa-btn qa-btn-md accent-btn" type="submit"
+              [disabled]="!loginForm.valid"
+              [class.disabled]="!loginForm.valid">Sign in</button>
     </div>
 
   </form>
