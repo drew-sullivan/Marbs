@@ -57,6 +57,10 @@ tbody tr {
   cursor: not-allowed;
 }
 
+.error {
+  color: red;
+}
+
 .input-custom {
   font-size: 14px;
   display: inline-block;
