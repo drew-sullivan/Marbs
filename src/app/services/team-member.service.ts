@@ -1,3 +1,4 @@
+import { AuthService } from './auth.service';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -16,30 +17,62 @@ const httpOptions = {
 @Injectable()
 export class TeamMemberService {
 
-  public teamMembersUrl = 'http://dev-029666.onbase.net:9872/api/teamMembers';  // URL to web api
+  public teamMembersUrl = 'http://dev-029666.onbase.net:9876/api/teamMembers';  // URL to web api
 
   constructor(
     private http: HttpClient,
-    private toast: ToastService) { }
+    private toast: ToastService,
+    private auth: AuthService) { }
 
   getTeamMembers(): Observable<TeamMember[]> {
-    return this.http.get<ServerResponse>(this.teamMembersUrl)
+    this.auth.currentUser = {
+      email: 'manager',
+      pw: 'password'
+    };
+    const body = {
+      username: this.auth.currentUser.email,
+      password: this.auth.currentUser.pw
+    };
+    return this.http.post<ServerResponse>(this.teamMembersUrl, body, httpOptions)
       .pipe(
         map(response => response.data),
         catchError(this.handleError('getTeamMembers', []))
       );
   }
 
+  // getTeamMembers(): Observable<TeamMember[]> {
+  //   return this.http.get<ServerResponse>(this.teamMembersUrl)
+  //     .pipe(
+  //       map(response => response.data),
+  //       catchError(this.handleError('getTeamMembers', []))
+  //     );
+  // }
+
   getTeamMember(id: number): Observable<TeamMember> {
-    const url = `${this.teamMembersUrl}/${id}`;
-    return this.http.get<ServerResponse>(url).pipe(
-      map(response => response.data),
+    this.auth.currentUser = {
+      email: 'manager',
+      pw: 'password'
+    };
+    const body = {
+      username: this.auth.currentUser.email,
+      password: this.auth.currentUser.pw,
+      id
+    };
+    return this.http.post<ServerResponse>(this.teamMembersUrl, body, httpOptions).pipe(
+      map(response => response.data[0]),
       catchError(this.handleError<TeamMember>(`getTeamMember with id = ${id}`))
     );
   }
 
   addTeamMember(teamMember: TeamMember): Observable<TeamMember> {
-    return this.http.post<ServerResponse>(this.teamMembersUrl, teamMember, httpOptions).pipe(
+    this.auth.currentUser = {
+      email: 'manager',
+      pw: 'password'
+    };
+    const body: any = teamMember;
+    body.username = 'manager';
+    body.password = 'password';
+    return this.http.post<ServerResponse>(this.teamMembersUrl + `/create`, body, httpOptions).pipe(
       map(response => response.data),
       tap((tm: TeamMember) => this.toast.showSuccess(`Added team member ${tm.name}`)),
       catchError(this.handleError<TeamMember>('addTeamMember'))
@@ -47,15 +80,30 @@ export class TeamMemberService {
   }
 
   updateTeamMember(teamMember: TeamMember): Observable<TeamMember> {
-    return this.http.put<ServerResponse>(this.teamMembersUrl, teamMember).pipe(
+    this.auth.currentUser = {
+      email: 'manager',
+      pw: 'password'
+    };
+    const body: any = teamMember;
+    body.username = 'manager';
+    body.password = 'password';
+    return this.http.put<ServerResponse>(this.teamMembersUrl, body).pipe(
       map(response => response.data),
       catchError(this.handleError<TeamMember>('updateTeamMember'))
     );
   }
 
   deleteTeamMember(tm: TeamMember): Observable<TeamMember> {
-    const url = `${this.teamMembersUrl}/${tm.id}`;
-    return this.http.delete<ServerResponse>(url, httpOptions).pipe(
+    this.auth.currentUser = {
+      email: 'manager',
+      pw: 'password'
+    };
+    const body = {
+      username: this.auth.currentUser.email,
+      password: this.auth.currentUser.pw,
+      id: tm.id
+    };
+    return this.http.post<ServerResponse>(this.teamMembersUrl + '/delete', body, httpOptions).pipe(
       map(response => response.data ),
       tap(_ => this.toast.showSuccess(`Deleted ${tm.name}`)),
       catchError(this.handleError<TeamMember>('deleteTeamMember'))
@@ -73,4 +121,5 @@ export class TeamMemberService {
 
 export class ServerResponse {
   public data;
+  public error;
 }

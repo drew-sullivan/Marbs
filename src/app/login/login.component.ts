@@ -21,28 +21,15 @@ export class LoginComponent implements OnInit {
     });
     this.email = this.loginForm.controls['email'];
     this.password = this.loginForm.controls['password'];
-
-    this.email.valueChanges.subscribe(
-      (value: string) => console.log(`Email: ${value}`)
-    );
-
-    this.password.valueChanges.subscribe(
-      (value: string) => console.log(`Password: ${value}`)
-    );
-
-    this.loginForm.valueChanges.subscribe(
-      (form: any) => console.log(`Form changed to: ${form.email}`)
-    );
   }
 
   ngOnInit() {
   }
 
   onSubmit(loginForm: any) {
-    console.log(loginForm);
-    // const email = loginForm.form.controls['email'].value;
-    // const pw = loginForm.form.controls['password'].value;
-    // this.auth.login(email, pw);
+    const email = loginForm.email;
+    const password = loginForm.password;
+    this.auth.login(email, password);
   }
 
 }

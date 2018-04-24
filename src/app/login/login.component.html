@@ -3,7 +3,7 @@
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value); loginForm.reset()">
     <h2>Log in</h2>
 
-    <input type="email" id="inputEmail" email
+    <input type="email" id="inputEmail"
            class="form-control input-custom" placeholder="Email address"
            required [formControl]="loginForm.controls['email']"
            [class.input-error]="(email.hasError('required') && email.touched) || (!email.valid && email.touched)">

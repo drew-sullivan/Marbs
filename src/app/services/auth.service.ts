@@ -1,5 +1,6 @@
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { of } from 'rxjs/observable/of';
@@ -8,34 +9,26 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { TeamMemberService, ServerResponse } from './team-member.service';
 
 @Injectable()
-export class AuthService {
+export class AuthService implements OnInit {
 
   currentUser: any;
+  redirectUrl: string;
 
-  constructor(private teamMemberService: TeamMemberService, private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
-  login(formEmail: string, formPassword: string): void {
-    // WIP:
-    // let email = this.http.get<ServerResponse>(this.teamMemberService.teamMembersUrl).subscribe();
-    // const pw = this.http.get<ServerResponse>(this.teamMemberService.teamMembersUrl).subscribe();
-    // if (formEmail === email) {
-    //   this.currentUser = {
-    //     email,
-    //     pw
-    //   };
-    // }
-    this.currentUser = {
-      email: formEmail,
-      password: formPassword
-    };
+  ngOnInit() {
   }
 
-  isLoggedIn(): Observable<boolean> {
-    return this.http.get<ServerResponse>(this.teamMemberService.teamMembersUrl)
-      .pipe(
-        map(response => response.data),
-        catchError(this.teamMemberService.handleError('isLoggedIn', []))
-      );
+  login(email: string, pw: string): void {
+    this.currentUser = {
+      email,
+      pw
+    };
+    this.router.navigate(['/team-members']);
+  }
+
+  logout(): void {
+    this.currentUser = null;
   }
 
 }

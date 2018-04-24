@@ -23,6 +23,7 @@ import { ClickOutsideModule } from 'ng4-click-outside';
 
 import * as bootstrap from 'bootstrap';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+// import { AuthGuardService } from './services/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     ClickOutsideModule,
     ToastModule.forRoot()
   ],
-  providers: [TeamMemberService, ToastService, AuthService],
+  providers: [TeamMemberService, ToastService, AuthService,
+    // AuthGuardService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
