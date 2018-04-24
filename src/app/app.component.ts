@@ -12,14 +12,21 @@ export class AppComponent implements OnInit {
 
   title = 'Marbs';
 
-  constructor(toastService: ToastService, toastManager: ToastsManager, vcr: ViewContainerRef, private auth: AuthService) {
+  constructor(
+    toastService: ToastService,
+    toastManager: ToastsManager,
+    vcr: ViewContainerRef,
+    // private auth: AuthService
+  ) {
     toastService.setUpVCR(vcr);
   }
 
-  ngOnInit(): void {
-    this.auth.currentUser = {
-      email: 'manager',
-      pw: 'password'
-    };
+  // UNCOMMENT TO TEST FASTER
+  ngOnInit() {
+    // this.auth.currentUser = {
+    //   email: 'manager',
+    //   pw: 'password'
+    // };
+    return;
   }
 }
