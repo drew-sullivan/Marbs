@@ -16,8 +16,7 @@ export class AuthService implements OnInit {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   login(email: string, pw: string): void {
     this.currentUser = {

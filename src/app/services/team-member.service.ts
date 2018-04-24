@@ -1,5 +1,5 @@
 import { AuthService } from './auth.service';
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
@@ -25,10 +25,6 @@ export class TeamMemberService {
     private auth: AuthService) { }
 
   getTeamMembers(): Observable<TeamMember[]> {
-    this.auth.currentUser = {
-      email: 'manager',
-      pw: 'password'
-    };
     const body = {
       username: this.auth.currentUser.email,
       password: this.auth.currentUser.pw
@@ -40,19 +36,7 @@ export class TeamMemberService {
       );
   }
 
-  // getTeamMembers(): Observable<TeamMember[]> {
-  //   return this.http.get<ServerResponse>(this.teamMembersUrl)
-  //     .pipe(
-  //       map(response => response.data),
-  //       catchError(this.handleError('getTeamMembers', []))
-  //     );
-  // }
-
   getTeamMember(id: number): Observable<TeamMember> {
-    this.auth.currentUser = {
-      email: 'manager',
-      pw: 'password'
-    };
     const body = {
       username: this.auth.currentUser.email,
       password: this.auth.currentUser.pw,
@@ -65,13 +49,9 @@ export class TeamMemberService {
   }
 
   addTeamMember(teamMember: TeamMember): Observable<TeamMember> {
-    this.auth.currentUser = {
-      email: 'manager',
-      pw: 'password'
-    };
     const body: any = teamMember;
-    body.username = 'manager';
-    body.password = 'password';
+    body.username = this.auth.currentUser.email;
+    body.password = this.auth.currentUser.pw;
     return this.http.post<ServerResponse>(this.teamMembersUrl + `/create`, body, httpOptions).pipe(
       map(response => response.data),
       tap((tm: TeamMember) => this.toast.showSuccess(`Added team member ${tm.name}`)),
@@ -80,13 +60,9 @@ export class TeamMemberService {
   }
 
   updateTeamMember(teamMember: TeamMember): Observable<TeamMember> {
-    this.auth.currentUser = {
-      email: 'manager',
-      pw: 'password'
-    };
     const body: any = teamMember;
-    body.username = 'manager';
-    body.password = 'password';
+    body.username = this.auth.currentUser.email;
+    body.password = this.auth.currentUser.pw;
     return this.http.put<ServerResponse>(this.teamMembersUrl, body).pipe(
       map(response => response.data),
       catchError(this.handleError<TeamMember>('updateTeamMember'))
@@ -94,10 +70,6 @@ export class TeamMemberService {
   }
 
   deleteTeamMember(tm: TeamMember): Observable<TeamMember> {
-    this.auth.currentUser = {
-      email: 'manager',
-      pw: 'password'
-    };
     const body = {
       username: this.auth.currentUser.email,
       password: this.auth.currentUser.pw,
