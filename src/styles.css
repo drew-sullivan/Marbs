@@ -59,6 +59,7 @@ tbody tr {
 
 .error {
   color: red;
+  font-size: 12px;
 }
 
 .input-custom {
