@@ -29,7 +29,6 @@ export class TeamMemberService {
       username: this.auth.currentUser.username,
       password: this.auth.currentUser.password
     };
-    console.log(body);
     return this.http.post<ServerResponse>(this.teamMembersUrl, body, httpOptions)
       .pipe(
         map(response => response.data),
