@@ -13,7 +13,6 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   email: AbstractControl;
   password: AbstractControl;
-  errors: string[];
 
   constructor(private auth: AuthService, private fb: FormBuilder) {
     this.loginForm = fb.group({
@@ -22,6 +21,18 @@ export class LoginComponent implements OnInit {
     });
     this.email = this.loginForm.controls['email'];
     this.password = this.loginForm.controls['password'];
+
+    this.email.valueChanges.subscribe(
+      (value: string) => console.log(`Email: ${value}`)
+    );
+
+    this.password.valueChanges.subscribe(
+      (value: string) => console.log(`Password: ${value}`)
+    );
+
+    this.loginForm.valueChanges.subscribe(
+      (form: any) => console.log(`Form changed to: ${form.email}`)
+    );
   }
 
   ngOnInit() {

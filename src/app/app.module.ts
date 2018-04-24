@@ -22,6 +22,7 @@ import { MomentModule } from 'angular2-moment';
 import { ClickOutsideModule } from 'ng4-click-outside';
 
 import * as bootstrap from 'bootstrap';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import * as bootstrap from 'bootstrap';
     TeamMemberDetailComponent,
     CashInFormComponent,
     LoginComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
