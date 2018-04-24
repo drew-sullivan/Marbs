@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
     toastService: ToastService,
     toastManager: ToastsManager,
     vcr: ViewContainerRef,
-    // private auth: AuthService
+    private auth: AuthService
   ) {
     toastService.setUpVCR(vcr);
   }
@@ -28,5 +28,9 @@ export class AppComponent implements OnInit {
     //   password: 'password'
     // };
     // return;
+  }
+
+  logout(): void {
+    this.auth.logout();
   }
 }

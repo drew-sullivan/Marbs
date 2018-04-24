@@ -7,6 +7,7 @@ import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { TeamMemberService, ServerResponse } from './team-member.service';
+import { ToastService } from './toast.service';
 
 @Injectable()
 export class AuthService implements OnInit {
@@ -14,7 +15,7 @@ export class AuthService implements OnInit {
   currentUser: any;
   redirectUrl: string;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private toastService: ToastService) { }
 
   ngOnInit() { }
 
@@ -28,6 +29,8 @@ export class AuthService implements OnInit {
 
   logout(): void {
     this.currentUser = null;
+    this.router.navigate(['/login']);
+    this.toastService.showSuccess(`You have been successfully logged out!`);
   }
 
 }

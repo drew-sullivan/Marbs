@@ -3,6 +3,7 @@
     <div class="nav navbar-nav mx-auto">
       <a class="nav-link" routerLink="/team-members"><img src="../assets/logo.png" class="header-logo"></a>
     </div>
+    <button *ngIf="auth.currentUser" class="navbar-right qa-btn qa-btn-md accent-btn" (click)="logout()">Logout</button>
   </nav>
 </header>
 
