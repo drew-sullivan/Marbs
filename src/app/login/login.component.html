@@ -5,11 +5,12 @@
 
     <input type="email" id="inputEmail" email
            class="form-control input-custom" placeholder="Email address"
-           required [formControl]="loginForm.controls['email']">
+           required [formControl]="loginForm.controls['email']"
+           [class.input-error]="(email.hasError('required') && email.touched) || (!email.valid && email.touched)">
     <div *ngIf="!email.valid && email.touched"
          [class.error]="!email.valid && email.touched">Email is invalid</div>
     <div *ngIf="email.hasError('required') && email.touched"
-         [class.error]="email.hasError('required') && email.touched">Please enter an email address</div>
+         [class.error]="email.hasError('required') && email.touched">An email address is required</div>
     
     <input type="password" id="inputPassword"
            class="form-control input-custom" placeholder="Password"

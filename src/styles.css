@@ -62,6 +62,11 @@ tbody tr {
   font-size: 12px;
 }
 
+.input-error {
+  background-color: #ffd0d0;
+  border: 1px solid red;
+}
+
 .input-custom {
   font-size: 14px;
   display: inline-block;
