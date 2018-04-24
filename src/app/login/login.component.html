@@ -1,0 +1,25 @@
+<div class="main-content mx-auto">
+  
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value); loginForm.reset()">
+    <h2>Log in</h2>
+
+    <input type="username" id="inputUsername"
+           class="form-control input-custom" placeholder="Username"
+           required [formControl]="loginForm.controls['username']"
+           [class.input-error]="(username.hasError('required') && username.touched)">
+    <div *ngIf="username.hasError('required') && username.touched"
+         [class.error]="username.hasError('required') && username.touched">An username is required</div>
+    
+    <input type="password" id="inputPassword"
+           class="form-control input-custom" placeholder="Password"
+           required [formControl]="loginForm.controls['password']">
+
+    <div class="text-right">
+      <button class="qa-btn qa-btn-md accent-btn" type="submit"
+              [disabled]="!loginForm.valid"
+              [class.disabled]="!loginForm.valid">Log in</button>
+    </div>
+
+  </form>
+
+</div>

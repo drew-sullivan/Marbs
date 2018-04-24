@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { AuthService } from './auth.service';
+import { Injectable, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
@@ -16,14 +17,20 @@ const httpOptions = {
 @Injectable()
 export class TeamMemberService {
 
-  private teamMembersUrl = 'http://dev-029666.onbase.net:9872/api/teamMembers';  // URL to web api
+  public teamMembersUrl = 'http://dev-029666.onbase.net:9876/api/teamMembers';  // URL to web api
 
   constructor(
     private http: HttpClient,
-    private toast: ToastService) { }
+    private toast: ToastService,
+    private auth: AuthService) { }
 
   getTeamMembers(): Observable<TeamMember[]> {
-    return this.http.get<ServerResponse>(this.teamMembersUrl)
+    const body = {
+      username: this.auth.currentUser.username,
+      password: this.auth.currentUser.password
+    };
+    console.log(body);
+    return this.http.post<ServerResponse>(this.teamMembersUrl, body, httpOptions)
       .pipe(
         map(response => response.data),
         catchError(this.handleError('getTeamMembers', []))
@@ -31,15 +38,22 @@ export class TeamMemberService {
   }
 
   getTeamMember(id: number): Observable<TeamMember> {
-    const url = `${this.teamMembersUrl}/${id}`;
-    return this.http.get<ServerResponse>(url).pipe(
-      map(response => response.data),
+    const body = {
+      username: this.auth.currentUser.username,
+      password: this.auth.currentUser.password,
+      id
+    };
+    return this.http.post<ServerResponse>(this.teamMembersUrl, body, httpOptions).pipe(
+      map(response => response.data[0]),
       catchError(this.handleError<TeamMember>(`getTeamMember with id = ${id}`))
     );
   }
 
   addTeamMember(teamMember: TeamMember): Observable<TeamMember> {
-    return this.http.post<ServerResponse>(this.teamMembersUrl, teamMember, httpOptions).pipe(
+    const body: any = teamMember;
+    body.username = this.auth.currentUser.username;
+    body.password = this.auth.currentUser.password;
+    return this.http.post<ServerResponse>(this.teamMembersUrl + `/create`, body, httpOptions).pipe(
       map(response => response.data),
       tap((tm: TeamMember) => this.toast.showSuccess(`Added team member ${tm.name}`)),
       catchError(this.handleError<TeamMember>('addTeamMember'))
@@ -47,22 +61,29 @@ export class TeamMemberService {
   }
 
   updateTeamMember(teamMember: TeamMember): Observable<TeamMember> {
-    return this.http.put<ServerResponse>(this.teamMembersUrl, teamMember).pipe(
+    const body: any = teamMember;
+    body.username = this.auth.currentUser.username;
+    body.password = this.auth.currentUser.password;
+    return this.http.put<ServerResponse>(this.teamMembersUrl, body).pipe(
       map(response => response.data),
       catchError(this.handleError<TeamMember>('updateTeamMember'))
     );
   }
 
   deleteTeamMember(tm: TeamMember): Observable<TeamMember> {
-    const url = `${this.teamMembersUrl}/${tm.id}`;
-    return this.http.delete<ServerResponse>(url, httpOptions).pipe(
+    const body = {
+      username: this.auth.currentUser.username,
+      password: this.auth.currentUser.password,
+      id: tm.id
+    };
+    return this.http.post<ServerResponse>(this.teamMembersUrl + '/delete', body, httpOptions).pipe(
       map(response => response.data ),
       tap(_ => this.toast.showSuccess(`Deleted ${tm.name}`)),
       catchError(this.handleError<TeamMember>('deleteTeamMember'))
     );
   }
 
-  private handleError<T> (operation = 'operation', result?: T) {
+  public handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
       this.toast.showError(`${operation} failed: ${error.message}`);
@@ -71,8 +92,7 @@ export class TeamMemberService {
   }
 }
 
-class ServerResponse {
-  public data; // This variable holds what you want
+export class ServerResponse {
+  public data;
+  public error;
 }
-
-

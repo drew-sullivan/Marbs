@@ -1,0 +1,26 @@
+h2 {
+  font-size: 20px;
+  margin-left: 12px;
+}
+
+.input-custom {
+  margin: 5px auto;
+}
+
+button {
+  margin-top: 5px;
+}
+
+form {
+  max-width: 350px;
+  margin: 10px auto;
+}
+
+.main-content {
+  width: 400px;
+  margin-top: 50px;
+}
+
+.error {
+  margin-left: 13px;
+}

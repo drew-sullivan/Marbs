@@ -10,18 +10,20 @@ import { AppComponent } from './app.component';
 import { TeamMembersComponent } from './team-members/team-members.component';
 import { TeamMemberDetailComponent } from './team-member-detail/team-member-detail.component';
 import { CashInFormComponent } from './cash-in-form/cash-in-form.component';
+import { LoginComponent } from './login/login.component';
 
 import { AppRoutingModule } from './/app-routing.module';
 
 import { ToastService } from './services/toast.service';
 import { TeamMemberService } from './services/team-member.service';
-
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { AuthService } from './services/auth.service';
 
 import { MomentModule } from 'angular2-moment';
 import { ClickOutsideModule } from 'ng4-click-outside';
 
 import * as bootstrap from 'bootstrap';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+// import { AuthGuardService } from './services/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import * as bootstrap from 'bootstrap';
     TeamMembersComponent,
     TeamMemberDetailComponent,
     CashInFormComponent,
+    LoginComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +45,9 @@ import * as bootstrap from 'bootstrap';
     ClickOutsideModule,
     ToastModule.forRoot()
   ],
-  providers: [TeamMemberService, ToastService],
+  providers: [TeamMemberService, ToastService, AuthService,
+    // AuthGuardService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -35,8 +35,7 @@ export class TeamMembersComponent implements OnInit {
     name = name.trim();
     if (!name) { return; }
     this.teamMemberService.addTeamMember({
-      name,
-      datesTakenOff: []
+      name
     } as TeamMember)
       .subscribe(tm => this.teamMembers.push(tm));
   }
