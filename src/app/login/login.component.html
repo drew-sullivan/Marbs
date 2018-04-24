@@ -6,9 +6,7 @@
     <input type="username" id="inputUsername"
            class="form-control input-custom" placeholder="Username"
            required [formControl]="loginForm.controls['username']"
-           [class.input-error]="(username.hasError('required') && username.touched) || (!username.valid && username.touched)">
-    <div *ngIf="!username.valid && username.touched"
-         [class.error]="!username.valid && username.touched">Username is invalid</div>
+           [class.input-error]="(username.hasError('required') && username.touched)">
     <div *ngIf="username.hasError('required') && username.touched"
          [class.error]="username.hasError('required') && username.touched">An username is required</div>
     
