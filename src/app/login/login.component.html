@@ -3,14 +3,14 @@
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value); loginForm.reset()">
     <h2>Log in</h2>
 
-    <input type="email" id="inputEmail"
-           class="form-control input-custom" placeholder="Email address"
-           required [formControl]="loginForm.controls['email']"
-           [class.input-error]="(email.hasError('required') && email.touched) || (!email.valid && email.touched)">
-    <div *ngIf="!email.valid && email.touched"
-         [class.error]="!email.valid && email.touched">Email is invalid</div>
-    <div *ngIf="email.hasError('required') && email.touched"
-         [class.error]="email.hasError('required') && email.touched">An email address is required</div>
+    <input type="username" id="inputUsername"
+           class="form-control input-custom" placeholder="Username"
+           required [formControl]="loginForm.controls['username']"
+           [class.input-error]="(username.hasError('required') && username.touched) || (!username.valid && username.touched)">
+    <div *ngIf="!username.valid && username.touched"
+         [class.error]="!username.valid && username.touched">Username is invalid</div>
+    <div *ngIf="username.hasError('required') && username.touched"
+         [class.error]="username.hasError('required') && username.touched">An username is required</div>
     
     <input type="password" id="inputPassword"
            class="form-control input-custom" placeholder="Password"

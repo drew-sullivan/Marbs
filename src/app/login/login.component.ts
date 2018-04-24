@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, Validators, AbstractControl, EmailValidator } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 
 import { AuthService } from './../services/auth.service';
 
@@ -11,15 +11,15 @@ import { AuthService } from './../services/auth.service';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
-  email: AbstractControl;
+  username: AbstractControl;
   password: AbstractControl;
 
   constructor(private auth: AuthService, private fb: FormBuilder) {
     this.loginForm = fb.group({
-      'email': ['', Validators.required],
+      'username': ['', Validators.required],
       'password': ['', Validators.required],
     });
-    this.email = this.loginForm.controls['email'];
+    this.username = this.loginForm.controls['username'];
     this.password = this.loginForm.controls['password'];
   }
 
@@ -27,9 +27,9 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(loginForm: any) {
-    const email = loginForm.email;
+    const username = loginForm.username;
     const password = loginForm.password;
-    this.auth.login(email, password);
+    this.auth.login(username, password);
   }
 
 }

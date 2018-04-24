@@ -24,9 +24,9 @@ export class AppComponent implements OnInit {
   // UNCOMMENT TO TEST FASTER
   ngOnInit() {
     // this.auth.currentUser = {
-    //   email: 'manager',
-    //   pw: 'password'
+    //   username: 'manager',
+    //   password: 'password'
     // };
-    return;
+    // return;
   }
 }

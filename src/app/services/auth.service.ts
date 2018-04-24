@@ -18,10 +18,10 @@ export class AuthService implements OnInit {
 
   ngOnInit() { }
 
-  login(email: string, pw: string): void {
+  login(username: string, password: string): void {
     this.currentUser = {
-      email,
-      pw
+      username,
+      password
     };
     this.router.navigate(['/team-members']);
   }

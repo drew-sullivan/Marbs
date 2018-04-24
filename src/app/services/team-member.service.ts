@@ -26,9 +26,10 @@ export class TeamMemberService {
 
   getTeamMembers(): Observable<TeamMember[]> {
     const body = {
-      username: this.auth.currentUser.email,
-      password: this.auth.currentUser.pw
+      username: this.auth.currentUser.username,
+      password: this.auth.currentUser.password
     };
+    console.log(body);
     return this.http.post<ServerResponse>(this.teamMembersUrl, body, httpOptions)
       .pipe(
         map(response => response.data),
@@ -38,8 +39,8 @@ export class TeamMemberService {
 
   getTeamMember(id: number): Observable<TeamMember> {
     const body = {
-      username: this.auth.currentUser.email,
-      password: this.auth.currentUser.pw,
+      username: this.auth.currentUser.username,
+      password: this.auth.currentUser.password,
       id
     };
     return this.http.post<ServerResponse>(this.teamMembersUrl, body, httpOptions).pipe(
@@ -50,8 +51,8 @@ export class TeamMemberService {
 
   addTeamMember(teamMember: TeamMember): Observable<TeamMember> {
     const body: any = teamMember;
-    body.username = this.auth.currentUser.email;
-    body.password = this.auth.currentUser.pw;
+    body.username = this.auth.currentUser.username;
+    body.password = this.auth.currentUser.password;
     return this.http.post<ServerResponse>(this.teamMembersUrl + `/create`, body, httpOptions).pipe(
       map(response => response.data),
       tap((tm: TeamMember) => this.toast.showSuccess(`Added team member ${tm.name}`)),
@@ -61,8 +62,8 @@ export class TeamMemberService {
 
   updateTeamMember(teamMember: TeamMember): Observable<TeamMember> {
     const body: any = teamMember;
-    body.username = this.auth.currentUser.email;
-    body.password = this.auth.currentUser.pw;
+    body.username = this.auth.currentUser.username;
+    body.password = this.auth.currentUser.password;
     return this.http.put<ServerResponse>(this.teamMembersUrl, body).pipe(
       map(response => response.data),
       catchError(this.handleError<TeamMember>('updateTeamMember'))
@@ -71,8 +72,8 @@ export class TeamMemberService {
 
   deleteTeamMember(tm: TeamMember): Observable<TeamMember> {
     const body = {
-      username: this.auth.currentUser.email,
-      password: this.auth.currentUser.pw,
+      username: this.auth.currentUser.username,
+      password: this.auth.currentUser.password,
       id: tm.id
     };
     return this.http.post<ServerResponse>(this.teamMembersUrl + '/delete', body, httpOptions).pipe(
