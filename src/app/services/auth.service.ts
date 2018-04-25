@@ -24,7 +24,7 @@ export class AuthService implements OnInit {
       username,
       password
     };
-    this.router.navigate(['/team-members']);
+    this.router.navigate([`/${this.redirectUrl}`]);
   }
 
   logout(): void {
