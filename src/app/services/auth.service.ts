@@ -20,11 +20,15 @@ export class AuthService implements OnInit {
   ngOnInit() { }
 
   login(username: string, password: string): void {
+    // if (!this.redirectUrl) {
+    //   this.redirectUrl = 'team-members';
+    // }
+    // console.log(`RD url: ${}`);
     this.currentUser = {
       username,
       password
     };
-    this.router.navigate([`/${this.redirectUrl}`]);
+    this.router.navigate([`/${this.redirectUrl ? this.redirectUrl : 'team-members'}`]);
   }
 
   logout(): void {
