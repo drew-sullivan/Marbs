@@ -62,13 +62,13 @@
                    required />
           </td>
           <td>{{ date | amTimeAgo }}</td>
-          <td><a class="action-button delete-button" (click)="deleteDate(date)">&times;</a></td>
+          <td><a class="action-button delete-button" (click)="deleteDate(date)"><i class="fas fa-trash-alt"></i></a></td>
         </tr>
       </tbody>
     </table>
 
     <a *ngIf="!isAddingPreviousDate" class="action-button add-button"
-       (click)="isAddingPreviousDate = true">Add Previous Day Off
+       (click)="isAddingPreviousDate = true"><i class="fas fa-plus"></i>  Add Previous Day Off
     </a>
     <div *ngIf="isAddingPreviousDate">
       <input #prevDateForm type="date" class="form-control input-custom date-box old-date" />
@@ -77,7 +77,7 @@
     </div>
     
     <!-- Button trigger modal -->
-    <a class="action-button delete-button" data-toggle="modal" data-target="#deleteMember">Delete Team Member</a>
+    <a class="action-button delete-button" data-toggle="modal" data-target="#deleteMember"><i class="fas fa-trash-alt"></i>  Delete Team Member</a>
     <!-- Modal -->
     <div class="modal fade" id="deleteMember" tabindex="-1" role="dialog">
       <div class="modal-dialog modal-dialog-centered" role="document">

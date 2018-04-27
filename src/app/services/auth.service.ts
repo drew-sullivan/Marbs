@@ -20,10 +20,6 @@ export class AuthService implements OnInit {
   ngOnInit() { }
 
   login(username: string, password: string): void {
-    // if (!this.redirectUrl) {
-    //   this.redirectUrl = 'team-members';
-    // }
-    // console.log(`RD url: ${}`);
     this.currentUser = {
       username,
       password
@@ -34,7 +30,7 @@ export class AuthService implements OnInit {
   logout(): void {
     this.currentUser = null;
     this.router.navigate(['/login']);
-    this.toastService.showSuccess(`You have been successfully logged out!`);
+    this.toastService.showSuccess(`You have successfully logged out!`);
   }
 
 }
