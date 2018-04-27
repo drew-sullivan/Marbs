@@ -55,6 +55,10 @@ nav a {
   height: 25px;
 }
 
+.logout {
+  z-index: 20;
+}
+
 @media (min-width: 768px) {
   .navbar-brand.abs
       {
