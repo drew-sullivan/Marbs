@@ -1,10 +1,17 @@
 <header>
-  <nav class="navbar navbar-expand-md navbar-fixed-top main-nav">
-    <div class="nav navbar-nav mx-auto">
-      <a class="nav-link" routerLink="/team-members"><img src="../assets/logo.png" class="header-logo"></a>
+  <nav class="navbar navbar-expand-md navbar-dark">
+    <a class="navbar-brand nav-link abs" routerLink="/team-members"><img src="../assets/logo.png" class="header-logo"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse" id="collapsingNavbar">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <button *ngIf="auth.currentUser" class="navbar-right qa-btn qa-btn-md accent-btn" (click)="logout()">Logout</button>
+            </li>
+        </ul>
     </div>
-    <button *ngIf="auth.currentUser" class="navbar-right qa-btn qa-btn-md accent-btn" (click)="logout()">Logout</button>
-  </nav>
+</nav>
 </header>
 
 <main role="main" class="container">
