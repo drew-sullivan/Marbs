@@ -43,7 +43,6 @@ export class AuthService implements OnInit {
   }
 
   setUser(isValid, username, password) {
-    console.log(isValid);
     if (isValid) {
       this.currentUser = {
         username,
