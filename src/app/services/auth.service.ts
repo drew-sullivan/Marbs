@@ -37,7 +37,8 @@ export class AuthService implements OnInit {
     this.http.post<ServerResponse>(`${SERVER_URL}/login`, body, httpOptions)
       .pipe(
         map(response => response.data),
-        tap((isValid) => this.setUser(isValid, body.username, body.password))
+        tap((isValid) => this.setUser(isValid, body.username, body.password)),
+        catchError(this.handleError<Boolean>('login'))
       ).subscribe();
   }
 
@@ -50,7 +51,7 @@ export class AuthService implements OnInit {
       };
       this.router.navigate(['/team-members']);
     } else {
-      this.toastService.showError(`Username or email are invalid`);
+      this.toastService.showError(`Username or email is invalid`);
     }
   }
 
@@ -58,6 +59,14 @@ export class AuthService implements OnInit {
     this.currentUser = null;
     this.router.navigate(['/login']);
     this.toastService.showSuccess(`You have successfully logged out!`);
+  }
+
+  private handleError<T> (operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(error);
+      this.toastService.showError(`Sorry, your password does not match the username on file`);
+      return of(result as T);
+    };
   }
 
 }
