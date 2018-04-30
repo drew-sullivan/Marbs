@@ -2,10 +2,12 @@ import { AuthService } from './auth.service';
 import { Injectable } from '@angular/core';
 import { CanActivate, RouterStateSnapshot, Router, ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
 
+import { SERVER_URL } from './../../assets/server-url';
+
 @Injectable()
 export class AuthGuardService implements CanActivate {
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private auth: AuthService, private router: Router) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     const url: string = state.url;
@@ -13,10 +15,10 @@ export class AuthGuardService implements CanActivate {
   }
 
   checkLogin(url: string): boolean {
-    if (this.authService.currentUser) {
+    if (this.auth.currentUser) {
       return true;
     }
-    this.authService.redirectUrl = url;
+    this.auth.redirectUrl = url;
     this.router.navigate(['/login']);
     return false;
   }

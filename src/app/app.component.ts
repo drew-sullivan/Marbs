@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
     toastService: ToastService,
     toastManager: ToastsManager,
     vcr: ViewContainerRef,
-    private auth: AuthService
+    public auth: AuthService
   ) {
     toastService.setUpVCR(vcr);
   }

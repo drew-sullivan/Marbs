@@ -8,6 +8,13 @@ import { catchError, map, tap } from 'rxjs/operators';
 
 import { TeamMemberService, ServerResponse } from './team-member.service';
 import { ToastService } from './toast.service';
+import { AuthGuardService } from './auth-guard.service';
+
+import { SERVER_URL } from './../../assets/server-url';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable()
 export class AuthService implements OnInit {
@@ -15,16 +22,36 @@ export class AuthService implements OnInit {
   currentUser: any;
   redirectUrl: string;
 
-  constructor(private http: HttpClient, private router: Router, private toastService: ToastService) { }
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private toastService: ToastService) { }
 
   ngOnInit() { }
 
   login(username: string, password: string): void {
-    this.currentUser = {
+    const body = {
       username,
       password
     };
-    this.router.navigate([`/${this.redirectUrl ? this.redirectUrl : 'team-members'}`]);
+    this.http.post<ServerResponse>(`${SERVER_URL}/login`, body, httpOptions)
+      .pipe(
+        map(response => response.data),
+        tap((isValid) => this.setUser(isValid, body.username, body.password))
+      ).subscribe();
+  }
+
+  setUser(isValid, username, password) {
+    console.log(isValid);
+    if (isValid) {
+      this.currentUser = {
+        username,
+        password
+      };
+      this.router.navigate(['/team-members']);
+    } else {
+      this.toastService.showError(`Username or email are invalid`);
+    }
   }
 
   logout(): void {
