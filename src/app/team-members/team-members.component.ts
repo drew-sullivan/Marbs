@@ -14,6 +14,7 @@ export class TeamMembersComponent implements OnInit {
 
   teamMembers: TeamMember[];
   columnSorted: string;
+  private areSortedNames: boolean;
   private areSortedNums: boolean;
   private areSortedDates: boolean;
   private areSortedBanked: boolean;
@@ -43,7 +44,15 @@ export class TeamMembersComponent implements OnInit {
   sortByCol() {
     switch (this.columnSorted) {
       case 'name':
-        this.teamMembers = this.teamMembers.sort(byNameAsc);
+        console.log(this.areSortedNames);
+        if (this.areSortedNames) {
+          this.teamMembers = this.teamMembers.sort(byNameAsc);
+          this.areSortedNames = false;
+        } else {
+          this.teamMembers = this.teamMembers.sort(byNameDesc);
+          this.areSortedNames = true;
+        }
+        console.log(this.areSortedNames);
         break;
       case 'numDays':
         if (this.areSortedNums) {
@@ -88,6 +97,8 @@ const byNumBankedDaysDesc = (tm1: TeamMember, tm2: TeamMember) => {
 };
 
 const byNameAsc = (tm1: TeamMember, tm2: TeamMember) => tm1.name.localeCompare(tm2.name);
+
+const byNameDesc = (tm1: TeamMember, tm2: TeamMember) => tm2.name.localeCompare(tm1.name);
 
 const byNumDaysAsc = (tm1: TeamMember, tm2: TeamMember) => {
   return tm1.datesTakenOff.length - tm2.datesTakenOff.length;
