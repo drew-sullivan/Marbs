@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 
 import { AuthService } from './../services/auth.service';
@@ -13,6 +13,8 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   username: AbstractControl;
   password: AbstractControl;
+  width: number;
+  height: number;
 
   constructor(private auth: AuthService, private fb: FormBuilder) {
     this.loginForm = fb.group({
@@ -24,6 +26,8 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.width);
+    console.log(this.height);
   }
 
   onSubmit(loginForm: any) {
