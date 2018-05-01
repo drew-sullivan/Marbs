@@ -13,8 +13,6 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   username: AbstractControl;
   password: AbstractControl;
-  width: number;
-  height: number;
 
   constructor(private auth: AuthService, private fb: FormBuilder) {
     this.loginForm = fb.group({
@@ -26,8 +24,8 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.width);
-    console.log(this.height);
+    // TODO: Remove after testing is done
+    this.auth.login('manager', 'password');
   }
 
   onSubmit(loginForm: any) {
