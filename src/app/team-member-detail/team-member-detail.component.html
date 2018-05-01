@@ -25,7 +25,7 @@
     </div>
 
     <!-- Button trigger modal -->
-    <button class="qa-btn primary-btn cash-in-btn"
+    <button class="qa-btn qa-btn-md accent-btn cash-in-btn"
             [disabled]="teamMember.halfDaysBanked < 1"
             [class.disabled]="teamMember.halfDaysBanked < 1"
             data-toggle="modal" data-target="#bankedDays">
@@ -67,27 +67,34 @@
       </tbody>
     </table>
 
-    <a *ngIf="!isAddingPreviousDate" class="action-button add-button"
-       (click)="isAddingPreviousDate = true"><i class="fas fa-plus"></i>  Add Previous Day Off
+    <button class="qa-btn grey-btn d-md-none mobile-btn" *ngIf="!isAddingPreviousDate"
+      (click)="isAddingPreviousDate = true">
+      <i class="fas fa-plus"></i>&nbsp;&nbsp;Add Previous Day Off
+    </button>
+    <a *ngIf="!isAddingPreviousDate" class="action-button add-button d-none d-md-block"
+       (click)="isAddingPreviousDate = true"><i class="fas fa-plus"></i>&nbsp;&nbsp;Add Previous Day Off
     </a>
-    <div *ngIf="isAddingPreviousDate">
+    <div *ngIf="isAddingPreviousDate" class="date-input-box">
       <input #prevDateForm type="date" class="form-control input-custom date-box old-date" />
       <button (click)="isAddingPreviousDate = false" class="qa-btn danger-btn">Nevermind</button>
       <button (click)="addPreviousDate(prevDateForm.value)" class="qa-btn primary-btn">Add</button>
     </div>
     
-    <!-- Button trigger modal -->
-    <a class="action-button delete-button" data-toggle="modal" data-target="#deleteMember"><i class="fas fa-trash-alt"></i>  Delete Team Member</a>
-    <!-- Modal -->
-    <div class="modal fade" id="deleteMember" tabindex="-1" role="dialog">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <p class="modal-title">Are you sure?</p>
-          </div>
-          <div class="modal-footer">
-            <a type="button" class="action-button add-button" data-dismiss="modal">No</a>
-            <a type="button" class="action-button delete-button" (click)="deleteTeamMember(teamMember)" data-dismiss="modal">Yes, delete this team member</a>
+    <div *ngIf="!isAddingPreviousDate">
+      <button class="qa-btn danger-btn d-md-none mobile-btn" data-toggle="modal" data-target="#deleteMember"><i class="fas fa-trash-alt"></i>  Delete Team Member</button>
+      <!-- Button trigger modal -->
+      <a class="action-button delete-button d-none d-md-block" data-toggle="modal" data-target="#deleteMember"><i class="fas fa-trash-alt"></i>  Delete Team Member</a>
+      <!-- Modal -->
+      <div class="modal fade" id="deleteMember" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <p class="modal-title">Are you sure?</p>
+            </div>
+            <div class="modal-footer">
+              <a type="button" class="action-button add-button" data-dismiss="modal">No</a>
+              <a type="button" class="action-button delete-button" (click)="deleteTeamMember(teamMember)" data-dismiss="modal">Yes, delete this team member</a>
+            </div>
           </div>
         </div>
       </div>

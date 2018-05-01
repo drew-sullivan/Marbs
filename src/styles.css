@@ -178,6 +178,16 @@ tbody tr {
   box-shadow: inset 0 3px 0 #4e1e2a !important;
 }
 
+.grey-btn {
+  background-color: #4D4F53;
+  color: white;
+  box-shadow: inset 0 -3px 0 #232426 !important;
+}
+
+.grey-btn:active:enabled {
+  box-shadow: inset 0 3px 0 #232426 !important;
+}
+
 .danger-btn:hover:enabled {
   background-color: #af6d7d;
 }
