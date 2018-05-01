@@ -13,10 +13,6 @@ th {
   font-size: 14px;
 }
 
-.too-big-th {
-  font-size: 10px;
-}
-
 h2 {
   font-size: 18px;
   font-weight: bold;
@@ -39,7 +35,13 @@ button {
   font-size: 16px;
 }
 
+.mobile-name {
+  width: 40%;
+  white-space: nowrap;
+}
+
 .mobile-name-button {
+  width: 80%;
   font-size: 16px;
 }
 

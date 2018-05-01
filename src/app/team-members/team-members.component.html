@@ -33,20 +33,20 @@
       </tr>
       <tr>
         <th scope="col" class="d-md-none" (click)="columnSorted='name'; sortByCol('name')">
-          <button class="qa-btn qa-btn-md primary-btn primary-btn-left name-button">
+          <button class="qa-btn qa-btn-md primary-btn primary-btn-left mobile-name-button">
             <span class="btn-text-left">Name</span>
             <span class="btn-text-right"><i class="fas fa-sort"></i></span>
           </button>
         </th>
         <th class="mobile-th d-md-none">Used</th>
         <th class="mobile-th d-md-none">Banked</th>
-        <th class="mobile-th d-md-none too-big-th">Most-Recent</th>
+        <th class="mobile-th d-md-none">Most-Recent</th>
       </tr>
     </thead>
 
     <tbody>
       <tr *ngFor="let tm of teamMembers">
-        <td><a routerLink="/detail/{{ tm.id }}" class="name hov-link hov-link-orange mobile-name-button">{{ tm.name }}</a></td>
+        <td class="mobile-name"><a routerLink="/detail/{{ tm.id }}" class="name hov-link hov-link-orange">{{ tm.name }}</a></td>
         <td class="mobile-td">{{ tm.datesTakenOff.length }}</td>
         <td class="mobile-td">{{ tm.halfDaysBanked }}</td>
         <td *ngIf="tm.datesTakenOff[0]" class="mobile-td">{{ tm.datesTakenOff[0] }}</td>
