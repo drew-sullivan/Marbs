@@ -7,6 +7,17 @@ body {
   margin-top: 75px;
 }
 
+.navbar-brand.abs {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  text-align: center;
+}
+
+.header-logo {
+  height: 35px;
+}
+
 .footer {
   position: fixed;
   bottom: 0;
@@ -48,15 +59,8 @@ nav a {
   visibility: hidden;
 }
 
-.header-logo {
-  height: 40px;
-}
-
 .footer-logo {
   height: 25px;
-}
-
-.footer-logo {
   margin-left: 10px;
 }
 
@@ -69,6 +73,11 @@ nav a {
        (min-width: 768px),
        (min-width: 992px),
        (min-width: 1200px) {
+
+  .header-logo {
+    height: 40px;
+  }
+  
   .navbar-brand.abs {
     position: absolute;
     width: 100%;

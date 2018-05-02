@@ -24,8 +24,6 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    // TODO: Remove after testing is done
-    this.auth.login('manager', 'password');
   }
 
   onSubmit(loginForm: any) {
