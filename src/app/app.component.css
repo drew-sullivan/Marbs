@@ -17,8 +17,9 @@ body {
   color: black;
 }
 
-body > .container {
-  padding: 60px 15px 0;
+.container {
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 code {
@@ -57,14 +58,27 @@ nav a {
 
 .logout {
   z-index: 20;
+  font-size: 16px;
 }
 
-@media (min-width: 768px) {
-  .navbar-brand.abs
-      {
-          position: absolute;
-          width: 100%;
-          left: 0;
-          text-align: center;
-      }
+@media (min-width: 576px),
+       (min-width: 768px),
+       (min-width: 992px),
+       (min-width: 1200px) {
+  .navbar-brand.abs {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    text-align: center;
   }
+
+  .logout {
+    font-size: 14px;
+  }
+
+  .container {
+    padding: 60px 15px 0 !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+  }
+}
