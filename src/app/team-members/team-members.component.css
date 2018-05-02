@@ -30,9 +30,10 @@ h2 {
   float: right;
 }
 
-button {
+button, .add-member-button {
   width: 100%;
   font-size: 16px;
+  color: white;
 }
 
 .mobile-name {
@@ -45,8 +46,7 @@ button {
   font-size: 16px;
 }
 
-@media (min-width: 576px),
-       (min-width: 768px),
+@media (min-width: 768px),
        (min-width: 992px),
        (min-width: 1200px) { 
   .table {

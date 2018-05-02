@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: #d3dad8;
+  background-color: white;
 }
 
 .hover-pad {
@@ -228,5 +228,9 @@ tbody tr {
     box-shadow: 2px 2px 3px #7b8181;
     border-radius: 2px;
     background-color: white;
+  }
+
+  body {
+    background-color: #d3dad8;
   }
 }
