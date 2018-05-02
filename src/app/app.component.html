@@ -1,7 +1,7 @@
 <header>
   <nav class="navbar navbar-expand-md navbar-dark">
     <a class="navbar-brand nav-link abs" routerLink="/team-members"><img src="../assets/logo.png" class="header-logo"></a>
-    <button *ngIf="auth.currentUser" class="navbar-right ml-auto qa-btn qa-btn-md accent-btn logout" (click)="logout()">Logout</button>
+    <button *ngIf="auth.currentUser" class="navbar-right ml-auto qa-btn qa-btn-md accent-btn logout" (click)="logout()"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Logout</button>
   </nav>
 </header>
 
@@ -12,7 +12,5 @@
 <div class="spacer"></div>
 
 <footer class="footer">
-  <div class="container">
-    <a routerLink="/team-members"><img src="../assets/logo.png" class="footer-logo"></a>
-  </div>
+  <a routerLink="/team-members"><img src="../assets/logo.png" class="footer-logo"></a>
 </footer>

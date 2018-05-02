@@ -21,14 +21,7 @@ export class AppComponent implements OnInit {
     toastService.setUpVCR(vcr);
   }
 
-  // UNCOMMENT TO TEST FASTER
-  ngOnInit() {
-    // this.auth.currentUser = {
-    //   username: 'manager',
-    //   password: 'password'
-    // };
-    // return;
-  }
+  ngOnInit() { }
 
   logout(): void {
     this.auth.logout();

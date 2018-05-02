@@ -7,45 +7,57 @@
     <thead>
       <tr>
         <th scope="col" (click)="columnSorted='name'; sortByCol('name')">
-          <button class="qa-btn qa-btn-md primary-btn primary-btn-left">
+          <button class="qa-btn qa-btn-md primary-btn primary-btn-left name-button d-none d-md-block">
             <span class="btn-text-left">Name</span>
             <span class="btn-text-right"><i class="fas fa-sort"></i></span>
           </button>
         </th>
         <th scope="col" (click)="columnSorted='numDays'; sortByCol('numDays')">
-          <button class="qa-btn qa-btn-md primary-btn">
+          <button class="qa-btn qa-btn-md primary-btn d-none d-md-block">
             <span class="btn-text-left">Days Used</span>
             <span class="btn-text-right"><i class="fas fa-sort"></i></span>
           </button>
         </th>
         <th scope="col" (click)="columnSorted='banked'; sortByCol('banked')">
-          <button class="qa-btn qa-btn-md primary-btn">
+          <button class="qa-btn qa-btn-md primary-btn d-none d-md-block">
             <span class="btn-text-left">Days Banked </span>
             <span class="btn-text-right"><i class="fas fa-sort"></i></span>
           </button>
         </th>
         <th (click)="columnSorted='dates'; sortByCol('dates')">
-          <button class="qa-btn qa-btn-md primary-btn">
+          <button class="qa-btn qa-btn-md primary-btn d-none d-md-block">
             <span class="btn-text-left">Most Recent</span>
             <span class="btn-text-right"><i class="fas fa-sort"></i></span>
           </button>
         </th>
       </tr>
+      <tr>
+        <th scope="col" class="d-md-none" (click)="columnSorted='name'; sortByCol('name')">
+          <button class="qa-btn qa-btn-md primary-btn primary-btn-left mobile-name-button">
+            <span class="btn-text-left">Name</span>
+            <span class="btn-text-right"><i class="fas fa-sort"></i></span>
+          </button>
+        </th>
+        <th class="mobile-th d-md-none">Used</th>
+        <th class="mobile-th d-md-none">Banked</th>
+        <th class="mobile-th d-md-none">Most-Recent</th>
+      </tr>
     </thead>
 
     <tbody>
       <tr *ngFor="let tm of teamMembers">
-        <td><a routerLink="/detail/{{ tm.id }}" class="name hov-link hov-link-orange">{{ tm.name }}</a></td>
-        <td>{{ tm.datesTakenOff.length }}</td>
-        <td>{{ tm.halfDaysBanked }}</td>
-        <td *ngIf="tm.datesTakenOff[0]">{{ tm.datesTakenOff[0] }}</td>
-        <td *ngIf="!tm.datesTakenOff[0]">None!</td>
+        <td class="mobile-name"><a routerLink="/detail/{{ tm.id }}" class="name hov-link hov-link-orange">{{ tm.name }}</a></td>
+        <td class="mobile-td">{{ tm.datesTakenOff.length }}</td>
+        <td class="mobile-td">{{ tm.halfDaysBanked }}</td>
+        <td *ngIf="tm.datesTakenOff[0]" class="mobile-td">{{ tm.datesTakenOff[0] }}</td>
+        <td *ngIf="!tm.datesTakenOff[0]" class="mobile-td">None!</td>
       </tr>
     </tbody>
   </table>
 
+  <button class="qa-btn qa-btn-md accent-btn d-md-none add-member-button" data-toggle="modal" data-target="#addMember"><i class="fas fa-user-plus"></i></button>
   <!-- Button trigger modal -->
-  <a class="action-button add-button left-btn" data-toggle="modal" data-target="#addMember"><i class="fas fa-user-plus"></i>  Add New Team Member</a>
+  <a class="action-button add-button left-btn d-none d-md-block" data-toggle="modal" data-target="#addMember"><i class="fas fa-user-plus"></i>  Add New Team Member</a>
   <!-- Modal -->
   <div class="modal fade" id="addMember" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -57,7 +69,7 @@
           <input #teamMemberName type="text" class="form-control input-custom" placeholder="Name">
         </div>
         <div class="modal-footer">
-          <a type="button" class="action-button add-button" data-dismiss="modal">Cancel</a>
+          <a class="action-button add-button" data-dismiss="modal">Cancel</a>
           <button (click)="add(teamMemberName.value); teamMemberName.value=''" class="qa-btn primary-btn" data-dismiss="modal">Add</button>
         </div>
       </div>
