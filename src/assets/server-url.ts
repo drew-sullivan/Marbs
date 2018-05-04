@@ -1,1 +1,1 @@
-export const SERVER_URL = 'http://RDV-003988:9876/api/teamMembers';
+export const SERVER_URL = 'http://dev-024402:9876/api/teamMembers';
