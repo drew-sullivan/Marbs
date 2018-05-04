@@ -1,20 +1,25 @@
+th {
+  border-top: none;
+}
+
+.mobile-th {
+  font-size: 12px;
+  border-top: none;
+  border-bottom: none;
+}
+
+.mobile-td {
+  text-align: center;
+  font-size: 14px;
+}
+
 h2 {
   font-size: 18px;
   font-weight: bold;
 }
 
-.table {
-  margin-top: 12px;
-  margin-bottom: 36px;
-}
-
-.long-button {
-  width: 340px;
-  border-left-color: transparent !important;
-}
-
-td {
-  vertical-align: middle;
+.name {
+  font-size: 16px;
 }
 
 .btn-text-left {
@@ -25,38 +30,79 @@ td {
   float: right;
 }
 
-.primary-btn-left {
-  margin-left: 30px;
+button, .add-member-button {
+  width: 100%;
+  font-size: 16px;
+  color: white;
 }
 
-label {
-  margin-top: 30px;
+.mobile-name {
+  width: 40%;
+  white-space: nowrap;
 }
 
-td:nth-child(2), td:nth-child(3) {
-  padding-left: 68px;
+.mobile-name-button {
+  width: 80%;
+  font-size: 16px;
 }
 
-thead > tr > th:nth-child(1), thead > tr > th:nth-child(4) {
-  padding-left: 0;
-}
+@media (min-width: 768px),
+       (min-width: 992px),
+       (min-width: 1200px) { 
+  .table {
+    margin-top: 12px;
+    margin-bottom: 36px;
+  }
+  
+  .long-button {
+    width: 340px;
+    border-left-color: transparent !important;
+  }
+  
+  td {
+    vertical-align: middle;
+  }
+  
+  .primary-btn-left {
+    margin-left: 30px;
+  }
+  
+  label {
+    margin-top: 30px;
+  }
+  
+  td:nth-child(2), td:nth-child(3) {
+    padding-left: 68px;
+  }
+  
+  thead > tr > th:nth-child(1), thead > tr > th:nth-child(4) {
+    padding-left: 0;
+  }
+  
+  .name {
+    margin-left: 30px;
+    font-size: 16px;
+  }
+  
+  .table > thead > tr > th {
+    border: none;
+  }
+  
+  .table > thead {
+    border-bottom: 2px solid #d3dad8;
+  }
+  
+  tr > td {
+    font-size: 14px;
+  }
+  
+  .left-btn {
+    margin-left: 30px;
+  }
 
-.name {
-  margin-left: 30px;
-}
-
-.table > thead > tr > th {
-  border: none;
-}
-
-.table > thead {
-  border-bottom: 2px solid #d3dad8;
-}
-
-tr > td {
-  font-size: 14px;
-}
-
-.left-btn {
-  margin-left: 30px;
+  button {
+    margin-top: 10px;
+    width: 120px;
+    font-size: 14px;
+  }
 }

@@ -1,26 +1,36 @@
-h2 {
-  font-size: 20px;
-  margin-left: 12px;
-}
-
 .input-custom {
-  margin: 5px auto;
-}
-
-button {
-  margin-top: 5px;
-}
-
-form {
-  max-width: 350px;
   margin: 10px auto;
+  font-size: 20px;
+}
+ 
+button {
+  margin-top: 10px;
+  width: 100%;
+  font-size: 20px;
 }
 
-.main-content {
-  width: 400px;
-  margin-top: 50px;
+h2 {
+  font-size: 24px;
+  margin-left: 12px;
 }
 
 .error {
   margin-left: 13px;
+  font-size: 16px;
+}
+
+@media (min-width: 576px),
+       (min-width: 768px),
+       (min-width: 992px),
+       (min-width: 1200px) {
+  .main-content {
+    width: 400px;
+    margin-top: 50px;
+  }
+  
+  form {
+    max-width: 350px;
+    margin: 10px auto;
+  }
+  
 }

@@ -1,9 +1,3 @@
-.member-info {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 12px 0;
-}
-
 .team-member-name {
   font-size: 18px;
   font-weight: bold;
@@ -18,54 +12,99 @@
   height: 21px;
 }
 
-.container {
-  padding-left: 30px;
+.mobile-btn-50 {
+  width: 45%; 
 }
 
-.member-details button {
-  margin-bottom: 12px;
+.qa-btn-sm {
+  width: 23%;
+}
+
+h2 {
+  margin-bottom: 20px;
 }
 
 .cash-in-btn {
-  margin-left: -14px;
+  margin: 20px auto;
+  width: 100%;
+  font-size: 16px;
 }
 
-table {
-  margin: 12px 0;
+.mobile-btn {
+  width: 100%;
+  font-size: 16px;
+  margin: 5px auto;
 }
 
-table p {
-  font-size: 14px;
-}
-
-tr > td {
-  font-size: 14px;
-}
-
-.delete-button {
-  margin-left: 10px;
-}
-
-.modal-body {
-  padding-top: 0;
-}
-
-.modal-body label {
+.date-input-box button {
   margin-top: 5px;
-  margin-bottom: 5px;
-  font-size: 14px;
 }
 
-.date-box {
-  padding: 0;
-  font-size: 12px;
-}
+@media (min-width: 576px),
+       (min-width: 768px),
+       (min-width: 992px),
+       (min-width: 1200px) {
+  .member-info {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 12px 0;
+  }
 
-.old-date {
-  width: 15%;
-  height: 30px;
-}
+  .container {
+    padding-left: 30px;
+  }
 
-.disabled {
-  cursor: not-allowed;
+  .member-details button {
+    margin-bottom: 12px;
+  }
+
+  .cash-in-btn {
+    margin-left: -14px;
+  }
+
+  table {
+    margin: 12px 0;
+  }
+
+  table p {
+    font-size: 14px;
+  }
+
+  tr > td {
+    font-size: 14px;
+  }
+
+  .modal-body {
+    padding-top: 0;
+  }
+
+  .modal-body label {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
+
+  .date-box {
+    padding: 0;
+    font-size: 12px;
+  }
+
+  .old-date {
+    width: 15%;
+    height: 30px;
+  }
+
+  .disabled {
+    cursor: not-allowed;
+  }
+
+  .qa-btn-sm {
+    width: 35px;
+  }
+
+  .cash-in-btn {
+    width: 150px;
+    font-size: 14px;
+    margin: 0 auto;
+  }
 }

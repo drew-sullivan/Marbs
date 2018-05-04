@@ -18,8 +18,8 @@ import * as moment from 'moment';
 export class TeamMemberDetailComponent implements OnInit {
 
   @Input() teamMember: TeamMember;
-  private editingDate = -1;
-  private editingName: boolean;
+  editingDate = -1;
+  editingName: boolean;
   outsideClickCount = 0;
   isAddingPreviousDate = false;
 
