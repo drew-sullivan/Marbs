@@ -61,6 +61,8 @@
                    (clickOutside)="outsideClickSubmitDate($event)"
                    required />
           </td>
+          <td *ngIf="date.isHalfDay">Half Day</td>
+          <td *ngIf="!date.isHalfDay">Full Day</td>
           <td>{{ date.selectedDate | amTimeAgo }}</td>
           <td><a class="action-button delete-button" (click)="deleteDate(date.selectedDate)"><i class="fas fa-trash-alt"></i></a></td>
         </tr>
