@@ -32,6 +32,10 @@ export class TeamMembersComponent implements OnInit {
       .subscribe(teamMembers => this.teamMembers = teamMembers);
   }
 
+  getHalfDaysTaken(tm: TeamMember): number {
+    return this.teamMemberService.getNumberOfHalfDaysTaken(tm);
+  }
+
   add(name: string): void {
     name = name.trim();
     if (!name) { return; }

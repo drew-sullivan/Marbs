@@ -46,7 +46,7 @@
 
 
     <table class="table table-hover">
-      <p>Half Days Taken Off:&nbsp;&nbsp;{{ this.teamMember.getNumberOfHalfDaysTaken() }}</p>
+      <p>Half Days Taken Off:&nbsp;&nbsp;{{ this.getHalfDaysTakenOff() }}</p>
       <tbody>
         <tr *ngFor="let date of teamMember.datesTakenOff; let i = index" [attr.date-index]="i">
           <td *ngIf="editingDate === -1 || editingDate !== i">

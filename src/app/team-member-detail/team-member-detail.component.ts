@@ -42,6 +42,10 @@ export class TeamMemberDetailComponent implements OnInit {
       });
   }
 
+  getHalfDaysTakenOff(): number {
+    return this.teamMemberService.getNumberOfHalfDaysTaken(this.teamMember);
+  }
+
   /*
       Can't find a reference to this. Is it actually used?????
 
