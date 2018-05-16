@@ -78,8 +78,12 @@
     </a>
     <div *ngIf="isAddingPreviousDate" class="date-input-box">
       <input #prevDateForm type="date" class="form-control input-custom date-box old-date" />
+      <select #prevDateSelect class="form-control input-custom date-box old-date">
+        <option selected value="half">Half Day</option>
+        <option value="full">Full Day</option>
+      </select>
       <button (click)="isAddingPreviousDate = false" class="qa-btn danger-btn">Nevermind</button>
-      <button (click)="addPreviousDate(prevDateForm.value)" class="qa-btn primary-btn">Add</button>
+      <button (click)="addPreviousDate(prevDateForm.value, prevDateSelect.value)" class="qa-btn primary-btn">Add</button>
     </div>
 
     <div *ngIf="!isAddingPreviousDate">

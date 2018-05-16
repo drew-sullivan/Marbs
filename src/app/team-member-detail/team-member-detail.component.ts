@@ -159,8 +159,11 @@ export class TeamMemberDetailComponent implements OnInit {
     this.toastService.showSuccess(`Transaction successful!`);
   }
 
-  addPreviousDate(date: Transaction): void {
-    this.teamMember.datesTakenOff.push(date);
+  addPreviousDate(selectedDate: string, isHalfDayString: string): void {
+    const isHalfDayBool = isHalfDayString === 'half' ? true : false;
+    const trans = new Transaction(isHalfDayBool, selectedDate);
+    console.log(trans);
+    this.teamMember.datesTakenOff.push(trans);
     this.teamMember.datesTakenOff.sort(byDate);
     this.teamMemberService.updateTeamMember(this.teamMember).subscribe();
     this.toastService.showSuccess('Date added!');

@@ -121,8 +121,6 @@ tbody tr {
   padding: 6px 14px;
   cursor: pointer;
   transition: .05s ease-in-out;
-  white-space: nowrap;
-  overflow: hidden;
 }
 
 .qa-btn-lg {
