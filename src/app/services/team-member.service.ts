@@ -82,6 +82,18 @@ export class TeamMemberService {
     );
   }
 
+  getNumberOfHalfDaysTaken(tm: TeamMember): number {
+    let count = 0;
+    tm.datesTakenOff.forEach(day => {
+      if (day.isHalfDay) {
+        count++;
+      } else {
+        count += 2;
+      }
+    });
+    return count;
+  }
+
   public handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);

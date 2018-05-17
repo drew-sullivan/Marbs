@@ -3,6 +3,7 @@ import { Component, OnInit, Input, HostListener, ViewChild, ElementRef } from '@
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
+import { Transaction } from '../Transaction';
 import { TeamMember } from '../teamMember';
 import { TeamMemberService } from './../services/team-member.service';
 import { ToastService } from './../services/toast.service';
@@ -41,12 +42,19 @@ export class TeamMemberDetailComponent implements OnInit {
       });
   }
 
+  getHalfDaysTakenOff(): number {
+    return this.teamMemberService.getNumberOfHalfDaysTaken(this.teamMember);
+  }
+
+  /*
+      Can't find a reference to this. Is it actually used?????
+
   addDate(date: string): void {
     if (date === '') { return; }
     const dates = this.teamMember.datesTakenOff;
     if (dates.length) {
       for (let i = 0; i < dates.length; i++) {
-        if (moment(date).diff(moment(dates[i])) > 0 || i === dates.length - 1) {
+        if (moment(date).diff(moment(dates[i].selectedDate)) > 0 || i === dates.length - 1) {
           dates.splice(i, 0, date);
           break;
         }
@@ -59,9 +67,11 @@ export class TeamMemberDetailComponent implements OnInit {
     this.toastService.showSuccess(`Added ${moment(date).format('LL')} to ${this.teamMember.name}'s list of half days taken off`);
   }
 
+  */
+
   deleteDate(date: string): void {
     const dates = this.teamMember.datesTakenOff;
-    const index = dates.findIndex(item => item === date);
+    const index = dates.findIndex(item => item.selectedDate === date);
     dates.splice(index, 1);
     this.teamMemberService.updateTeamMember(this.teamMember).subscribe();
     this.toastService.showSuccess(`Removed ${moment(date).format('LL')} from ${this.teamMember.name}'s list of half days taken off`);
@@ -100,7 +110,8 @@ export class TeamMemberDetailComponent implements OnInit {
     if (!newDate) {
       return;
     }
-    this.teamMember.datesTakenOff[index] = newDate;
+
+    this.teamMember.datesTakenOff[index].selectedDate = newDate;
     this.teamMember.datesTakenOff.sort(byDate);
     this.teamMemberService.updateTeamMember(this.teamMember).subscribe();
     this.toastService.showSuccess('Updated date');
@@ -141,14 +152,18 @@ export class TeamMemberDetailComponent implements OnInit {
     $('#bankedDays').modal('hide');
     const numCashedInDays = input.isHalfDay || this.teamMember.halfDaysBanked < 2 ? 1 : 2;
     this.teamMember.halfDaysBanked = this.teamMember.halfDaysBanked - numCashedInDays;
-    this.teamMember.datesTakenOff.push(input.selectedDate);
+    const tran: Transaction = new Transaction(input.isHalfDay, input.selectedDate);
+    this.teamMember.datesTakenOff.push(tran);
     this.teamMember.datesTakenOff.sort(byDate);
     this.teamMemberService.updateTeamMember(this.teamMember).subscribe();
     this.toastService.showSuccess(`Transaction successful!`);
   }
 
-  addPreviousDate(date: string): void {
-    this.teamMember.datesTakenOff.push(date);
+  addPreviousDate(selectedDate: string, isHalfDayString: string): void {
+    const isHalfDayBool = isHalfDayString === 'half' ? true : false;
+    const trans = new Transaction(isHalfDayBool, selectedDate);
+    console.log(trans);
+    this.teamMember.datesTakenOff.push(trans);
     this.teamMember.datesTakenOff.sort(byDate);
     this.teamMemberService.updateTeamMember(this.teamMember).subscribe();
     this.toastService.showSuccess('Date added!');
@@ -156,4 +171,4 @@ export class TeamMemberDetailComponent implements OnInit {
   }
 }
 
-const byDate = (date1: string, date2: string) => moment(date2).diff(date1);
+const byDate = (date1: Transaction, date2: Transaction) => moment(date2.selectedDate).diff(date1.selectedDate);

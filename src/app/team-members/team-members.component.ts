@@ -32,6 +32,10 @@ export class TeamMembersComponent implements OnInit {
       .subscribe(teamMembers => this.teamMembers = teamMembers);
   }
 
+  getHalfDaysTaken(tm: TeamMember): number {
+    return this.teamMemberService.getNumberOfHalfDaysTaken(tm);
+  }
+
   add(name: string): void {
     name = name.trim();
     if (!name) { return; }
@@ -109,9 +113,9 @@ const byNumDaysDesc = (tm1: TeamMember, tm2: TeamMember) => {
 };
 
 const byDateAsc = (tm1: TeamMember, tm2: TeamMember) => {
-  return moment(tm1.datesTakenOff[0]).diff(moment(tm2.datesTakenOff[0]));
+  return moment(tm1.datesTakenOff[0].selectedDate).diff(moment(tm2.datesTakenOff[0].selectedDate));
 };
 
 const byDateDesc = (tm1: TeamMember, tm2: TeamMember) => {
-  return moment(tm2.datesTakenOff[0]).diff(moment(tm1.datesTakenOff[0]));
+  return moment(tm2.datesTakenOff[0].selectedDate).diff(moment(tm1.datesTakenOff[0].selectedDate));
 };
